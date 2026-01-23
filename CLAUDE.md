@@ -15,23 +15,18 @@ Spring Boot 4.0.1 web application using Java 17 and Gradle 9.2.1. Server-side re
 # Build the project
 ./gradlew build
 
-# Create executable JAR
-./gradlew bootJar
-
 # Clean build artifacts
 ./gradlew clean
 ```
 
 ## Architecture
 
-- **Entry Point**: `src/main/java/com/manage/lotto/Application.java` - Spring Boot main class
-- **Controllers**: `src/main/java/com/manage/lotto/controller/` - MVC controllers
-- **Templates**: `src/main/resources/templates/` - Thymeleaf HTML templates
-- **Static Assets**: `src/main/resources/static/` - CSS, JS, images
-- **Configuration**: `src/main/resources/application.yml` - Spring Boot config
+Base package: `com.manage.lotto`
 
-## Key Dependencies
+### Controller Layer
+- **MVC Controllers** (`controller/`): Return Thymeleaf view names for server-side rendering (use `@Controller`)
+- **REST API Controllers** (`controller/api/`): Return JSON responses (use `@RestController`)
 
-- Spring Boot Web MVC (spring-boot-starter-webmvc)
-- Thymeleaf (spring-boot-starter-thymeleaf)
-- Lombok (compile-time annotation processing)
+### Resources
+- **Templates**: `src/main/resources/templates/` - Thymeleaf HTML templates (Korean locale)
+- **Configuration**: `src/main/resources/application.yml` - Thymeleaf caching disabled for development
