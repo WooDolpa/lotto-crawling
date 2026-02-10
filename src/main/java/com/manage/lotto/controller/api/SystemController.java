@@ -16,8 +16,8 @@ import java.io.IOException;
 @RequiredArgsConstructor
 public class SystemController {
 
-    @PostMapping(path = "/manual/excel", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public ResponseEntity<String> manualExcel(@RequestParam("file") MultipartFile file) throws IOException {
-
-    }
+//    @PostMapping(path = "/manual/excel", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+//    public ResponseEntity<String> manualExcel(@RequestParam("file") MultipartFile file) throws IOException {
+//
+//    }
 }
