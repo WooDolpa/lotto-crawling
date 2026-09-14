@@ -1,0 +1,1491 @@
+2026-09-14 11:36:07.641 INFO  [main] StartupInfoLogger.logStarting:54 - Starting Application using Java 17.0.19 with PID 5296 (C:\Users\admin\IdeaProjects\jwlee\lotto-crawling\build\classes\java\main started by admin in C:\Users\admin\IdeaProjects\jwlee\lotto-crawling)
+2026-09-14 11:36:07.643 INFO  [main] SpringApplication.logStartupProfileInfo:652 - No active profile set, falling back to 1 default profile: "default"
+2026-09-14 11:36:07.998 INFO  [main] RepositoryConfigurationDelegate.registerRepositoriesIn:145 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-09-14 11:36:08.032 INFO  [main] RepositoryConfigurationDelegate.registerRepositoriesIn:213 - Finished Spring Data repository scanning in 28 ms. Found 1 JPA repository interface.
+2026-09-14 11:36:08.345 INFO  [main] TomcatWebServer.initialize:114 - Tomcat initialized with port 8080 (http)
+2026-09-14 11:36:08.354 INFO  [main] DirectJDKLog.log:168 - Starting service [Tomcat]
+2026-09-14 11:36:08.354 INFO  [main] DirectJDKLog.log:168 - Starting Servlet engine: [Apache Tomcat/11.0.15]
+2026-09-14 11:36:08.393 INFO  [main] WebApplicationContextInitializer.prepareWebApplicationContext:77 - Root WebApplicationContext: initialization completed in 721 ms
+2026-09-14 11:36:08.493 INFO  [main] LogHelper.logPersistenceUnitInformation:102 - HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-09-14 11:36:08.533 INFO  [main] Version.logVersion:41 - HHH000001: Hibernate ORM core version 7.2.0.Final
+2026-09-14 11:36:08.840 INFO  [main] SpringPersistenceUnitInfo.addTransformer:128 - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-09-14 11:36:08.866 INFO  [main] HikariDataSource.getConnection:109 - HikariPool-1 - Starting...
+2026-09-14 11:36:09.084 INFO  [main] HikariPool.checkFailFast:580 - HikariPool-1 - Added connection org.mariadb.jdbc.Connection@6c1bebca
+2026-09-14 11:36:09.086 INFO  [main] HikariDataSource.getConnection:122 - HikariPool-1 - Start completed.
+2026-09-14 11:36:09.116 WARN  [main] Dialect.checkVersion:384 - HHH000511: The 10.3.32 version for [org.hibernate.dialect.MariaDBDialect] is no longer supported, hence certain features may not work properly.The minimum supported version is 10.6.0. Check the community dialects project for available legacy versions.
+2026-09-14 11:36:09.140 INFO  [main] JdbcEnvironmentInitiator.logConnectionInfo:179 - HHH10001005: Database info:
+	Database JDBC URL [jdbc:mariadb://19341.synology.me/lotto?user=jwlee&password=***]
+	Database driver: MariaDB Connector/J
+	Database dialect: MariaDBDialect
+	Database version: 10.3.32
+	Default catalog/schema: lotto/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-09-14 11:36:09.697 INFO  [main] JtaPlatformInitiator.initiateService:53 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-09-14 11:36:09.703 INFO  [main] AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory:444 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-09-14 11:36:09.748 INFO  [main] QueryEnhancerFactories.<clinit>:48 - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-09-14 11:36:09.905 INFO  [main] WelcomePageHandlerMapping.<init>:60 - Adding welcome page template: index
+2026-09-14 11:36:10.084 INFO  [main] TomcatWebServer.start:240 - Tomcat started on port 8080 (http) with context path '/'
+2026-09-14 11:36:10.088 INFO  [main] StartupInfoLogger.logStarted:60 - Started Application in 2.796 seconds (process running for 3.308)
+2026-09-14 11:44:36.653 INFO  [http-nio-8080-exec-1] DirectJDKLog.log:168 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-09-14 11:44:36.654 INFO  [http-nio-8080-exec-1] FrameworkServlet.initServletBean:523 - Initializing Servlet 'dispatcherServlet'
+2026-09-14 11:44:36.655 INFO  [http-nio-8080-exec-1] FrameworkServlet.initServletBean:545 - Completed initialization in 1 ms
+2026-09-14 13:00:09.424 INFO  [SpringApplicationShutdownHook] GracefulShutdown.shutDownGracefully:54 - Commencing graceful shutdown. Waiting for active requests to complete
+2026-09-14 13:00:12.378 INFO  [main] StartupInfoLogger.logStarting:54 - Starting Application using Java 17.0.19 with PID 33568 (C:\Users\admin\IdeaProjects\jwlee\lotto-crawling\build\classes\java\main started by admin in C:\Users\admin\IdeaProjects\jwlee\lotto-crawling)
+2026-09-14 13:00:12.381 INFO  [main] SpringApplication.logStartupProfileInfo:652 - No active profile set, falling back to 1 default profile: "default"
+2026-09-14 13:00:12.789 INFO  [main] RepositoryConfigurationDelegate.registerRepositoriesIn:145 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-09-14 13:00:12.832 INFO  [main] RepositoryConfigurationDelegate.registerRepositoriesIn:213 - Finished Spring Data repository scanning in 34 ms. Found 1 JPA repository interface.
+2026-09-14 13:00:13.150 INFO  [main] TomcatWebServer.initialize:114 - Tomcat initialized with port 8080 (http)
+2026-09-14 13:00:13.160 INFO  [main] DirectJDKLog.log:168 - Starting service [Tomcat]
+2026-09-14 13:00:13.161 INFO  [main] DirectJDKLog.log:168 - Starting Servlet engine: [Apache Tomcat/11.0.15]
+2026-09-14 13:00:13.212 INFO  [main] WebApplicationContextInitializer.prepareWebApplicationContext:77 - Root WebApplicationContext: initialization completed in 799 ms
+2026-09-14 13:00:13.346 INFO  [main] LogHelper.logPersistenceUnitInformation:102 - HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-09-14 13:00:13.404 INFO  [main] Version.logVersion:41 - HHH000001: Hibernate ORM core version 7.2.0.Final
+2026-09-14 13:00:13.793 INFO  [main] SpringPersistenceUnitInfo.addTransformer:128 - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-09-14 13:00:13.820 INFO  [main] HikariDataSource.getConnection:109 - HikariPool-1 - Starting...
+2026-09-14 13:00:14.061 INFO  [main] HikariPool.checkFailFast:580 - HikariPool-1 - Added connection org.mariadb.jdbc.Connection@2b80497f
+2026-09-14 13:00:14.063 INFO  [main] HikariDataSource.getConnection:122 - HikariPool-1 - Start completed.
+2026-09-14 13:00:14.098 WARN  [main] Dialect.checkVersion:384 - HHH000511: The 10.3.32 version for [org.hibernate.dialect.MariaDBDialect] is no longer supported, hence certain features may not work properly.The minimum supported version is 10.6.0. Check the community dialects project for available legacy versions.
+2026-09-14 13:00:14.126 INFO  [main] JdbcEnvironmentInitiator.logConnectionInfo:179 - HHH10001005: Database info:
+	Database JDBC URL [jdbc:mariadb://19341.synology.me/lotto?user=jwlee&password=***]
+	Database driver: MariaDB Connector/J
+	Database dialect: MariaDBDialect
+	Database version: 10.3.32
+	Default catalog/schema: lotto/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-09-14 13:00:14.786 INFO  [main] JtaPlatformInitiator.initiateService:53 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-09-14 13:00:14.794 INFO  [main] AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory:444 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-09-14 13:00:14.850 INFO  [main] QueryEnhancerFactories.<clinit>:48 - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-09-14 13:00:15.484 INFO  [main] WelcomePageHandlerMapping.<init>:60 - Adding welcome page template: index
+2026-09-14 13:00:15.700 INFO  [main] TomcatWebServer.start:240 - Tomcat started on port 8080 (http) with context path '/'
+2026-09-14 13:00:15.703 INFO  [main] StartupInfoLogger.logStarted:60 - Started Application in 3.878 seconds (process running for 4.484)
+2026-09-14 13:01:54.583 INFO  [http-nio-8080-exec-1] DirectJDKLog.log:168 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-09-14 13:01:54.583 INFO  [http-nio-8080-exec-1] FrameworkServlet.initServletBean:523 - Initializing Servlet 'dispatcherServlet'
+2026-09-14 13:01:54.583 INFO  [http-nio-8080-exec-1] FrameworkServlet.initServletBean:545 - Completed initialization in 0 ms
+2026-09-14 13:43:25.743 INFO  [SpringApplicationShutdownHook] GracefulShutdown.shutDownGracefully:54 - Commencing graceful shutdown. Waiting for active requests to complete
+2026-09-14 13:43:28.521 INFO  [main] StartupInfoLogger.logStarting:54 - Starting Application using Java 17.0.19 with PID 25928 (C:\Users\admin\IdeaProjects\jwlee\lotto-crawling\build\classes\java\main started by admin in C:\Users\admin\IdeaProjects\jwlee\lotto-crawling)
+2026-09-14 13:43:28.523 INFO  [main] SpringApplication.logStartupProfileInfo:652 - No active profile set, falling back to 1 default profile: "default"
+2026-09-14 13:43:28.923 INFO  [main] RepositoryConfigurationDelegate.registerRepositoriesIn:145 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-09-14 13:43:28.960 INFO  [main] RepositoryConfigurationDelegate.registerRepositoriesIn:213 - Finished Spring Data repository scanning in 31 ms. Found 1 JPA repository interface.
+2026-09-14 13:43:29.248 INFO  [main] TomcatWebServer.initialize:114 - Tomcat initialized with port 8080 (http)
+2026-09-14 13:43:29.256 INFO  [main] DirectJDKLog.log:168 - Starting service [Tomcat]
+2026-09-14 13:43:29.257 INFO  [main] DirectJDKLog.log:168 - Starting Servlet engine: [Apache Tomcat/11.0.15]
+2026-09-14 13:43:29.298 INFO  [main] WebApplicationContextInitializer.prepareWebApplicationContext:77 - Root WebApplicationContext: initialization completed in 744 ms
+2026-09-14 13:43:29.386 INFO  [main] LogHelper.logPersistenceUnitInformation:102 - HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-09-14 13:43:29.423 INFO  [main] Version.logVersion:41 - HHH000001: Hibernate ORM core version 7.2.0.Final
+2026-09-14 13:43:29.755 INFO  [main] SpringPersistenceUnitInfo.addTransformer:128 - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-09-14 13:43:29.782 INFO  [main] HikariDataSource.getConnection:109 - HikariPool-1 - Starting...
+2026-09-14 13:43:30.024 INFO  [main] HikariPool.checkFailFast:580 - HikariPool-1 - Added connection org.mariadb.jdbc.Connection@7e76a66f
+2026-09-14 13:43:30.026 INFO  [main] HikariDataSource.getConnection:122 - HikariPool-1 - Start completed.
+2026-09-14 13:43:30.061 WARN  [main] Dialect.checkVersion:384 - HHH000511: The 10.3.32 version for [org.hibernate.dialect.MariaDBDialect] is no longer supported, hence certain features may not work properly.The minimum supported version is 10.6.0. Check the community dialects project for available legacy versions.
+2026-09-14 13:43:30.094 INFO  [main] JdbcEnvironmentInitiator.logConnectionInfo:179 - HHH10001005: Database info:
+	Database JDBC URL [jdbc:mariadb://19341.synology.me/lotto?user=jwlee&password=***]
+	Database driver: MariaDB Connector/J
+	Database dialect: MariaDBDialect
+	Database version: 10.3.32
+	Default catalog/schema: lotto/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-09-14 13:43:30.646 INFO  [main] JtaPlatformInitiator.initiateService:53 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-09-14 13:43:30.651 INFO  [main] AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory:444 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-09-14 13:43:30.698 INFO  [main] QueryEnhancerFactories.<clinit>:48 - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-09-14 13:43:31.129 INFO  [main] WelcomePageHandlerMapping.<init>:60 - Adding welcome page template: index
+2026-09-14 13:43:31.310 INFO  [main] TomcatWebServer.start:240 - Tomcat started on port 8080 (http) with context path '/'
+2026-09-14 13:43:31.313 INFO  [main] StartupInfoLogger.logStarted:60 - Started Application in 3.162 seconds (process running for 3.702)
+2026-09-14 13:44:04.614 INFO  [http-nio-8080-exec-1] DirectJDKLog.log:168 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-09-14 13:44:04.614 INFO  [http-nio-8080-exec-1] FrameworkServlet.initServletBean:523 - Initializing Servlet 'dispatcherServlet'
+2026-09-14 13:44:04.617 INFO  [http-nio-8080-exec-1] FrameworkServlet.initServletBean:545 - Completed initialization in 3 ms
+2026-09-14 13:44:07.411 INFO  [ForkJoinPool.commonPool-worker-5] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.98%
+2026-09-14 13:44:07.411 INFO  [http-nio-8080-exec-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.88%
+2026-09-14 13:44:07.412 INFO  [ForkJoinPool.commonPool-worker-8] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.57%
+2026-09-14 13:44:07.411 INFO  [ForkJoinPool.commonPool-worker-6] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.13%
+2026-09-14 13:44:07.414 INFO  [ForkJoinPool.commonPool-worker-2] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.75%
+2026-09-14 13:44:07.415 INFO  [ForkJoinPool.commonPool-worker-9] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.30%
+2026-09-14 13:44:07.417 INFO  [ForkJoinPool.commonPool-worker-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.30%
+2026-09-14 13:44:07.421 INFO  [ForkJoinPool.commonPool-worker-10] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.34%
+2026-09-14 13:44:07.425 INFO  [ForkJoinPool.commonPool-worker-1] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.18%
+2026-09-14 13:44:07.443 INFO  [ForkJoinPool.commonPool-worker-11] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.51%
+2026-09-14 13:44:07.449 INFO  [ForkJoinPool.commonPool-worker-4] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.93%
+2026-09-14 13:44:07.464 INFO  [ForkJoinPool.commonPool-worker-3] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.41%
+2026-09-14 13:44:07.525 INFO  [ForkJoinPool.commonPool-worker-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.35%
+2026-09-14 13:44:07.527 INFO  [ForkJoinPool.commonPool-worker-10] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.12%
+2026-09-14 13:44:07.531 INFO  [ForkJoinPool.commonPool-worker-2] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.88%
+2026-09-14 13:44:07.535 INFO  [ForkJoinPool.commonPool-worker-6] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.71%
+2026-09-14 13:44:07.548 INFO  [ForkJoinPool.commonPool-worker-5] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.83%
+2026-09-14 13:44:07.556 INFO  [ForkJoinPool.commonPool-worker-9] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.26%
+2026-09-14 13:44:07.558 INFO  [http-nio-8080-exec-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.59%
+2026-09-14 13:44:07.560 INFO  [ForkJoinPool.commonPool-worker-1] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.71%
+2026-09-14 13:44:07.570 INFO  [ForkJoinPool.commonPool-worker-4] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.26%
+2026-09-14 13:44:07.571 INFO  [ForkJoinPool.commonPool-worker-11] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.70%
+2026-09-14 13:44:07.572 INFO  [ForkJoinPool.commonPool-worker-8] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.95%
+2026-09-14 13:44:07.607 INFO  [ForkJoinPool.commonPool-worker-3] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.89%
+2026-09-14 13:44:07.650 INFO  [ForkJoinPool.commonPool-worker-6] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.17%
+2026-09-14 13:44:07.657 INFO  [ForkJoinPool.commonPool-worker-5] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.42%
+2026-09-14 13:44:07.683 INFO  [ForkJoinPool.commonPool-worker-10] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.44%
+2026-09-14 13:44:07.686 INFO  [ForkJoinPool.commonPool-worker-9] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.48%
+2026-09-14 13:44:07.695 INFO  [ForkJoinPool.commonPool-worker-11] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.29%
+2026-09-14 13:44:07.696 INFO  [ForkJoinPool.commonPool-worker-4] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.18%
+2026-09-14 13:44:07.700 INFO  [http-nio-8080-exec-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.34%
+2026-09-14 13:44:07.706 INFO  [ForkJoinPool.commonPool-worker-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.55%
+2026-09-14 13:44:07.715 INFO  [ForkJoinPool.commonPool-worker-2] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.06%
+2026-09-14 13:44:07.749 INFO  [ForkJoinPool.commonPool-worker-3] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.72%
+2026-09-14 13:44:07.751 INFO  [ForkJoinPool.commonPool-worker-6] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.98%
+2026-09-14 13:44:07.764 INFO  [ForkJoinPool.commonPool-worker-8] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.82%
+2026-09-14 13:44:07.769 INFO  [ForkJoinPool.commonPool-worker-1] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.23%
+2026-09-14 13:44:07.773 INFO  [ForkJoinPool.commonPool-worker-5] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.18%
+2026-09-14 13:44:07.812 INFO  [ForkJoinPool.commonPool-worker-11] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.23%
+2026-09-14 13:44:07.819 INFO  [ForkJoinPool.commonPool-worker-10] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.33%
+2026-09-14 13:44:07.824 INFO  [ForkJoinPool.commonPool-worker-9] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.10%
+2026-09-14 13:44:07.837 INFO  [ForkJoinPool.commonPool-worker-4] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.51%
+2026-09-14 13:44:07.841 INFO  [ForkJoinPool.commonPool-worker-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.99%
+2026-09-14 13:44:07.847 INFO  [ForkJoinPool.commonPool-worker-2] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.27%
+2026-09-14 13:44:07.847 INFO  [http-nio-8080-exec-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.65%
+2026-09-14 13:44:07.864 INFO  [ForkJoinPool.commonPool-worker-6] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.22%
+2026-09-14 13:44:07.874 INFO  [ForkJoinPool.commonPool-worker-8] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.12%
+2026-09-14 13:44:07.899 INFO  [ForkJoinPool.commonPool-worker-5] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.39%
+2026-09-14 13:44:07.901 INFO  [ForkJoinPool.commonPool-worker-3] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.89%
+2026-09-14 13:44:07.931 INFO  [ForkJoinPool.commonPool-worker-11] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.50%
+2026-09-14 13:44:07.931 INFO  [ForkJoinPool.commonPool-worker-1] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.73%
+2026-09-14 13:44:07.952 INFO  [ForkJoinPool.commonPool-worker-10] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.82%
+2026-09-14 13:44:07.956 INFO  [ForkJoinPool.commonPool-worker-4] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.03%
+2026-09-14 13:44:07.961 INFO  [ForkJoinPool.commonPool-worker-9] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.03%
+2026-09-14 13:44:07.971 INFO  [http-nio-8080-exec-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.78%
+2026-09-14 13:44:07.973 INFO  [ForkJoinPool.commonPool-worker-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.35%
+2026-09-14 13:44:08.030 INFO  [ForkJoinPool.commonPool-worker-2] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.64%
+2026-09-14 13:44:08.035 INFO  [ForkJoinPool.commonPool-worker-5] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.41%
+2026-09-14 13:44:08.061 INFO  [ForkJoinPool.commonPool-worker-8] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.96%
+2026-09-14 13:44:08.075 INFO  [ForkJoinPool.commonPool-worker-6] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.21%
+2026-09-14 13:44:08.159 INFO  [ForkJoinPool.commonPool-worker-11] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.40%
+2026-09-14 13:44:08.163 INFO  [ForkJoinPool.commonPool-worker-4] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.66%
+2026-09-14 13:44:08.163 INFO  [ForkJoinPool.commonPool-worker-3] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.79%
+2026-09-14 13:44:08.164 INFO  [ForkJoinPool.commonPool-worker-10] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.23%
+2026-09-14 13:44:08.164 INFO  [ForkJoinPool.commonPool-worker-6] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.41%
+2026-09-14 13:44:08.165 INFO  [ForkJoinPool.commonPool-worker-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.20%
+2026-09-14 13:44:08.165 INFO  [ForkJoinPool.commonPool-worker-2] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.00%
+2026-09-14 13:44:08.165 INFO  [ForkJoinPool.commonPool-worker-1] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.92%
+2026-09-14 13:44:08.165 INFO  [ForkJoinPool.commonPool-worker-9] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.61%
+2026-09-14 13:44:08.166 INFO  [ForkJoinPool.commonPool-worker-5] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.02%
+2026-09-14 13:44:08.167 INFO  [ForkJoinPool.commonPool-worker-8] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.15%
+2026-09-14 13:44:08.168 INFO  [ForkJoinPool.commonPool-worker-11] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.82%
+2026-09-14 13:44:08.172 INFO  [ForkJoinPool.commonPool-worker-3] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.66%
+2026-09-14 13:44:08.172 INFO  [ForkJoinPool.commonPool-worker-6] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.04%
+2026-09-14 13:44:08.172 INFO  [ForkJoinPool.commonPool-worker-4] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.06%
+2026-09-14 13:44:08.173 INFO  [ForkJoinPool.commonPool-worker-10] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.66%
+2026-09-14 13:44:08.174 INFO  [ForkJoinPool.commonPool-worker-2] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.40%
+2026-09-14 13:44:08.175 INFO  [ForkJoinPool.commonPool-worker-9] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.99%
+2026-09-14 13:44:08.175 INFO  [ForkJoinPool.commonPool-worker-5] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.87%
+2026-09-14 13:44:08.176 INFO  [ForkJoinPool.commonPool-worker-1] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.00%
+2026-09-14 13:44:08.176 INFO  [ForkJoinPool.commonPool-worker-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.57%
+2026-09-14 13:44:08.177 INFO  [ForkJoinPool.commonPool-worker-11] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.74%
+2026-09-14 13:44:08.178 INFO  [ForkJoinPool.commonPool-worker-8] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.71%
+2026-09-14 13:44:08.179 INFO  [ForkJoinPool.commonPool-worker-10] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.18%
+2026-09-14 13:44:08.184 INFO  [ForkJoinPool.commonPool-worker-1] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.11%
+2026-09-14 13:44:08.180 INFO  [ForkJoinPool.commonPool-worker-6] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.17%
+2026-09-14 13:44:08.184 INFO  [ForkJoinPool.commonPool-worker-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.37%
+2026-09-14 13:44:08.182 INFO  [ForkJoinPool.commonPool-worker-3] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.80%
+2026-09-14 13:44:08.182 INFO  [ForkJoinPool.commonPool-worker-9] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.63%
+2026-09-14 13:44:08.182 INFO  [ForkJoinPool.commonPool-worker-4] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.33%
+2026-09-14 13:44:08.183 INFO  [ForkJoinPool.commonPool-worker-2] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.98%
+2026-09-14 13:44:08.191 INFO  [ForkJoinPool.commonPool-worker-10] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.12%
+2026-09-14 13:44:08.191 INFO  [ForkJoinPool.commonPool-worker-11] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.79%
+2026-09-14 13:44:08.192 INFO  [ForkJoinPool.commonPool-worker-6] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.87%
+2026-09-14 13:44:08.192 INFO  [ForkJoinPool.commonPool-worker-8] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.65%
+2026-09-14 13:44:08.193 INFO  [ForkJoinPool.commonPool-worker-1] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.36%
+2026-09-14 13:44:08.194 INFO  [ForkJoinPool.commonPool-worker-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.16%
+2026-09-14 13:44:08.196 INFO  [ForkJoinPool.commonPool-worker-3] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.40%
+2026-09-14 13:44:08.198 INFO  [ForkJoinPool.commonPool-worker-4] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.23%
+2026-09-14 13:44:08.198 INFO  [ForkJoinPool.commonPool-worker-2] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.94%
+2026-09-14 13:44:08.199 INFO  [ForkJoinPool.commonPool-worker-9] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.33%
+2026-09-14 13:44:08.200 INFO  [ForkJoinPool.commonPool-worker-10] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.78%
+2026-09-14 13:44:08.200 INFO  [http-nio-8080-exec-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.15%
+2026-09-14 13:44:08.201 INFO  [ForkJoinPool.commonPool-worker-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.24%
+2026-09-14 13:44:08.202 INFO  [ForkJoinPool.commonPool-worker-1] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.89%
+2026-09-14 13:44:08.205 INFO  [ForkJoinPool.commonPool-worker-5] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.53%
+2026-09-14 13:44:08.206 INFO  [ForkJoinPool.commonPool-worker-2] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.47%
+2026-09-14 13:44:08.207 INFO  [ForkJoinPool.commonPool-worker-4] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.80%
+2026-09-14 13:44:08.207 INFO  [http-nio-8080-exec-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.81%
+2026-09-14 13:44:08.208 INFO  [ForkJoinPool.commonPool-worker-8] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.08%
+2026-09-14 13:44:08.209 INFO  [ForkJoinPool.commonPool-worker-10] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.31%
+2026-09-14 13:44:08.209 INFO  [ForkJoinPool.commonPool-worker-9] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.11%
+2026-09-14 13:44:08.210 INFO  [ForkJoinPool.commonPool-worker-11] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.04%
+2026-09-14 13:44:08.210 INFO  [ForkJoinPool.commonPool-worker-1] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.68%
+2026-09-14 13:44:08.210 INFO  [ForkJoinPool.commonPool-worker-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.80%
+2026-09-14 13:44:08.211 INFO  [ForkJoinPool.commonPool-worker-3] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.27%
+2026-09-14 13:44:08.211 INFO  [ForkJoinPool.commonPool-worker-6] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.62%
+2026-09-14 13:44:08.213 INFO  [ForkJoinPool.commonPool-worker-5] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.33%
+2026-09-14 13:44:08.213 INFO  [ForkJoinPool.commonPool-worker-4] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.35%
+2026-09-14 13:44:08.213 INFO  [ForkJoinPool.commonPool-worker-2] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.12%
+2026-09-14 13:44:08.667 INFO  [ForkJoinPool.commonPool-worker-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.20%
+2026-09-14 13:44:08.670 INFO  [ForkJoinPool.commonPool-worker-2] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.98%
+2026-09-14 13:44:08.672 INFO  [ForkJoinPool.commonPool-worker-4] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.71%
+2026-09-14 13:44:08.679 INFO  [ForkJoinPool.commonPool-worker-10] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.24%
+2026-09-14 13:44:08.682 INFO  [ForkJoinPool.commonPool-worker-11] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.82%
+2026-09-14 13:44:08.685 INFO  [ForkJoinPool.commonPool-worker-5] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.44%
+2026-09-14 13:44:08.685 INFO  [ForkJoinPool.commonPool-worker-8] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.55%
+2026-09-14 13:44:08.686 INFO  [http-nio-8080-exec-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.43%
+2026-09-14 13:44:08.691 INFO  [ForkJoinPool.commonPool-worker-9] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.96%
+2026-09-14 13:44:08.703 INFO  [ForkJoinPool.commonPool-worker-3] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.20%
+2026-09-14 13:44:08.717 INFO  [ForkJoinPool.commonPool-worker-1] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.16%
+2026-09-14 13:44:08.727 INFO  [ForkJoinPool.commonPool-worker-6] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.58%
+2026-09-14 13:44:08.763 INFO  [ForkJoinPool.commonPool-worker-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.40%
+2026-09-14 13:44:08.774 INFO  [ForkJoinPool.commonPool-worker-5] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.10%
+2026-09-14 13:44:08.774 INFO  [ForkJoinPool.commonPool-worker-11] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.19%
+2026-09-14 13:44:08.782 INFO  [ForkJoinPool.commonPool-worker-2] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.75%
+2026-09-14 13:44:08.782 INFO  [ForkJoinPool.commonPool-worker-4] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.86%
+2026-09-14 13:44:08.785 INFO  [http-nio-8080-exec-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.87%
+2026-09-14 13:44:08.799 INFO  [ForkJoinPool.commonPool-worker-10] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.07%
+2026-09-14 13:44:08.803 INFO  [ForkJoinPool.commonPool-worker-9] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.13%
+2026-09-14 13:44:08.817 INFO  [ForkJoinPool.commonPool-worker-8] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.48%
+2026-09-14 13:44:08.823 INFO  [ForkJoinPool.commonPool-worker-3] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.78%
+2026-09-14 13:44:08.823 INFO  [ForkJoinPool.commonPool-worker-1] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.51%
+2026-09-14 13:44:08.833 INFO  [ForkJoinPool.commonPool-worker-6] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.64%
+2026-09-14 13:44:08.852 INFO  [ForkJoinPool.commonPool-worker-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.54%
+2026-09-14 13:44:08.868 INFO  [ForkJoinPool.commonPool-worker-11] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.42%
+2026-09-14 13:44:08.875 INFO  [ForkJoinPool.commonPool-worker-4] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.20%
+2026-09-14 13:44:08.886 INFO  [ForkJoinPool.commonPool-worker-2] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.98%
+2026-09-14 13:44:08.887 INFO  [http-nio-8080-exec-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.86%
+2026-09-14 13:44:08.892 INFO  [ForkJoinPool.commonPool-worker-5] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.71%
+2026-09-14 13:44:08.912 INFO  [ForkJoinPool.commonPool-worker-3] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.26%
+2026-09-14 13:44:08.915 INFO  [ForkJoinPool.commonPool-worker-10] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.34%
+2026-09-14 13:44:08.920 INFO  [ForkJoinPool.commonPool-worker-8] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.07%
+2026-09-14 13:44:08.926 INFO  [ForkJoinPool.commonPool-worker-1] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.78%
+2026-09-14 13:44:08.927 INFO  [ForkJoinPool.commonPool-worker-9] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.55%
+2026-09-14 13:44:08.937 INFO  [ForkJoinPool.commonPool-worker-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.16%
+2026-09-14 13:44:08.969 INFO  [ForkJoinPool.commonPool-worker-4] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.36%
+2026-09-14 13:44:08.975 INFO  [ForkJoinPool.commonPool-worker-6] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.10%
+2026-09-14 13:44:08.982 INFO  [ForkJoinPool.commonPool-worker-2] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.66%
+2026-09-14 13:44:08.983 INFO  [ForkJoinPool.commonPool-worker-5] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.97%
+2026-09-14 13:44:08.986 INFO  [ForkJoinPool.commonPool-worker-11] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.92%
+2026-09-14 13:44:08.998 INFO  [http-nio-8080-exec-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.68%
+2026-09-14 13:44:09.007 INFO  [ForkJoinPool.commonPool-worker-3] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.19%
+2026-09-14 13:44:09.016 INFO  [ForkJoinPool.commonPool-worker-8] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.59%
+2026-09-14 13:44:09.030 INFO  [ForkJoinPool.commonPool-worker-10] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.19%
+2026-09-14 13:44:09.033 INFO  [ForkJoinPool.commonPool-worker-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.26%
+2026-09-14 13:44:09.055 INFO  [ForkJoinPool.commonPool-worker-9] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.28%
+2026-09-14 13:44:09.060 INFO  [ForkJoinPool.commonPool-worker-1] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.38%
+2026-09-14 13:44:09.081 INFO  [ForkJoinPool.commonPool-worker-5] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.26%
+2026-09-14 13:44:09.085 INFO  [ForkJoinPool.commonPool-worker-2] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.87%
+2026-09-14 13:44:09.085 INFO  [ForkJoinPool.commonPool-worker-4] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.33%
+2026-09-14 13:44:09.088 INFO  [ForkJoinPool.commonPool-worker-6] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.03%
+2026-09-14 13:44:09.095 INFO  [ForkJoinPool.commonPool-worker-3] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.32%
+2026-09-14 13:44:09.098 INFO  [http-nio-8080-exec-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.09%
+2026-09-14 13:44:09.103 INFO  [ForkJoinPool.commonPool-worker-11] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.39%
+2026-09-14 13:44:09.116 INFO  [ForkJoinPool.commonPool-worker-10] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.83%
+2026-09-14 13:44:09.118 INFO  [ForkJoinPool.commonPool-worker-8] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.57%
+2026-09-14 13:44:09.134 INFO  [ForkJoinPool.commonPool-worker-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.70%
+2026-09-14 13:44:09.144 INFO  [ForkJoinPool.commonPool-worker-9] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.20%
+2026-09-14 13:44:09.144 INFO  [ForkJoinPool.commonPool-worker-1] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.52%
+2026-09-14 13:44:09.212 INFO  [ForkJoinPool.commonPool-worker-5] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.38%
+2026-09-14 13:44:09.212 INFO  [ForkJoinPool.commonPool-worker-2] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.17%
+2026-09-14 13:44:09.212 INFO  [ForkJoinPool.commonPool-worker-9] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.88%
+2026-09-14 13:44:09.212 INFO  [ForkJoinPool.commonPool-worker-10] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.61%
+2026-09-14 13:44:09.213 INFO  [ForkJoinPool.commonPool-worker-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.33%
+2026-09-14 13:44:09.213 INFO  [ForkJoinPool.commonPool-worker-6] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.44%
+2026-09-14 13:44:09.213 INFO  [ForkJoinPool.commonPool-worker-3] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.14%
+2026-09-14 13:44:09.213 INFO  [ForkJoinPool.commonPool-worker-8] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.47%
+2026-09-14 13:44:09.213 INFO  [ForkJoinPool.commonPool-worker-1] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.60%
+2026-09-14 13:44:09.214 INFO  [ForkJoinPool.commonPool-worker-11] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.17%
+2026-09-14 13:44:09.214 INFO  [ForkJoinPool.commonPool-worker-4] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.28%
+2026-09-14 13:44:09.215 INFO  [http-nio-8080-exec-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.34%
+2026-09-14 13:44:09.218 INFO  [ForkJoinPool.commonPool-worker-11] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.80%
+2026-09-14 13:44:09.218 INFO  [ForkJoinPool.commonPool-worker-8] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.16%
+2026-09-14 13:44:09.219 INFO  [ForkJoinPool.commonPool-worker-2] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.14%
+2026-09-14 13:44:09.219 INFO  [ForkJoinPool.commonPool-worker-5] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.41%
+2026-09-14 13:44:09.220 INFO  [ForkJoinPool.commonPool-worker-9] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.70%
+2026-09-14 13:44:09.221 INFO  [ForkJoinPool.commonPool-worker-1] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.23%
+2026-09-14 13:44:09.221 INFO  [ForkJoinPool.commonPool-worker-6] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.93%
+2026-09-14 13:44:09.221 INFO  [ForkJoinPool.commonPool-worker-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.93%
+2026-09-14 13:44:09.221 INFO  [ForkJoinPool.commonPool-worker-4] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.70%
+2026-09-14 13:44:09.222 INFO  [ForkJoinPool.commonPool-worker-3] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.69%
+2026-09-14 13:44:09.222 INFO  [ForkJoinPool.commonPool-worker-10] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.79%
+2026-09-14 13:44:09.223 INFO  [http-nio-8080-exec-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.42%
+2026-09-14 13:44:09.226 INFO  [ForkJoinPool.commonPool-worker-4] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.46%
+2026-09-14 13:44:09.226 INFO  [ForkJoinPool.commonPool-worker-11] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.47%
+2026-09-14 13:44:09.227 INFO  [ForkJoinPool.commonPool-worker-8] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.59%
+2026-09-14 13:44:09.228 INFO  [ForkJoinPool.commonPool-worker-1] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.96%
+2026-09-14 13:44:09.228 INFO  [ForkJoinPool.commonPool-worker-5] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.03%
+2026-09-14 13:44:09.229 INFO  [ForkJoinPool.commonPool-worker-9] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.50%
+2026-09-14 13:44:09.229 INFO  [ForkJoinPool.commonPool-worker-6] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.12%
+2026-09-14 13:44:09.229 INFO  [ForkJoinPool.commonPool-worker-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.62%
+2026-09-14 13:44:09.229 INFO  [ForkJoinPool.commonPool-worker-2] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.33%
+2026-09-14 13:44:09.231 INFO  [ForkJoinPool.commonPool-worker-3] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.10%
+2026-09-14 13:44:09.231 INFO  [http-nio-8080-exec-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.74%
+2026-09-14 13:44:09.231 INFO  [ForkJoinPool.commonPool-worker-10] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.33%
+2026-09-14 13:44:09.233 INFO  [ForkJoinPool.commonPool-worker-11] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.85%
+2026-09-14 13:44:09.233 INFO  [ForkJoinPool.commonPool-worker-8] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.80%
+2026-09-14 13:44:09.234 INFO  [ForkJoinPool.commonPool-worker-6] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.55%
+2026-09-14 13:44:09.234 INFO  [ForkJoinPool.commonPool-worker-4] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.89%
+2026-09-14 13:44:09.235 INFO  [ForkJoinPool.commonPool-worker-1] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.66%
+2026-09-14 13:44:09.236 INFO  [ForkJoinPool.commonPool-worker-5] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.61%
+2026-09-14 13:44:09.236 INFO  [ForkJoinPool.commonPool-worker-9] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.30%
+2026-09-14 13:44:09.237 INFO  [ForkJoinPool.commonPool-worker-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.36%
+2026-09-14 13:44:09.238 INFO  [ForkJoinPool.commonPool-worker-3] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.74%
+2026-09-14 13:44:09.239 INFO  [ForkJoinPool.commonPool-worker-2] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 87.03%
+2026-09-14 13:44:09.240 INFO  [ForkJoinPool.commonPool-worker-11] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.65%
+2026-09-14 13:44:09.241 INFO  [http-nio-8080-exec-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.02%
+2026-09-14 13:44:09.241 INFO  [ForkJoinPool.commonPool-worker-10] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.86%
+2026-09-14 13:44:09.241 INFO  [ForkJoinPool.commonPool-worker-6] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.16%
+2026-09-14 13:44:09.242 INFO  [ForkJoinPool.commonPool-worker-1] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.03%
+2026-09-14 13:44:09.242 INFO  [ForkJoinPool.commonPool-worker-8] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.42%
+2026-09-14 13:44:09.244 INFO  [ForkJoinPool.commonPool-worker-2] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.81%
+2026-09-14 13:44:09.244 INFO  [ForkJoinPool.commonPool-worker-4] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.96%
+2026-09-14 13:44:09.244 INFO  [ForkJoinPool.commonPool-worker-9] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.62%
+2026-09-14 13:44:09.245 INFO  [ForkJoinPool.commonPool-worker-5] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.62%
+2026-09-14 13:44:09.246 INFO  [ForkJoinPool.commonPool-worker-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.30%
+2026-09-14 13:44:09.247 INFO  [ForkJoinPool.commonPool-worker-3] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.87%
+2026-09-14 13:44:09.247 INFO  [ForkJoinPool.commonPool-worker-11] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.67%
+2026-09-14 13:44:09.248 INFO  [http-nio-8080-exec-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.35%
+2026-09-14 13:44:09.637 INFO  [ForkJoinPool.commonPool-worker-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.14%
+2026-09-14 13:44:09.640 INFO  [ForkJoinPool.commonPool-worker-4] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.28%
+2026-09-14 13:44:09.644 INFO  [ForkJoinPool.commonPool-worker-5] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.67%
+2026-09-14 13:44:09.645 INFO  [ForkJoinPool.commonPool-worker-9] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.70%
+2026-09-14 13:44:09.647 INFO  [http-nio-8080-exec-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.10%
+2026-09-14 13:44:09.648 INFO  [ForkJoinPool.commonPool-worker-3] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.71%
+2026-09-14 13:44:09.658 INFO  [ForkJoinPool.commonPool-worker-1] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.76%
+2026-09-14 13:44:09.666 INFO  [ForkJoinPool.commonPool-worker-8] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.44%
+2026-09-14 13:44:09.666 INFO  [ForkJoinPool.commonPool-worker-2] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.52%
+2026-09-14 13:44:09.668 INFO  [ForkJoinPool.commonPool-worker-11] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.80%
+2026-09-14 13:44:09.670 INFO  [ForkJoinPool.commonPool-worker-10] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.42%
+2026-09-14 13:44:09.681 INFO  [ForkJoinPool.commonPool-worker-6] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.33%
+2026-09-14 13:44:09.750 INFO  [ForkJoinPool.commonPool-worker-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.43%
+2026-09-14 13:44:09.760 INFO  [ForkJoinPool.commonPool-worker-5] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.28%
+2026-09-14 13:44:09.760 INFO  [ForkJoinPool.commonPool-worker-9] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.16%
+2026-09-14 13:44:09.761 INFO  [ForkJoinPool.commonPool-worker-4] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.85%
+2026-09-14 13:44:09.767 INFO  [ForkJoinPool.commonPool-worker-1] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.55%
+2026-09-14 13:44:09.767 INFO  [ForkJoinPool.commonPool-worker-2] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.60%
+2026-09-14 13:44:09.770 INFO  [ForkJoinPool.commonPool-worker-3] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.25%
+2026-09-14 13:44:09.776 INFO  [http-nio-8080-exec-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.69%
+2026-09-14 13:44:09.777 INFO  [ForkJoinPool.commonPool-worker-10] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.89%
+2026-09-14 13:44:09.794 INFO  [ForkJoinPool.commonPool-worker-11] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.33%
+2026-09-14 13:44:09.794 INFO  [ForkJoinPool.commonPool-worker-6] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.87%
+2026-09-14 13:44:09.801 INFO  [ForkJoinPool.commonPool-worker-8] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.26%
+2026-09-14 13:44:09.854 INFO  [ForkJoinPool.commonPool-worker-1] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.10%
+2026-09-14 13:44:09.854 INFO  [ForkJoinPool.commonPool-worker-5] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.40%
+2026-09-14 13:44:09.857 INFO  [ForkJoinPool.commonPool-worker-4] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.23%
+2026-09-14 13:44:09.858 INFO  [ForkJoinPool.commonPool-worker-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.60%
+2026-09-14 13:44:09.872 INFO  [ForkJoinPool.commonPool-worker-3] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.11%
+2026-09-14 13:44:09.872 INFO  [ForkJoinPool.commonPool-worker-10] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.31%
+2026-09-14 13:44:09.875 INFO  [http-nio-8080-exec-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.74%
+2026-09-14 13:44:09.876 INFO  [ForkJoinPool.commonPool-worker-9] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.59%
+2026-09-14 13:44:09.894 INFO  [ForkJoinPool.commonPool-worker-11] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.54%
+2026-09-14 13:44:09.899 INFO  [ForkJoinPool.commonPool-worker-2] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.61%
+2026-09-14 13:44:09.900 INFO  [ForkJoinPool.commonPool-worker-8] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.47%
+2026-09-14 13:44:09.953 INFO  [ForkJoinPool.commonPool-worker-6] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.81%
+2026-09-14 13:44:09.975 INFO  [ForkJoinPool.commonPool-worker-4] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.40%
+2026-09-14 13:44:09.979 INFO  [ForkJoinPool.commonPool-worker-5] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.66%
+2026-09-14 13:44:09.984 INFO  [ForkJoinPool.commonPool-worker-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.80%
+2026-09-14 13:44:09.985 INFO  [ForkJoinPool.commonPool-worker-11] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.48%
+2026-09-14 13:44:09.986 INFO  [ForkJoinPool.commonPool-worker-3] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.05%
+2026-09-14 13:44:09.992 INFO  [ForkJoinPool.commonPool-worker-1] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.69%
+2026-09-14 13:44:09.992 INFO  [ForkJoinPool.commonPool-worker-10] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.41%
+2026-09-14 13:44:09.992 INFO  [http-nio-8080-exec-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.84%
+2026-09-14 13:44:10.006 INFO  [ForkJoinPool.commonPool-worker-9] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.73%
+2026-09-14 13:44:10.018 INFO  [ForkJoinPool.commonPool-worker-2] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.30%
+2026-09-14 13:44:10.027 INFO  [ForkJoinPool.commonPool-worker-8] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.00%
+2026-09-14 13:44:10.069 INFO  [ForkJoinPool.commonPool-worker-6] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.45%
+2026-09-14 13:44:10.069 INFO  [ForkJoinPool.commonPool-worker-4] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.24%
+2026-09-14 13:44:10.081 INFO  [ForkJoinPool.commonPool-worker-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.52%
+2026-09-14 13:44:10.088 INFO  [ForkJoinPool.commonPool-worker-10] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.52%
+2026-09-14 13:44:10.088 INFO  [ForkJoinPool.commonPool-worker-11] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.22%
+2026-09-14 13:44:10.090 INFO  [ForkJoinPool.commonPool-worker-1] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.26%
+2026-09-14 13:44:10.090 INFO  [http-nio-8080-exec-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.05%
+2026-09-14 13:44:10.093 INFO  [ForkJoinPool.commonPool-worker-5] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.40%
+2026-09-14 13:44:10.105 INFO  [ForkJoinPool.commonPool-worker-3] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.80%
+2026-09-14 13:44:10.112 INFO  [ForkJoinPool.commonPool-worker-8] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.64%
+2026-09-14 13:44:10.115 INFO  [ForkJoinPool.commonPool-worker-2] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.30%
+2026-09-14 13:44:10.116 INFO  [ForkJoinPool.commonPool-worker-9] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.42%
+2026-09-14 13:44:10.164 INFO  [ForkJoinPool.commonPool-worker-6] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.74%
+2026-09-14 13:44:10.220 INFO  [ForkJoinPool.commonPool-worker-6] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.62%
+2026-09-14 13:44:10.220 INFO  [ForkJoinPool.commonPool-worker-1] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.82%
+2026-09-14 13:44:10.220 INFO  [ForkJoinPool.commonPool-worker-2] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.67%
+2026-09-14 13:44:10.220 INFO  [http-nio-8080-exec-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.69%
+2026-09-14 13:44:10.221 INFO  [ForkJoinPool.commonPool-worker-8] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.96%
+2026-09-14 13:44:10.221 INFO  [ForkJoinPool.commonPool-worker-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.91%
+2026-09-14 13:44:10.222 INFO  [ForkJoinPool.commonPool-worker-3] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.73%
+2026-09-14 13:44:10.224 INFO  [ForkJoinPool.commonPool-worker-9] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.23%
+2026-09-14 13:44:10.224 INFO  [ForkJoinPool.commonPool-worker-5] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.50%
+2026-09-14 13:44:10.227 INFO  [ForkJoinPool.commonPool-worker-2] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.04%
+2026-09-14 13:44:10.227 INFO  [ForkJoinPool.commonPool-worker-6] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.99%
+2026-09-14 13:44:10.227 INFO  [ForkJoinPool.commonPool-worker-11] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.62%
+2026-09-14 13:44:10.227 INFO  [ForkJoinPool.commonPool-worker-1] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.76%
+2026-09-14 13:44:10.228 INFO  [ForkJoinPool.commonPool-worker-8] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.08%
+2026-09-14 13:44:10.228 INFO  [http-nio-8080-exec-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.68%
+2026-09-14 13:44:10.229 INFO  [ForkJoinPool.commonPool-worker-3] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.16%
+2026-09-14 13:44:10.229 INFO  [ForkJoinPool.commonPool-worker-4] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.96%
+2026-09-14 13:44:10.229 INFO  [ForkJoinPool.commonPool-worker-10] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.57%
+2026-09-14 13:44:10.230 INFO  [ForkJoinPool.commonPool-worker-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.41%
+2026-09-14 13:44:10.230 INFO  [ForkJoinPool.commonPool-worker-6] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.57%
+2026-09-14 13:44:10.231 INFO  [ForkJoinPool.commonPool-worker-9] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.99%
+2026-09-14 13:44:10.232 INFO  [ForkJoinPool.commonPool-worker-5] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.34%
+2026-09-14 13:44:10.232 INFO  [ForkJoinPool.commonPool-worker-4] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.79%
+2026-09-14 13:44:10.233 INFO  [ForkJoinPool.commonPool-worker-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.87%
+2026-09-14 13:44:10.235 INFO  [ForkJoinPool.commonPool-worker-2] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.92%
+2026-09-14 13:44:10.235 INFO  [ForkJoinPool.commonPool-worker-11] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.08%
+2026-09-14 13:44:10.235 INFO  [ForkJoinPool.commonPool-worker-3] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.99%
+2026-09-14 13:44:10.235 INFO  [ForkJoinPool.commonPool-worker-8] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.06%
+2026-09-14 13:44:10.236 INFO  [ForkJoinPool.commonPool-worker-1] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.51%
+2026-09-14 13:44:10.237 INFO  [ForkJoinPool.commonPool-worker-10] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.08%
+2026-09-14 13:44:10.238 INFO  [ForkJoinPool.commonPool-worker-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.71%
+2026-09-14 13:44:10.238 INFO  [http-nio-8080-exec-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.65%
+2026-09-14 13:44:10.238 INFO  [ForkJoinPool.commonPool-worker-6] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.00%
+2026-09-14 13:44:10.238 INFO  [ForkJoinPool.commonPool-worker-9] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.05%
+2026-09-14 13:44:10.242 INFO  [ForkJoinPool.commonPool-worker-5] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.26%
+2026-09-14 13:44:10.242 INFO  [ForkJoinPool.commonPool-worker-8] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.00%
+2026-09-14 13:44:10.243 INFO  [ForkJoinPool.commonPool-worker-4] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.10%
+2026-09-14 13:44:10.243 INFO  [ForkJoinPool.commonPool-worker-2] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.52%
+2026-09-14 13:44:10.243 INFO  [ForkJoinPool.commonPool-worker-11] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.88%
+2026-09-14 13:44:10.245 INFO  [ForkJoinPool.commonPool-worker-1] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.42%
+2026-09-14 13:44:10.245 INFO  [http-nio-8080-exec-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.92%
+2026-09-14 13:44:10.245 INFO  [ForkJoinPool.commonPool-worker-3] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.37%
+2026-09-14 13:44:10.246 INFO  [ForkJoinPool.commonPool-worker-10] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.09%
+2026-09-14 13:44:10.246 INFO  [ForkJoinPool.commonPool-worker-9] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.74%
+2026-09-14 13:44:10.247 INFO  [ForkJoinPool.commonPool-worker-6] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.07%
+2026-09-14 13:44:10.249 INFO  [ForkJoinPool.commonPool-worker-4] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.65%
+2026-09-14 13:44:10.249 INFO  [ForkJoinPool.commonPool-worker-10] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.39%
+2026-09-14 13:44:10.249 INFO  [ForkJoinPool.commonPool-worker-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.54%
+2026-09-14 13:44:10.249 INFO  [ForkJoinPool.commonPool-worker-8] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.21%
+2026-09-14 13:44:10.250 INFO  [ForkJoinPool.commonPool-worker-11] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.30%
+2026-09-14 13:44:10.251 INFO  [ForkJoinPool.commonPool-worker-2] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.27%
+2026-09-14 13:44:10.251 INFO  [ForkJoinPool.commonPool-worker-5] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.61%
+2026-09-14 13:44:10.253 INFO  [http-nio-8080-exec-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.51%
+2026-09-14 13:44:10.254 INFO  [ForkJoinPool.commonPool-worker-6] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.87%
+2026-09-14 13:44:10.254 INFO  [ForkJoinPool.commonPool-worker-1] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.92%
+2026-09-14 13:44:10.254 INFO  [ForkJoinPool.commonPool-worker-9] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.70%
+2026-09-14 13:44:10.256 INFO  [ForkJoinPool.commonPool-worker-3] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.31%
+2026-09-14 13:44:10.257 INFO  [ForkJoinPool.commonPool-worker-10] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.13%
+2026-09-14 13:44:10.257 INFO  [ForkJoinPool.commonPool-worker-4] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.33%
+2026-09-14 13:44:10.257 INFO  [ForkJoinPool.commonPool-worker-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.91%
+2026-09-14 13:44:10.635 INFO  [ForkJoinPool.commonPool-worker-9] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.73%
+2026-09-14 13:44:10.638 INFO  [http-nio-8080-exec-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.23%
+2026-09-14 13:44:10.641 INFO  [ForkJoinPool.commonPool-worker-8] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.48%
+2026-09-14 13:44:10.642 INFO  [ForkJoinPool.commonPool-worker-6] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.24%
+2026-09-14 13:44:10.646 INFO  [ForkJoinPool.commonPool-worker-1] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.80%
+2026-09-14 13:44:10.652 INFO  [ForkJoinPool.commonPool-worker-11] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.53%
+2026-09-14 13:44:10.654 INFO  [ForkJoinPool.commonPool-worker-4] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.39%
+2026-09-14 13:44:10.658 INFO  [ForkJoinPool.commonPool-worker-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.16%
+2026-09-14 13:44:10.659 INFO  [ForkJoinPool.commonPool-worker-2] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.44%
+2026-09-14 13:44:10.666 INFO  [ForkJoinPool.commonPool-worker-3] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.41%
+2026-09-14 13:44:10.670 INFO  [ForkJoinPool.commonPool-worker-10] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.33%
+2026-09-14 13:44:10.671 INFO  [ForkJoinPool.commonPool-worker-5] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.92%
+2026-09-14 13:44:10.730 INFO  [http-nio-8080-exec-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.84%
+2026-09-14 13:44:10.737 INFO  [ForkJoinPool.commonPool-worker-1] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.97%
+2026-09-14 13:44:10.737 INFO  [ForkJoinPool.commonPool-worker-6] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.62%
+2026-09-14 13:44:10.739 INFO  [ForkJoinPool.commonPool-worker-8] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.56%
+2026-09-14 13:44:10.743 INFO  [ForkJoinPool.commonPool-worker-9] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.79%
+2026-09-14 13:44:10.745 INFO  [ForkJoinPool.commonPool-worker-2] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.37%
+2026-09-14 13:44:10.756 INFO  [ForkJoinPool.commonPool-worker-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.97%
+2026-09-14 13:44:10.757 INFO  [ForkJoinPool.commonPool-worker-5] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.91%
+2026-09-14 13:44:10.758 INFO  [ForkJoinPool.commonPool-worker-4] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.51%
+2026-09-14 13:44:10.771 INFO  [ForkJoinPool.commonPool-worker-3] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.56%
+2026-09-14 13:44:10.774 INFO  [ForkJoinPool.commonPool-worker-10] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.59%
+2026-09-14 13:44:10.785 INFO  [ForkJoinPool.commonPool-worker-11] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.36%
+2026-09-14 13:44:10.822 INFO  [ForkJoinPool.commonPool-worker-6] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.26%
+2026-09-14 13:44:10.838 INFO  [ForkJoinPool.commonPool-worker-8] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.17%
+2026-09-14 13:44:10.838 INFO  [ForkJoinPool.commonPool-worker-2] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.01%
+2026-09-14 13:44:10.844 INFO  [ForkJoinPool.commonPool-worker-9] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.87%
+2026-09-14 13:44:10.845 INFO  [http-nio-8080-exec-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.87%
+2026-09-14 13:44:10.847 INFO  [ForkJoinPool.commonPool-worker-1] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.33%
+2026-09-14 13:44:10.849 INFO  [ForkJoinPool.commonPool-worker-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.48%
+2026-09-14 13:44:10.860 INFO  [ForkJoinPool.commonPool-worker-4] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.62%
+2026-09-14 13:44:10.875 INFO  [ForkJoinPool.commonPool-worker-10] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.01%
+2026-09-14 13:44:10.885 INFO  [ForkJoinPool.commonPool-worker-3] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.59%
+2026-09-14 13:44:10.888 INFO  [ForkJoinPool.commonPool-worker-5] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.66%
+2026-09-14 13:44:10.901 INFO  [ForkJoinPool.commonPool-worker-6] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.41%
+2026-09-14 13:44:10.910 INFO  [ForkJoinPool.commonPool-worker-11] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.61%
+2026-09-14 13:44:10.940 INFO  [ForkJoinPool.commonPool-worker-2] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.44%
+2026-09-14 13:44:10.949 INFO  [ForkJoinPool.commonPool-worker-8] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.35%
+2026-09-14 13:44:10.954 INFO  [ForkJoinPool.commonPool-worker-9] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.07%
+2026-09-14 13:44:10.958 INFO  [ForkJoinPool.commonPool-worker-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.21%
+2026-09-14 13:44:10.960 INFO  [ForkJoinPool.commonPool-worker-4] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.84%
+2026-09-14 13:44:10.969 INFO  [ForkJoinPool.commonPool-worker-1] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.27%
+2026-09-14 13:44:10.992 INFO  [ForkJoinPool.commonPool-worker-10] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.05%
+2026-09-14 13:44:10.996 INFO  [http-nio-8080-exec-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.14%
+2026-09-14 13:44:11.013 INFO  [ForkJoinPool.commonPool-worker-11] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.93%
+2026-09-14 13:44:11.016 INFO  [ForkJoinPool.commonPool-worker-5] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.22%
+2026-09-14 13:44:11.018 INFO  [ForkJoinPool.commonPool-worker-3] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.91%
+2026-09-14 13:44:11.018 INFO  [ForkJoinPool.commonPool-worker-6] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.48%
+2026-09-14 13:44:11.054 INFO  [ForkJoinPool.commonPool-worker-2] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.18%
+2026-09-14 13:44:11.058 INFO  [ForkJoinPool.commonPool-worker-9] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.30%
+2026-09-14 13:44:11.067 INFO  [ForkJoinPool.commonPool-worker-8] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.56%
+2026-09-14 13:44:11.070 INFO  [ForkJoinPool.commonPool-worker-4] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.85%
+2026-09-14 13:44:11.087 INFO  [ForkJoinPool.commonPool-worker-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.71%
+2026-09-14 13:44:11.088 INFO  [ForkJoinPool.commonPool-worker-1] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.18%
+2026-09-14 13:44:11.091 INFO  [http-nio-8080-exec-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.06%
+2026-09-14 13:44:11.109 INFO  [ForkJoinPool.commonPool-worker-3] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.53%
+2026-09-14 13:44:11.116 INFO  [ForkJoinPool.commonPool-worker-10] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.38%
+2026-09-14 13:44:11.124 INFO  [ForkJoinPool.commonPool-worker-11] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.37%
+2026-09-14 13:44:11.127 INFO  [ForkJoinPool.commonPool-worker-5] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.63%
+2026-09-14 13:44:11.208 INFO  [http-nio-8080-exec-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.19%
+2026-09-14 13:44:11.209 INFO  [ForkJoinPool.commonPool-worker-2] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.43%
+2026-09-14 13:44:11.210 INFO  [ForkJoinPool.commonPool-worker-10] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.00%
+2026-09-14 13:44:11.210 INFO  [ForkJoinPool.commonPool-worker-8] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.61%
+2026-09-14 13:44:11.212 INFO  [ForkJoinPool.commonPool-worker-4] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.76%
+2026-09-14 13:44:11.212 INFO  [ForkJoinPool.commonPool-worker-9] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.34%
+2026-09-14 13:44:11.214 INFO  [ForkJoinPool.commonPool-worker-1] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.66%
+2026-09-14 13:44:11.214 INFO  [ForkJoinPool.commonPool-worker-6] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.31%
+2026-09-14 13:44:11.215 INFO  [ForkJoinPool.commonPool-worker-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.64%
+2026-09-14 13:44:11.215 INFO  [ForkJoinPool.commonPool-worker-11] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.30%
+2026-09-14 13:44:11.217 INFO  [ForkJoinPool.commonPool-worker-2] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.59%
+2026-09-14 13:44:11.217 INFO  [http-nio-8080-exec-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.14%
+2026-09-14 13:44:11.217 INFO  [ForkJoinPool.commonPool-worker-3] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.41%
+2026-09-14 13:44:11.218 INFO  [ForkJoinPool.commonPool-worker-9] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.31%
+2026-09-14 13:44:11.218 INFO  [ForkJoinPool.commonPool-worker-10] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.90%
+2026-09-14 13:44:11.219 INFO  [ForkJoinPool.commonPool-worker-8] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.17%
+2026-09-14 13:44:11.220 INFO  [ForkJoinPool.commonPool-worker-1] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.87%
+2026-09-14 13:44:11.221 INFO  [ForkJoinPool.commonPool-worker-4] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.39%
+2026-09-14 13:44:11.223 INFO  [ForkJoinPool.commonPool-worker-6] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.31%
+2026-09-14 13:44:11.223 INFO  [ForkJoinPool.commonPool-worker-11] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.47%
+2026-09-14 13:44:11.224 INFO  [http-nio-8080-exec-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.30%
+2026-09-14 13:44:11.224 INFO  [ForkJoinPool.commonPool-worker-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.10%
+2026-09-14 13:44:11.224 INFO  [ForkJoinPool.commonPool-worker-2] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.05%
+2026-09-14 13:44:11.226 INFO  [ForkJoinPool.commonPool-worker-3] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.86%
+2026-09-14 13:44:11.228 INFO  [ForkJoinPool.commonPool-worker-9] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.11%
+2026-09-14 13:44:11.228 INFO  [ForkJoinPool.commonPool-worker-5] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.14%
+2026-09-14 13:44:11.229 INFO  [ForkJoinPool.commonPool-worker-10] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.23%
+2026-09-14 13:44:11.230 INFO  [ForkJoinPool.commonPool-worker-4] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.72%
+2026-09-14 13:44:11.231 INFO  [ForkJoinPool.commonPool-worker-8] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.53%
+2026-09-14 13:44:11.231 INFO  [ForkJoinPool.commonPool-worker-11] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.82%
+2026-09-14 13:44:11.231 INFO  [ForkJoinPool.commonPool-worker-6] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.50%
+2026-09-14 13:44:11.233 INFO  [ForkJoinPool.commonPool-worker-1] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.24%
+2026-09-14 13:44:11.233 INFO  [ForkJoinPool.commonPool-worker-3] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.58%
+2026-09-14 13:44:11.233 INFO  [http-nio-8080-exec-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.78%
+2026-09-14 13:44:11.235 INFO  [ForkJoinPool.commonPool-worker-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.53%
+2026-09-14 13:44:11.235 INFO  [ForkJoinPool.commonPool-worker-5] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.95%
+2026-09-14 13:44:11.236 INFO  [ForkJoinPool.commonPool-worker-9] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.07%
+2026-09-14 13:44:11.236 INFO  [ForkJoinPool.commonPool-worker-2] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.10%
+2026-09-14 13:44:11.237 INFO  [ForkJoinPool.commonPool-worker-10] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.78%
+2026-09-14 13:44:11.238 INFO  [ForkJoinPool.commonPool-worker-6] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.21%
+2026-09-14 13:44:11.238 INFO  [ForkJoinPool.commonPool-worker-4] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.24%
+2026-09-14 13:44:11.239 INFO  [ForkJoinPool.commonPool-worker-11] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.15%
+2026-09-14 13:44:11.241 INFO  [ForkJoinPool.commonPool-worker-1] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.82%
+2026-09-14 13:44:11.241 INFO  [http-nio-8080-exec-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.83%
+2026-09-14 13:44:11.242 INFO  [ForkJoinPool.commonPool-worker-3] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.24%
+2026-09-14 13:44:11.243 INFO  [ForkJoinPool.commonPool-worker-9] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.97%
+2026-09-14 13:44:11.244 INFO  [ForkJoinPool.commonPool-worker-5] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.93%
+2026-09-14 13:44:11.245 INFO  [ForkJoinPool.commonPool-worker-2] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.38%
+2026-09-14 13:44:11.247 INFO  [ForkJoinPool.commonPool-worker-10] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.10%
+2026-09-14 13:44:11.247 INFO  [ForkJoinPool.commonPool-worker-8] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.85%
+2026-09-14 13:44:11.247 INFO  [http-nio-8080-exec-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 87.04%
+2026-09-14 13:44:11.248 INFO  [ForkJoinPool.commonPool-worker-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.21%
+2026-09-14 13:44:11.250 INFO  [ForkJoinPool.commonPool-worker-6] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.54%
+2026-09-14 13:44:11.250 INFO  [ForkJoinPool.commonPool-worker-4] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.11%
+2026-09-14 13:44:11.250 INFO  [ForkJoinPool.commonPool-worker-1] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.74%
+2026-09-14 13:44:11.250 INFO  [ForkJoinPool.commonPool-worker-11] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.13%
+2026-09-14 13:44:11.251 INFO  [ForkJoinPool.commonPool-worker-9] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.97%
+2026-09-14 13:44:11.253 INFO  [ForkJoinPool.commonPool-worker-2] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.22%
+2026-09-14 13:44:11.253 INFO  [ForkJoinPool.commonPool-worker-3] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.24%
+2026-09-14 13:44:11.253 INFO  [ForkJoinPool.commonPool-worker-5] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.43%
+2026-09-14 13:44:11.638 INFO  [http-nio-8080-exec-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.67%
+2026-09-14 13:44:11.640 INFO  [ForkJoinPool.commonPool-worker-6] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.08%
+2026-09-14 13:44:11.644 INFO  [ForkJoinPool.commonPool-worker-3] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.75%
+2026-09-14 13:44:11.647 INFO  [ForkJoinPool.commonPool-worker-10] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.50%
+2026-09-14 13:44:11.648 INFO  [ForkJoinPool.commonPool-worker-1] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.43%
+2026-09-14 13:44:11.648 INFO  [ForkJoinPool.commonPool-worker-8] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.55%
+2026-09-14 13:44:11.652 INFO  [ForkJoinPool.commonPool-worker-11] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.45%
+2026-09-14 13:44:11.655 INFO  [ForkJoinPool.commonPool-worker-4] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.49%
+2026-09-14 13:44:11.658 INFO  [ForkJoinPool.commonPool-worker-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.58%
+2026-09-14 13:44:11.659 INFO  [ForkJoinPool.commonPool-worker-5] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.44%
+2026-09-14 13:44:11.663 INFO  [ForkJoinPool.commonPool-worker-9] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.61%
+2026-09-14 13:44:11.674 INFO  [ForkJoinPool.commonPool-worker-2] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.60%
+2026-09-14 13:44:11.726 INFO  [ForkJoinPool.commonPool-worker-8] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.80%
+2026-09-14 13:44:11.737 INFO  [ForkJoinPool.commonPool-worker-4] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.85%
+2026-09-14 13:44:11.738 INFO  [ForkJoinPool.commonPool-worker-10] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.29%
+2026-09-14 13:44:11.741 INFO  [ForkJoinPool.commonPool-worker-6] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.71%
+2026-09-14 13:44:11.747 INFO  [ForkJoinPool.commonPool-worker-1] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.61%
+2026-09-14 13:44:11.748 INFO  [ForkJoinPool.commonPool-worker-11] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.94%
+2026-09-14 13:44:11.748 INFO  [http-nio-8080-exec-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.47%
+2026-09-14 13:44:11.751 INFO  [ForkJoinPool.commonPool-worker-9] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.97%
+2026-09-14 13:44:11.775 INFO  [ForkJoinPool.commonPool-worker-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.10%
+2026-09-14 13:44:11.788 INFO  [ForkJoinPool.commonPool-worker-5] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.86%
+2026-09-14 13:44:11.792 INFO  [ForkJoinPool.commonPool-worker-3] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.86%
+2026-09-14 13:44:11.796 INFO  [ForkJoinPool.commonPool-worker-2] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.22%
+2026-09-14 13:44:11.829 INFO  [ForkJoinPool.commonPool-worker-8] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.43%
+2026-09-14 13:44:11.835 INFO  [ForkJoinPool.commonPool-worker-4] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.38%
+2026-09-14 13:44:11.843 INFO  [ForkJoinPool.commonPool-worker-9] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.68%
+2026-09-14 13:44:11.844 INFO  [ForkJoinPool.commonPool-worker-10] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.25%
+2026-09-14 13:44:11.851 INFO  [http-nio-8080-exec-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.57%
+2026-09-14 13:44:11.864 INFO  [ForkJoinPool.commonPool-worker-6] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.34%
+2026-09-14 13:44:11.864 INFO  [ForkJoinPool.commonPool-worker-1] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.89%
+2026-09-14 13:44:11.865 INFO  [ForkJoinPool.commonPool-worker-11] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.76%
+2026-09-14 13:44:11.876 INFO  [ForkJoinPool.commonPool-worker-5] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.59%
+2026-09-14 13:44:11.884 INFO  [ForkJoinPool.commonPool-worker-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.85%
+2026-09-14 13:44:11.886 INFO  [ForkJoinPool.commonPool-worker-3] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.62%
+2026-09-14 13:44:11.918 INFO  [ForkJoinPool.commonPool-worker-2] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.71%
+2026-09-14 13:44:11.940 INFO  [http-nio-8080-exec-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.66%
+2026-09-14 13:44:11.942 INFO  [ForkJoinPool.commonPool-worker-4] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.17%
+2026-09-14 13:44:11.960 INFO  [ForkJoinPool.commonPool-worker-10] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.70%
+2026-09-14 13:44:11.969 INFO  [ForkJoinPool.commonPool-worker-1] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.98%
+2026-09-14 13:44:11.978 INFO  [ForkJoinPool.commonPool-worker-5] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.53%
+2026-09-14 13:44:11.980 INFO  [ForkJoinPool.commonPool-worker-6] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.16%
+2026-09-14 13:44:11.988 INFO  [ForkJoinPool.commonPool-worker-8] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.98%
+2026-09-14 13:44:11.988 INFO  [ForkJoinPool.commonPool-worker-11] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.74%
+2026-09-14 13:44:11.998 INFO  [ForkJoinPool.commonPool-worker-9] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.83%
+2026-09-14 13:44:12.012 INFO  [ForkJoinPool.commonPool-worker-3] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.59%
+2026-09-14 13:44:12.017 INFO  [ForkJoinPool.commonPool-worker-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.89%
+2026-09-14 13:44:12.029 INFO  [ForkJoinPool.commonPool-worker-2] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.89%
+2026-09-14 13:44:12.036 INFO  [http-nio-8080-exec-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.94%
+2026-09-14 13:44:12.048 INFO  [ForkJoinPool.commonPool-worker-4] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.81%
+2026-09-14 13:44:12.065 INFO  [ForkJoinPool.commonPool-worker-1] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.60%
+2026-09-14 13:44:12.065 INFO  [ForkJoinPool.commonPool-worker-6] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.89%
+2026-09-14 13:44:12.066 INFO  [ForkJoinPool.commonPool-worker-10] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.73%
+2026-09-14 13:44:12.072 INFO  [ForkJoinPool.commonPool-worker-8] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.69%
+2026-09-14 13:44:12.078 INFO  [ForkJoinPool.commonPool-worker-5] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.49%
+2026-09-14 13:44:12.086 INFO  [ForkJoinPool.commonPool-worker-11] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.38%
+2026-09-14 13:44:12.100 INFO  [ForkJoinPool.commonPool-worker-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.61%
+2026-09-14 13:44:12.102 INFO  [ForkJoinPool.commonPool-worker-9] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.63%
+2026-09-14 13:44:12.127 INFO  [ForkJoinPool.commonPool-worker-3] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.26%
+2026-09-14 13:44:12.134 INFO  [ForkJoinPool.commonPool-worker-2] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.91%
+2026-09-14 13:44:12.197 INFO  [ForkJoinPool.commonPool-worker-2] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.76%
+2026-09-14 13:44:12.198 INFO  [http-nio-8080-exec-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.25%
+2026-09-14 13:44:12.200 INFO  [ForkJoinPool.commonPool-worker-4] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.02%
+2026-09-14 13:44:12.201 INFO  [ForkJoinPool.commonPool-worker-6] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.13%
+2026-09-14 13:44:12.202 INFO  [ForkJoinPool.commonPool-worker-1] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.00%
+2026-09-14 13:44:12.203 INFO  [ForkJoinPool.commonPool-worker-8] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.02%
+2026-09-14 13:44:12.203 INFO  [ForkJoinPool.commonPool-worker-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.75%
+2026-09-14 13:44:12.203 INFO  [ForkJoinPool.commonPool-worker-5] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.80%
+2026-09-14 13:44:12.204 INFO  [ForkJoinPool.commonPool-worker-11] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.59%
+2026-09-14 13:44:12.205 INFO  [ForkJoinPool.commonPool-worker-2] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.20%
+2026-09-14 13:44:12.206 INFO  [ForkJoinPool.commonPool-worker-4] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.83%
+2026-09-14 13:44:12.206 INFO  [ForkJoinPool.commonPool-worker-10] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.62%
+2026-09-14 13:44:12.206 INFO  [ForkJoinPool.commonPool-worker-3] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.44%
+2026-09-14 13:44:12.208 INFO  [ForkJoinPool.commonPool-worker-9] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.92%
+2026-09-14 13:44:12.208 INFO  [ForkJoinPool.commonPool-worker-1] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.79%
+2026-09-14 13:44:12.209 INFO  [ForkJoinPool.commonPool-worker-6] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.22%
+2026-09-14 13:44:12.209 INFO  [http-nio-8080-exec-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.00%
+2026-09-14 13:44:12.210 INFO  [ForkJoinPool.commonPool-worker-11] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.59%
+2026-09-14 13:44:12.210 INFO  [ForkJoinPool.commonPool-worker-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.35%
+2026-09-14 13:44:12.211 INFO  [ForkJoinPool.commonPool-worker-5] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.32%
+2026-09-14 13:44:12.211 INFO  [ForkJoinPool.commonPool-worker-8] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.24%
+2026-09-14 13:44:12.214 INFO  [ForkJoinPool.commonPool-worker-10] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.01%
+2026-09-14 13:44:12.214 INFO  [ForkJoinPool.commonPool-worker-9] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.87%
+2026-09-14 13:44:12.215 INFO  [ForkJoinPool.commonPool-worker-4] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.64%
+2026-09-14 13:44:12.215 INFO  [ForkJoinPool.commonPool-worker-3] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.12%
+2026-09-14 13:44:12.215 INFO  [ForkJoinPool.commonPool-worker-1] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.57%
+2026-09-14 13:44:12.216 INFO  [ForkJoinPool.commonPool-worker-2] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.14%
+2026-09-14 13:44:12.218 INFO  [http-nio-8080-exec-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.15%
+2026-09-14 13:44:12.219 INFO  [ForkJoinPool.commonPool-worker-8] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.20%
+2026-09-14 13:44:12.219 INFO  [ForkJoinPool.commonPool-worker-11] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.63%
+2026-09-14 13:44:12.220 INFO  [ForkJoinPool.commonPool-worker-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.11%
+2026-09-14 13:44:12.220 INFO  [ForkJoinPool.commonPool-worker-5] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.16%
+2026-09-14 13:44:12.220 INFO  [ForkJoinPool.commonPool-worker-6] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.20%
+2026-09-14 13:44:12.220 INFO  [ForkJoinPool.commonPool-worker-10] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.36%
+2026-09-14 13:44:12.222 INFO  [ForkJoinPool.commonPool-worker-4] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.76%
+2026-09-14 13:44:12.222 INFO  [ForkJoinPool.commonPool-worker-9] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.07%
+2026-09-14 13:44:12.224 INFO  [ForkJoinPool.commonPool-worker-3] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.38%
+2026-09-14 13:44:12.225 INFO  [ForkJoinPool.commonPool-worker-1] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.39%
+2026-09-14 13:44:12.226 INFO  [ForkJoinPool.commonPool-worker-2] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.23%
+2026-09-14 13:44:12.227 INFO  [ForkJoinPool.commonPool-worker-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.77%
+2026-09-14 13:44:12.228 INFO  [ForkJoinPool.commonPool-worker-11] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.53%
+2026-09-14 13:44:12.229 INFO  [ForkJoinPool.commonPool-worker-5] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.75%
+2026-09-14 13:44:12.229 INFO  [http-nio-8080-exec-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.62%
+2026-09-14 13:44:12.229 INFO  [ForkJoinPool.commonPool-worker-8] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.83%
+2026-09-14 13:44:12.230 INFO  [ForkJoinPool.commonPool-worker-10] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.39%
+2026-09-14 13:44:12.231 INFO  [ForkJoinPool.commonPool-worker-6] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.16%
+2026-09-14 13:44:12.233 INFO  [ForkJoinPool.commonPool-worker-4] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.21%
+2026-09-14 13:44:12.233 INFO  [ForkJoinPool.commonPool-worker-9] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.04%
+2026-09-14 13:44:12.234 INFO  [ForkJoinPool.commonPool-worker-2] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.33%
+2026-09-14 13:44:12.234 INFO  [ForkJoinPool.commonPool-worker-1] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.38%
+2026-09-14 13:44:12.235 INFO  [ForkJoinPool.commonPool-worker-3] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.28%
+2026-09-14 13:44:12.236 INFO  [ForkJoinPool.commonPool-worker-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.55%
+2026-09-14 13:44:12.236 INFO  [ForkJoinPool.commonPool-worker-5] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.23%
+2026-09-14 13:44:12.236 INFO  [http-nio-8080-exec-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.76%
+2026-09-14 13:44:12.238 INFO  [ForkJoinPool.commonPool-worker-6] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.94%
+2026-09-14 13:44:12.239 INFO  [ForkJoinPool.commonPool-worker-11] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.45%
+2026-09-14 13:44:12.239 INFO  [ForkJoinPool.commonPool-worker-8] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.10%
+2026-09-14 13:44:12.240 INFO  [ForkJoinPool.commonPool-worker-10] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.75%
+2026-09-14 13:44:12.240 INFO  [ForkJoinPool.commonPool-worker-9] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.25%
+2026-09-14 13:44:12.242 INFO  [ForkJoinPool.commonPool-worker-4] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.41%
+2026-09-14 13:44:12.632 INFO  [ForkJoinPool.commonPool-worker-2] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.67%
+2026-09-14 13:44:12.634 INFO  [ForkJoinPool.commonPool-worker-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.73%
+2026-09-14 13:44:12.637 INFO  [ForkJoinPool.commonPool-worker-4] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.83%
+2026-09-14 13:44:12.640 INFO  [ForkJoinPool.commonPool-worker-5] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.90%
+2026-09-14 13:44:12.641 INFO  [ForkJoinPool.commonPool-worker-6] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.14%
+2026-09-14 13:44:12.643 INFO  [ForkJoinPool.commonPool-worker-9] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.36%
+2026-09-14 13:44:12.645 INFO  [ForkJoinPool.commonPool-worker-10] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.31%
+2026-09-14 13:44:12.646 INFO  [ForkJoinPool.commonPool-worker-1] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.39%
+2026-09-14 13:44:12.647 INFO  [http-nio-8080-exec-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.02%
+2026-09-14 13:44:12.650 INFO  [ForkJoinPool.commonPool-worker-11] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.84%
+2026-09-14 13:44:12.652 INFO  [ForkJoinPool.commonPool-worker-3] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.01%
+2026-09-14 13:44:12.663 INFO  [ForkJoinPool.commonPool-worker-8] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.86%
+2026-09-14 13:44:12.743 INFO  [ForkJoinPool.commonPool-worker-5] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.25%
+2026-09-14 13:44:12.749 INFO  [ForkJoinPool.commonPool-worker-1] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.76%
+2026-09-14 13:44:12.757 INFO  [ForkJoinPool.commonPool-worker-2] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.54%
+2026-09-14 13:44:12.763 INFO  [ForkJoinPool.commonPool-worker-6] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.03%
+2026-09-14 13:44:12.763 INFO  [ForkJoinPool.commonPool-worker-4] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.20%
+2026-09-14 13:44:12.764 INFO  [ForkJoinPool.commonPool-worker-9] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.55%
+2026-09-14 13:44:12.765 INFO  [ForkJoinPool.commonPool-worker-8] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.58%
+2026-09-14 13:44:12.769 INFO  [http-nio-8080-exec-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.63%
+2026-09-14 13:44:12.770 INFO  [ForkJoinPool.commonPool-worker-10] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.54%
+2026-09-14 13:44:12.771 INFO  [ForkJoinPool.commonPool-worker-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.81%
+2026-09-14 13:44:12.784 INFO  [ForkJoinPool.commonPool-worker-3] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.71%
+2026-09-14 13:44:12.789 INFO  [ForkJoinPool.commonPool-worker-11] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.30%
+2026-09-14 13:44:12.836 INFO  [ForkJoinPool.commonPool-worker-1] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.27%
+2026-09-14 13:44:12.857 INFO  [ForkJoinPool.commonPool-worker-5] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.65%
+2026-09-14 13:44:12.857 INFO  [ForkJoinPool.commonPool-worker-4] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.71%
+2026-09-14 13:44:12.860 INFO  [ForkJoinPool.commonPool-worker-10] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.77%
+2026-09-14 13:44:12.863 INFO  [ForkJoinPool.commonPool-worker-6] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.92%
+2026-09-14 13:44:12.867 INFO  [ForkJoinPool.commonPool-worker-9] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.67%
+2026-09-14 13:44:12.869 INFO  [ForkJoinPool.commonPool-worker-2] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.22%
+2026-09-14 13:44:12.881 INFO  [http-nio-8080-exec-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.27%
+2026-09-14 13:44:12.881 INFO  [ForkJoinPool.commonPool-worker-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.32%
+2026-09-14 13:44:12.888 INFO  [ForkJoinPool.commonPool-worker-8] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.44%
+2026-09-14 13:44:12.894 INFO  [ForkJoinPool.commonPool-worker-3] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.60%
+2026-09-14 13:44:12.895 INFO  [ForkJoinPool.commonPool-worker-11] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.82%
+2026-09-14 13:44:12.954 INFO  [ForkJoinPool.commonPool-worker-5] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.79%
+2026-09-14 13:44:12.964 INFO  [ForkJoinPool.commonPool-worker-1] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.53%
+2026-09-14 13:44:12.964 INFO  [ForkJoinPool.commonPool-worker-6] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.87%
+2026-09-14 13:44:12.965 INFO  [ForkJoinPool.commonPool-worker-10] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.52%
+2026-09-14 13:44:12.975 INFO  [ForkJoinPool.commonPool-worker-2] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.91%
+2026-09-14 13:44:12.980 INFO  [ForkJoinPool.commonPool-worker-9] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.67%
+2026-09-14 13:44:12.985 INFO  [ForkJoinPool.commonPool-worker-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.40%
+2026-09-14 13:44:12.993 INFO  [http-nio-8080-exec-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.59%
+2026-09-14 13:44:12.994 INFO  [ForkJoinPool.commonPool-worker-3] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.58%
+2026-09-14 13:44:12.994 INFO  [ForkJoinPool.commonPool-worker-8] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.44%
+2026-09-14 13:44:13.007 INFO  [ForkJoinPool.commonPool-worker-11] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.79%
+2026-09-14 13:44:13.010 INFO  [ForkJoinPool.commonPool-worker-4] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.97%
+2026-09-14 13:44:13.059 INFO  [ForkJoinPool.commonPool-worker-5] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.67%
+2026-09-14 13:44:13.066 INFO  [ForkJoinPool.commonPool-worker-6] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.18%
+2026-09-14 13:44:13.080 INFO  [ForkJoinPool.commonPool-worker-10] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.87%
+2026-09-14 13:44:13.089 INFO  [ForkJoinPool.commonPool-worker-1] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.40%
+2026-09-14 13:44:13.091 INFO  [ForkJoinPool.commonPool-worker-9] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.39%
+2026-09-14 13:44:13.094 INFO  [ForkJoinPool.commonPool-worker-2] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.67%
+2026-09-14 13:44:13.096 INFO  [ForkJoinPool.commonPool-worker-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.57%
+2026-09-14 13:44:13.099 INFO  [ForkJoinPool.commonPool-worker-4] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.30%
+2026-09-14 13:44:13.103 INFO  [ForkJoinPool.commonPool-worker-3] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.18%
+2026-09-14 13:44:13.105 INFO  [http-nio-8080-exec-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.61%
+2026-09-14 13:44:13.107 INFO  [ForkJoinPool.commonPool-worker-11] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.59%
+2026-09-14 13:44:13.119 INFO  [ForkJoinPool.commonPool-worker-8] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.86%
+2026-09-14 14:09:00.313 INFO  [SpringApplicationShutdownHook] GracefulShutdown.shutDownGracefully:54 - Commencing graceful shutdown. Waiting for active requests to complete
+2026-09-14 14:09:04.086 INFO  [main] StartupInfoLogger.logStarting:54 - Starting Application using Java 17.0.19 with PID 28452 (C:\Users\admin\IdeaProjects\jwlee\lotto-crawling\build\classes\java\main started by admin in C:\Users\admin\IdeaProjects\jwlee\lotto-crawling)
+2026-09-14 14:09:04.088 INFO  [main] SpringApplication.logStartupProfileInfo:652 - No active profile set, falling back to 1 default profile: "default"
+2026-09-14 14:09:04.468 INFO  [main] RepositoryConfigurationDelegate.registerRepositoriesIn:145 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-09-14 14:09:04.506 INFO  [main] RepositoryConfigurationDelegate.registerRepositoriesIn:213 - Finished Spring Data repository scanning in 31 ms. Found 1 JPA repository interface.
+2026-09-14 14:09:04.802 INFO  [main] TomcatWebServer.initialize:114 - Tomcat initialized with port 8080 (http)
+2026-09-14 14:09:04.813 INFO  [main] DirectJDKLog.log:168 - Starting service [Tomcat]
+2026-09-14 14:09:04.813 INFO  [main] DirectJDKLog.log:168 - Starting Servlet engine: [Apache Tomcat/11.0.15]
+2026-09-14 14:09:04.855 INFO  [main] WebApplicationContextInitializer.prepareWebApplicationContext:77 - Root WebApplicationContext: initialization completed in 738 ms
+2026-09-14 14:09:04.945 INFO  [main] LogHelper.logPersistenceUnitInformation:102 - HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-09-14 14:09:04.995 INFO  [main] Version.logVersion:41 - HHH000001: Hibernate ORM core version 7.2.0.Final
+2026-09-14 14:09:05.350 INFO  [main] SpringPersistenceUnitInfo.addTransformer:128 - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-09-14 14:09:05.378 INFO  [main] HikariDataSource.getConnection:109 - HikariPool-1 - Starting...
+2026-09-14 14:09:05.664 INFO  [main] HikariPool.checkFailFast:580 - HikariPool-1 - Added connection org.mariadb.jdbc.Connection@1fca53a7
+2026-09-14 14:09:05.667 INFO  [main] HikariDataSource.getConnection:122 - HikariPool-1 - Start completed.
+2026-09-14 14:09:05.704 WARN  [main] Dialect.checkVersion:384 - HHH000511: The 10.3.32 version for [org.hibernate.dialect.MariaDBDialect] is no longer supported, hence certain features may not work properly.The minimum supported version is 10.6.0. Check the community dialects project for available legacy versions.
+2026-09-14 14:09:05.728 INFO  [main] JdbcEnvironmentInitiator.logConnectionInfo:179 - HHH10001005: Database info:
+	Database JDBC URL [jdbc:mariadb://19341.synology.me/lotto?user=jwlee&password=***]
+	Database driver: MariaDB Connector/J
+	Database dialect: MariaDBDialect
+	Database version: 10.3.32
+	Default catalog/schema: lotto/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-09-14 14:09:06.297 INFO  [main] JtaPlatformInitiator.initiateService:53 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-09-14 14:09:06.302 INFO  [main] AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory:444 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-09-14 14:09:06.348 INFO  [main] QueryEnhancerFactories.<clinit>:48 - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-09-14 14:09:06.807 INFO  [main] WelcomePageHandlerMapping.<init>:60 - Adding welcome page template: index
+2026-09-14 14:09:06.988 INFO  [main] TomcatWebServer.start:240 - Tomcat started on port 8080 (http) with context path '/'
+2026-09-14 14:09:06.995 INFO  [main] StartupInfoLogger.logStarted:60 - Started Application in 3.423 seconds (process running for 4.227)
+2026-09-14 14:09:07.122 INFO  [pattern-training] LottoPatternModelService.refresh:105 - 전체 405회차로 패턴 모델 학습 시작
+2026-09-14 14:09:07.759 INFO  [ForkJoinPool.commonPool-worker-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.02%
+2026-09-14 14:09:07.759 INFO  [ForkJoinPool.commonPool-worker-6] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.63%
+2026-09-14 14:09:07.759 INFO  [ForkJoinPool.commonPool-worker-5] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.77%
+2026-09-14 14:09:07.759 INFO  [ForkJoinPool.commonPool-worker-2] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.53%
+2026-09-14 14:09:07.760 INFO  [ForkJoinPool.commonPool-worker-4] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.96%
+2026-09-14 14:09:07.764 INFO  [ForkJoinPool.commonPool-worker-8] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.97%
+2026-09-14 14:09:07.764 INFO  [pattern-training] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.95%
+2026-09-14 14:09:07.769 INFO  [ForkJoinPool.commonPool-worker-3] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.84%
+2026-09-14 14:09:07.772 INFO  [ForkJoinPool.commonPool-worker-1] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.76%
+2026-09-14 14:09:07.782 INFO  [ForkJoinPool.commonPool-worker-11] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.25%
+2026-09-14 14:09:07.801 INFO  [ForkJoinPool.commonPool-worker-9] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.99%
+2026-09-14 14:09:07.814 INFO  [ForkJoinPool.commonPool-worker-10] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.92%
+2026-09-14 14:09:07.902 INFO  [ForkJoinPool.commonPool-worker-8] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.97%
+2026-09-14 14:09:07.919 INFO  [ForkJoinPool.commonPool-worker-4] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.13%
+2026-09-14 14:09:07.920 INFO  [ForkJoinPool.commonPool-worker-5] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.73%
+2026-09-14 14:09:07.934 INFO  [ForkJoinPool.commonPool-worker-3] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.94%
+2026-09-14 14:09:07.938 INFO  [ForkJoinPool.commonPool-worker-2] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.61%
+2026-09-14 14:09:07.940 INFO  [ForkJoinPool.commonPool-worker-9] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.81%
+2026-09-14 14:09:07.961 INFO  [ForkJoinPool.commonPool-worker-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.76%
+2026-09-14 14:09:07.965 INFO  [ForkJoinPool.commonPool-worker-1] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.66%
+2026-09-14 14:09:07.966 INFO  [ForkJoinPool.commonPool-worker-10] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.20%
+2026-09-14 14:09:07.975 INFO  [pattern-training] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.03%
+2026-09-14 14:09:07.981 INFO  [ForkJoinPool.commonPool-worker-6] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.93%
+2026-09-14 14:09:07.988 INFO  [ForkJoinPool.commonPool-worker-11] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.94%
+2026-09-14 14:09:08.079 INFO  [ForkJoinPool.commonPool-worker-8] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.18%
+2026-09-14 14:09:08.094 INFO  [ForkJoinPool.commonPool-worker-3] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.73%
+2026-09-14 14:09:08.099 INFO  [ForkJoinPool.commonPool-worker-5] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.90%
+2026-09-14 14:09:08.103 INFO  [ForkJoinPool.commonPool-worker-2] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.09%
+2026-09-14 14:09:08.120 INFO  [ForkJoinPool.commonPool-worker-4] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.13%
+2026-09-14 14:09:08.122 INFO  [ForkJoinPool.commonPool-worker-1] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.75%
+2026-09-14 14:09:08.124 INFO  [ForkJoinPool.commonPool-worker-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.20%
+2026-09-14 14:09:08.133 INFO  [ForkJoinPool.commonPool-worker-6] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.56%
+2026-09-14 14:09:08.133 INFO  [ForkJoinPool.commonPool-worker-11] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.45%
+2026-09-14 14:09:08.134 INFO  [ForkJoinPool.commonPool-worker-9] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.59%
+2026-09-14 14:09:08.135 INFO  [ForkJoinPool.commonPool-worker-10] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.51%
+2026-09-14 14:09:08.194 INFO  [pattern-training] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.37%
+2026-09-14 14:09:08.237 INFO  [ForkJoinPool.commonPool-worker-8] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.22%
+2026-09-14 14:09:08.262 INFO  [ForkJoinPool.commonPool-worker-5] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.75%
+2026-09-14 14:09:08.272 INFO  [ForkJoinPool.commonPool-worker-4] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.17%
+2026-09-14 14:09:08.281 INFO  [ForkJoinPool.commonPool-worker-3] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.62%
+2026-09-14 14:09:08.285 INFO  [ForkJoinPool.commonPool-worker-1] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.75%
+2026-09-14 14:09:08.286 INFO  [ForkJoinPool.commonPool-worker-10] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.46%
+2026-09-14 14:09:08.293 INFO  [ForkJoinPool.commonPool-worker-9] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.25%
+2026-09-14 14:09:08.312 INFO  [ForkJoinPool.commonPool-worker-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.94%
+2026-09-14 14:09:08.314 INFO  [ForkJoinPool.commonPool-worker-11] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.51%
+2026-09-14 14:09:08.319 INFO  [pattern-training] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.99%
+2026-09-14 14:09:08.325 INFO  [ForkJoinPool.commonPool-worker-6] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.92%
+2026-09-14 14:09:08.329 INFO  [ForkJoinPool.commonPool-worker-2] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.32%
+2026-09-14 14:09:08.420 INFO  [ForkJoinPool.commonPool-worker-5] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.17%
+2026-09-14 14:09:08.426 INFO  [ForkJoinPool.commonPool-worker-8] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.88%
+2026-09-14 14:09:08.428 INFO  [ForkJoinPool.commonPool-worker-4] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.36%
+2026-09-14 14:09:08.443 INFO  [ForkJoinPool.commonPool-worker-9] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.61%
+2026-09-14 14:09:08.448 INFO  [ForkJoinPool.commonPool-worker-10] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.64%
+2026-09-14 14:09:08.449 INFO  [ForkJoinPool.commonPool-worker-1] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.62%
+2026-09-14 14:09:08.452 INFO  [ForkJoinPool.commonPool-worker-3] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.57%
+2026-09-14 14:09:08.461 INFO  [ForkJoinPool.commonPool-worker-6] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.06%
+2026-09-14 14:09:08.467 INFO  [ForkJoinPool.commonPool-worker-11] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.09%
+2026-09-14 14:09:08.474 INFO  [pattern-training] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.47%
+2026-09-14 14:09:08.474 INFO  [ForkJoinPool.commonPool-worker-2] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.97%
+2026-09-14 14:09:08.488 INFO  [ForkJoinPool.commonPool-worker-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.13%
+2026-09-14 14:09:08.652 INFO  [pattern-training] LottoPatternModelService.refresh:118 - 패턴 모델 저장/교체 완료: 기준 1240회, 405건
+2026-09-14 14:09:29.934 INFO  [http-nio-8080-exec-1] DirectJDKLog.log:168 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-09-14 14:09:29.934 INFO  [http-nio-8080-exec-1] FrameworkServlet.initServletBean:523 - Initializing Servlet 'dispatcherServlet'
+2026-09-14 14:09:29.936 INFO  [http-nio-8080-exec-1] FrameworkServlet.initServletBean:545 - Completed initialization in 1 ms
+2026-09-14 14:21:41.245 INFO  [http-nio-8080-exec-7] LottoRecommendationService.getOrTrainProbabilities:70 - 데이터 변경 감지 또는 최초 구동: 머신러닝 학습 및 확률 추론 시작 (기준 회차: 1240회, 총 405건)
+2026-09-14 14:21:41.337 INFO  [http-nio-8080-exec-7] LottoMlPredictor.predictProbabilities:68 - Smile RandomForest 모델 학습 시작 (학습 샘플 수: 17325)
+2026-09-14 14:21:41.365 INFO  [ForkJoinPool.commonPool-worker-21] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.20%
+2026-09-14 14:21:41.369 INFO  [ForkJoinPool.commonPool-worker-14] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.70%
+2026-09-14 14:21:41.373 INFO  [ForkJoinPool.commonPool-worker-22] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.81%
+2026-09-14 14:21:41.373 INFO  [ForkJoinPool.commonPool-worker-16] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.94%
+2026-09-14 14:21:41.374 INFO  [ForkJoinPool.commonPool-worker-20] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.20%
+2026-09-14 14:21:41.375 INFO  [ForkJoinPool.commonPool-worker-15] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 82.91%
+2026-09-14 14:21:41.375 INFO  [http-nio-8080-exec-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.56%
+2026-09-14 14:21:41.375 INFO  [ForkJoinPool.commonPool-worker-19] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.26%
+2026-09-14 14:21:41.375 INFO  [ForkJoinPool.commonPool-worker-13] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 82.81%
+2026-09-14 14:21:41.376 INFO  [ForkJoinPool.commonPool-worker-12] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.93%
+2026-09-14 14:21:41.377 INFO  [ForkJoinPool.commonPool-worker-18] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.86%
+2026-09-14 14:21:41.378 INFO  [ForkJoinPool.commonPool-worker-17] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.35%
+2026-09-14 14:21:41.388 INFO  [ForkJoinPool.commonPool-worker-21] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 82.91%
+2026-09-14 14:21:41.389 INFO  [ForkJoinPool.commonPool-worker-14] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.47%
+2026-09-14 14:21:41.394 INFO  [ForkJoinPool.commonPool-worker-12] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.56%
+2026-09-14 14:21:41.394 INFO  [ForkJoinPool.commonPool-worker-15] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.52%
+2026-09-14 14:21:41.394 INFO  [ForkJoinPool.commonPool-worker-13] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.04%
+2026-09-14 14:21:41.395 INFO  [ForkJoinPool.commonPool-worker-22] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.86%
+2026-09-14 14:21:41.396 INFO  [ForkJoinPool.commonPool-worker-20] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.84%
+2026-09-14 14:21:41.396 INFO  [ForkJoinPool.commonPool-worker-19] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.31%
+2026-09-14 14:21:41.396 INFO  [http-nio-8080-exec-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.66%
+2026-09-14 14:21:41.397 INFO  [ForkJoinPool.commonPool-worker-18] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.31%
+2026-09-14 14:21:41.402 INFO  [ForkJoinPool.commonPool-worker-16] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.16%
+2026-09-14 14:21:41.406 INFO  [ForkJoinPool.commonPool-worker-17] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.70%
+2026-09-14 14:21:41.409 INFO  [ForkJoinPool.commonPool-worker-22] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.92%
+2026-09-14 14:21:41.409 INFO  [ForkJoinPool.commonPool-worker-14] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.70%
+2026-09-14 14:21:41.412 INFO  [ForkJoinPool.commonPool-worker-21] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.80%
+2026-09-14 14:21:41.415 INFO  [ForkJoinPool.commonPool-worker-15] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.31%
+2026-09-14 14:21:41.416 INFO  [ForkJoinPool.commonPool-worker-19] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.32%
+2026-09-14 14:21:41.420 INFO  [ForkJoinPool.commonPool-worker-17] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.58%
+2026-09-14 14:21:41.421 INFO  [http-nio-8080-exec-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.79%
+2026-09-14 14:21:41.422 INFO  [ForkJoinPool.commonPool-worker-12] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.54%
+2026-09-14 14:21:41.423 INFO  [ForkJoinPool.commonPool-worker-20] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.44%
+2026-09-14 14:21:41.426 INFO  [ForkJoinPool.commonPool-worker-22] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.55%
+2026-09-14 14:21:41.427 INFO  [ForkJoinPool.commonPool-worker-13] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.54%
+2026-09-14 14:21:41.428 INFO  [ForkJoinPool.commonPool-worker-16] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.10%
+2026-09-14 14:21:41.428 INFO  [ForkJoinPool.commonPool-worker-18] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.34%
+2026-09-14 14:21:41.433 INFO  [ForkJoinPool.commonPool-worker-21] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.01%
+2026-09-14 14:21:41.435 INFO  [ForkJoinPool.commonPool-worker-15] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.74%
+2026-09-14 14:21:41.436 INFO  [ForkJoinPool.commonPool-worker-14] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 82.95%
+2026-09-14 14:21:41.437 INFO  [ForkJoinPool.commonPool-worker-19] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.49%
+2026-09-14 14:21:41.441 INFO  [ForkJoinPool.commonPool-worker-17] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.95%
+2026-09-14 14:21:41.441 INFO  [ForkJoinPool.commonPool-worker-16] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.64%
+2026-09-14 14:21:41.445 INFO  [http-nio-8080-exec-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.90%
+2026-09-14 14:21:41.445 INFO  [ForkJoinPool.commonPool-worker-18] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.84%
+2026-09-14 14:21:41.446 INFO  [ForkJoinPool.commonPool-worker-12] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.49%
+2026-09-14 14:21:41.451 INFO  [ForkJoinPool.commonPool-worker-19] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.57%
+2026-09-14 14:21:41.451 INFO  [ForkJoinPool.commonPool-worker-20] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.16%
+2026-09-14 14:21:41.452 INFO  [ForkJoinPool.commonPool-worker-13] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.85%
+2026-09-14 14:21:41.463 INFO  [ForkJoinPool.commonPool-worker-14] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.62%
+2026-09-14 14:21:41.463 INFO  [ForkJoinPool.commonPool-worker-22] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.78%
+2026-09-14 14:21:41.463 INFO  [ForkJoinPool.commonPool-worker-15] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.72%
+2026-09-14 14:21:41.472 INFO  [ForkJoinPool.commonPool-worker-21] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.68%
+2026-09-14 14:21:41.475 INFO  [ForkJoinPool.commonPool-worker-17] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.40%
+2026-09-14 14:21:41.480 INFO  [ForkJoinPool.commonPool-worker-16] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 82.93%
+2026-09-14 14:21:41.484 INFO  [ForkJoinPool.commonPool-worker-19] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 82.13%
+2026-09-14 14:21:41.485 INFO  [ForkJoinPool.commonPool-worker-20] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.55%
+2026-09-14 14:21:41.485 INFO  [http-nio-8080-exec-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.57%
+2026-09-14 14:21:41.487 INFO  [ForkJoinPool.commonPool-worker-13] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.88%
+2026-09-14 14:21:41.488 INFO  [ForkJoinPool.commonPool-worker-12] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.24%
+2026-09-14 14:21:41.490 INFO  [ForkJoinPool.commonPool-worker-18] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.21%
+2026-09-14 14:21:41.492 INFO  [ForkJoinPool.commonPool-worker-14] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.47%
+2026-09-14 14:21:41.493 INFO  [ForkJoinPool.commonPool-worker-22] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.27%
+2026-09-14 14:21:41.504 INFO  [ForkJoinPool.commonPool-worker-21] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.24%
+2026-09-14 14:21:41.506 INFO  [ForkJoinPool.commonPool-worker-19] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.18%
+2026-09-14 14:21:41.507 INFO  [ForkJoinPool.commonPool-worker-15] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.99%
+2026-09-14 14:21:41.508 INFO  [ForkJoinPool.commonPool-worker-13] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.08%
+2026-09-14 14:21:41.509 INFO  [ForkJoinPool.commonPool-worker-20] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.09%
+2026-09-14 14:21:41.512 INFO  [ForkJoinPool.commonPool-worker-18] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.42%
+2026-09-14 14:21:41.514 INFO  [ForkJoinPool.commonPool-worker-17] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.85%
+2026-09-14 14:21:41.515 INFO  [http-nio-8080-exec-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.82%
+2026-09-14 14:21:41.521 INFO  [ForkJoinPool.commonPool-worker-12] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.97%
+2026-09-14 14:21:41.526 INFO  [ForkJoinPool.commonPool-worker-16] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.52%
+2026-09-14 14:21:41.526 INFO  [ForkJoinPool.commonPool-worker-19] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.63%
+2026-09-14 14:21:41.527 INFO  [ForkJoinPool.commonPool-worker-14] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.45%
+2026-09-14 14:21:41.528 INFO  [ForkJoinPool.commonPool-worker-20] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.74%
+2026-09-14 14:21:41.534 INFO  [ForkJoinPool.commonPool-worker-13] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.26%
+2026-09-14 14:21:41.534 INFO  [http-nio-8080-exec-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.70%
+2026-09-14 14:21:41.541 INFO  [ForkJoinPool.commonPool-worker-15] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.45%
+2026-09-14 14:21:41.541 INFO  [ForkJoinPool.commonPool-worker-18] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.51%
+2026-09-14 14:21:41.542 INFO  [ForkJoinPool.commonPool-worker-17] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.28%
+2026-09-14 14:21:41.543 INFO  [ForkJoinPool.commonPool-worker-22] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.97%
+2026-09-14 14:21:41.545 INFO  [ForkJoinPool.commonPool-worker-21] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.56%
+2026-09-14 14:21:41.549 INFO  [ForkJoinPool.commonPool-worker-19] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.43%
+2026-09-14 14:21:41.551 INFO  [ForkJoinPool.commonPool-worker-20] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.71%
+2026-09-14 14:21:41.551 INFO  [ForkJoinPool.commonPool-worker-12] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.18%
+2026-09-14 14:21:41.554 INFO  [ForkJoinPool.commonPool-worker-16] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.89%
+2026-09-14 14:21:41.555 INFO  [ForkJoinPool.commonPool-worker-14] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.34%
+2026-09-14 14:21:41.561 INFO  [ForkJoinPool.commonPool-worker-13] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.66%
+2026-09-14 14:21:41.562 INFO  [http-nio-8080-exec-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.47%
+2026-09-14 14:21:41.565 INFO  [ForkJoinPool.commonPool-worker-15] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.11%
+2026-09-14 14:21:41.569 INFO  [ForkJoinPool.commonPool-worker-21] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.48%
+2026-09-14 14:21:41.572 INFO  [ForkJoinPool.commonPool-worker-20] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.19%
+2026-09-14 14:21:41.572 INFO  [ForkJoinPool.commonPool-worker-22] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.86%
+2026-09-14 14:21:41.574 INFO  [ForkJoinPool.commonPool-worker-17] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.41%
+2026-09-14 14:21:41.576 INFO  [ForkJoinPool.commonPool-worker-19] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.23%
+2026-09-14 14:21:41.576 INFO  [ForkJoinPool.commonPool-worker-18] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.33%
+2026-09-14 14:21:41.579 INFO  [ForkJoinPool.commonPool-worker-16] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.02%
+2026-09-14 14:21:41.581 INFO  [ForkJoinPool.commonPool-worker-14] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.18%
+2026-09-14 14:21:41.582 INFO  [ForkJoinPool.commonPool-worker-12] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.72%
+2026-09-14 14:21:41.589 INFO  [ForkJoinPool.commonPool-worker-13] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 82.63%
+2026-09-14 14:21:41.590 INFO  [http-nio-8080-exec-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.12%
+2026-09-14 14:21:41.590 INFO  [ForkJoinPool.commonPool-worker-15] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.43%
+2026-09-14 14:21:41.596 INFO  [ForkJoinPool.commonPool-worker-20] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.86%
+2026-09-14 14:21:41.598 INFO  [ForkJoinPool.commonPool-worker-22] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.18%
+2026-09-14 14:21:41.599 INFO  [ForkJoinPool.commonPool-worker-21] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.48%
+2026-09-14 14:21:41.599 INFO  [ForkJoinPool.commonPool-worker-19] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.01%
+2026-09-14 14:21:41.602 INFO  [ForkJoinPool.commonPool-worker-17] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.19%
+2026-09-14 14:21:41.602 INFO  [ForkJoinPool.commonPool-worker-14] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.92%
+2026-09-14 14:21:41.603 INFO  [ForkJoinPool.commonPool-worker-16] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.12%
+2026-09-14 14:21:41.603 INFO  [ForkJoinPool.commonPool-worker-15] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.44%
+2026-09-14 14:21:41.606 INFO  [ForkJoinPool.commonPool-worker-18] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.38%
+2026-09-14 14:21:41.608 INFO  [ForkJoinPool.commonPool-worker-12] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.11%
+2026-09-14 14:21:41.610 INFO  [ForkJoinPool.commonPool-worker-13] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.59%
+2026-09-14 14:21:41.617 INFO  [http-nio-8080-exec-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.85%
+2026-09-14 14:21:41.620 INFO  [ForkJoinPool.commonPool-worker-22] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.92%
+2026-09-14 14:21:41.620 INFO  [ForkJoinPool.commonPool-worker-20] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.82%
+2026-09-14 14:21:41.623 INFO  [ForkJoinPool.commonPool-worker-16] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.16%
+2026-09-14 14:21:41.623 INFO  [ForkJoinPool.commonPool-worker-19] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.53%
+2026-09-14 14:21:41.624 INFO  [ForkJoinPool.commonPool-worker-12] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.12%
+2026-09-14 14:21:41.626 INFO  [ForkJoinPool.commonPool-worker-15] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.88%
+2026-09-14 14:21:41.626 INFO  [ForkJoinPool.commonPool-worker-21] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.11%
+2026-09-14 14:21:41.629 INFO  [ForkJoinPool.commonPool-worker-18] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.85%
+2026-09-14 14:21:41.632 INFO  [ForkJoinPool.commonPool-worker-13] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.97%
+2026-09-14 14:21:41.636 INFO  [ForkJoinPool.commonPool-worker-14] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 82.84%
+2026-09-14 14:21:41.640 INFO  [ForkJoinPool.commonPool-worker-17] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.27%
+2026-09-14 14:21:41.641 INFO  [ForkJoinPool.commonPool-worker-21] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.40%
+2026-09-14 14:21:41.643 INFO  [ForkJoinPool.commonPool-worker-20] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.58%
+2026-09-14 14:21:41.644 INFO  [ForkJoinPool.commonPool-worker-18] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.39%
+2026-09-14 14:21:41.645 INFO  [http-nio-8080-exec-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.65%
+2026-09-14 14:21:41.646 INFO  [ForkJoinPool.commonPool-worker-22] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.48%
+2026-09-14 14:21:41.650 INFO  [ForkJoinPool.commonPool-worker-19] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.49%
+2026-09-14 14:21:41.650 INFO  [ForkJoinPool.commonPool-worker-16] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.96%
+2026-09-14 14:21:41.653 INFO  [ForkJoinPool.commonPool-worker-12] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.68%
+2026-09-14 14:21:41.654 INFO  [ForkJoinPool.commonPool-worker-15] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.52%
+2026-09-14 14:21:41.659 INFO  [ForkJoinPool.commonPool-worker-13] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.36%
+2026-09-14 14:21:41.661 INFO  [http-nio-8080-exec-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.67%
+2026-09-14 14:21:41.668 INFO  [ForkJoinPool.commonPool-worker-20] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.46%
+2026-09-14 14:21:41.666 INFO  [ForkJoinPool.commonPool-worker-14] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 82.42%
+2026-09-14 14:21:41.673 INFO  [ForkJoinPool.commonPool-worker-17] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.21%
+2026-09-14 14:21:41.674 INFO  [ForkJoinPool.commonPool-worker-19] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.09%
+2026-09-14 14:21:41.676 INFO  [ForkJoinPool.commonPool-worker-18] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.82%
+2026-09-14 14:21:41.687 INFO  [ForkJoinPool.commonPool-worker-22] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.19%
+2026-09-14 14:21:41.692 INFO  [ForkJoinPool.commonPool-worker-16] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.22%
+2026-09-14 14:21:41.692 INFO  [ForkJoinPool.commonPool-worker-13] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 82.91%
+2026-09-14 14:21:41.693 INFO  [http-nio-8080-exec-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.26%
+2026-09-14 14:21:41.699 INFO  [ForkJoinPool.commonPool-worker-20] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 82.85%
+2026-09-14 14:21:41.699 INFO  [ForkJoinPool.commonPool-worker-12] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 82.97%
+2026-09-14 14:21:41.701 INFO  [ForkJoinPool.commonPool-worker-15] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.57%
+2026-09-14 14:21:41.705 INFO  [ForkJoinPool.commonPool-worker-19] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 81.36%
+2026-09-14 14:21:41.708 INFO  [ForkJoinPool.commonPool-worker-16] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.52%
+2026-09-14 14:21:41.709 INFO  [http-nio-8080-exec-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.71%
+2026-09-14 14:21:41.712 INFO  [ForkJoinPool.commonPool-worker-14] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 82.99%
+2026-09-14 14:21:41.721 INFO  [ForkJoinPool.commonPool-worker-17] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.08%
+2026-09-14 14:21:41.722 INFO  [ForkJoinPool.commonPool-worker-18] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.39%
+2026-09-14 14:21:41.724 INFO  [ForkJoinPool.commonPool-worker-21] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 82.90%
+2026-09-14 14:21:41.725 INFO  [ForkJoinPool.commonPool-worker-15] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.37%
+2026-09-14 14:21:41.726 INFO  [ForkJoinPool.commonPool-worker-13] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.33%
+2026-09-14 14:21:41.726 INFO  [ForkJoinPool.commonPool-worker-20] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.80%
+2026-09-14 14:21:41.728 INFO  [ForkJoinPool.commonPool-worker-22] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.69%
+2026-09-14 14:21:41.730 INFO  [ForkJoinPool.commonPool-worker-12] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.66%
+2026-09-14 14:21:41.732 INFO  [ForkJoinPool.commonPool-worker-16] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.67%
+2026-09-14 14:21:41.735 INFO  [ForkJoinPool.commonPool-worker-19] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.05%
+2026-09-14 14:21:41.739 INFO  [http-nio-8080-exec-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.41%
+2026-09-14 14:21:41.740 INFO  [ForkJoinPool.commonPool-worker-14] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.29%
+2026-09-14 14:21:41.746 INFO  [ForkJoinPool.commonPool-worker-21] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.20%
+2026-09-14 14:21:41.748 INFO  [ForkJoinPool.commonPool-worker-22] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.44%
+2026-09-14 14:21:41.748 INFO  [ForkJoinPool.commonPool-worker-18] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.26%
+2026-09-14 14:21:41.741 INFO  [ForkJoinPool.commonPool-worker-17] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.17%
+2026-09-14 14:21:41.755 INFO  [ForkJoinPool.commonPool-worker-20] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.72%
+2026-09-14 14:21:41.752 INFO  [ForkJoinPool.commonPool-worker-13] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.81%
+2026-09-14 14:21:41.752 INFO  [ForkJoinPool.commonPool-worker-15] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.14%
+2026-09-14 14:21:41.757 INFO  [ForkJoinPool.commonPool-worker-12] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.53%
+2026-09-14 14:21:41.762 INFO  [ForkJoinPool.commonPool-worker-16] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.81%
+2026-09-14 14:21:41.765 INFO  [http-nio-8080-exec-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.17%
+2026-09-14 14:21:41.766 INFO  [ForkJoinPool.commonPool-worker-22] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.96%
+2026-09-14 14:21:41.768 INFO  [ForkJoinPool.commonPool-worker-14] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.98%
+2026-09-14 14:21:41.768 INFO  [ForkJoinPool.commonPool-worker-12] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.31%
+2026-09-14 14:21:41.771 INFO  [ForkJoinPool.commonPool-worker-21] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.13%
+2026-09-14 14:21:41.771 INFO  [ForkJoinPool.commonPool-worker-18] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.20%
+2026-09-14 14:21:41.771 INFO  [ForkJoinPool.commonPool-worker-22] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.48%
+2026-09-14 14:21:41.776 INFO  [ForkJoinPool.commonPool-worker-15] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.53%
+2026-09-14 14:21:41.779 INFO  [ForkJoinPool.commonPool-worker-17] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.29%
+2026-09-14 14:21:41.780 INFO  [ForkJoinPool.commonPool-worker-19] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.35%
+2026-09-14 14:21:41.788 INFO  [ForkJoinPool.commonPool-worker-14] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 82.98%
+2026-09-14 14:21:41.789 INFO  [ForkJoinPool.commonPool-worker-20] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.72%
+2026-09-14 14:21:41.792 INFO  [ForkJoinPool.commonPool-worker-22] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.63%
+2026-09-14 14:21:41.792 INFO  [ForkJoinPool.commonPool-worker-13] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.80%
+2026-09-14 14:21:41.792 INFO  [ForkJoinPool.commonPool-worker-16] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.34%
+2026-09-14 14:21:41.794 INFO  [ForkJoinPool.commonPool-worker-18] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.29%
+2026-09-14 14:21:41.796 INFO  [ForkJoinPool.commonPool-worker-12] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 82.54%
+2026-09-14 14:21:41.800 INFO  [ForkJoinPool.commonPool-worker-21] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.60%
+2026-09-14 14:21:41.800 INFO  [ForkJoinPool.commonPool-worker-15] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.91%
+2026-09-14 14:21:41.805 INFO  [ForkJoinPool.commonPool-worker-17] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.99%
+2026-09-14 14:21:41.806 INFO  [http-nio-8080-exec-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.91%
+2026-09-14 14:21:41.809 INFO  [ForkJoinPool.commonPool-worker-14] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.92%
+2026-09-14 14:21:41.812 INFO  [ForkJoinPool.commonPool-worker-13] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.06%
+2026-09-14 14:21:41.819 INFO  [ForkJoinPool.commonPool-worker-22] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 81.86%
+2026-09-14 14:21:41.821 INFO  [ForkJoinPool.commonPool-worker-20] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.60%
+2026-09-14 14:21:41.822 INFO  [ForkJoinPool.commonPool-worker-19] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 82.34%
+2026-09-14 14:21:41.822 INFO  [ForkJoinPool.commonPool-worker-12] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.84%
+2026-09-14 14:21:41.823 INFO  [ForkJoinPool.commonPool-worker-18] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.20%
+2026-09-14 14:21:41.826 INFO  [ForkJoinPool.commonPool-worker-21] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.03%
+2026-09-14 14:21:41.828 INFO  [ForkJoinPool.commonPool-worker-16] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.95%
+2026-09-14 14:21:41.829 INFO  [ForkJoinPool.commonPool-worker-17] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.80%
+2026-09-14 14:21:41.830 INFO  [ForkJoinPool.commonPool-worker-14] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.37%
+2026-09-14 14:21:41.834 INFO  [ForkJoinPool.commonPool-worker-18] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.22%
+2026-09-14 14:21:41.837 INFO  [http-nio-8080-exec-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.57%
+2026-09-14 14:21:41.840 INFO  [ForkJoinPool.commonPool-worker-13] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.80%
+2026-09-14 14:21:41.840 INFO  [ForkJoinPool.commonPool-worker-15] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.54%
+2026-09-14 14:21:41.841 INFO  [ForkJoinPool.commonPool-worker-22] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.15%
+2026-09-14 14:21:41.844 INFO  [ForkJoinPool.commonPool-worker-19] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 82.79%
+2026-09-14 14:21:41.844 INFO  [ForkJoinPool.commonPool-worker-12] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.44%
+2026-09-14 14:21:41.849 INFO  [ForkJoinPool.commonPool-worker-20] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.03%
+2026-09-14 14:21:41.849 INFO  [ForkJoinPool.commonPool-worker-21] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.34%
+2026-09-14 14:21:41.857 INFO  [ForkJoinPool.commonPool-worker-18] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.21%
+2026-09-14 14:21:41.858 INFO  [ForkJoinPool.commonPool-worker-17] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.27%
+2026-09-14 14:21:41.863 INFO  [ForkJoinPool.commonPool-worker-14] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.21%
+2026-09-14 14:21:41.863 INFO  [ForkJoinPool.commonPool-worker-13] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.60%
+2026-09-14 14:21:41.863 INFO  [http-nio-8080-exec-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.78%
+2026-09-14 14:21:41.865 INFO  [ForkJoinPool.commonPool-worker-19] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.38%
+2026-09-14 14:21:41.865 INFO  [ForkJoinPool.commonPool-worker-16] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.53%
+2026-09-14 14:21:41.867 INFO  [ForkJoinPool.commonPool-worker-22] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.92%
+2026-09-14 14:21:41.870 INFO  [ForkJoinPool.commonPool-worker-20] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.87%
+2026-09-14 14:21:41.870 INFO  [ForkJoinPool.commonPool-worker-15] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.66%
+2026-09-14 14:21:41.873 INFO  [ForkJoinPool.commonPool-worker-12] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.13%
+2026-09-14 14:21:41.878 INFO  [ForkJoinPool.commonPool-worker-21] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.56%
+2026-09-14 14:21:41.881 INFO  [ForkJoinPool.commonPool-worker-17] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.98%
+2026-09-14 14:21:41.882 INFO  [ForkJoinPool.commonPool-worker-14] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.19%
+2026-09-14 14:21:41.882 INFO  [ForkJoinPool.commonPool-worker-13] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.92%
+2026-09-14 14:21:41.884 INFO  [ForkJoinPool.commonPool-worker-12] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.68%
+2026-09-14 14:21:41.891 INFO  [ForkJoinPool.commonPool-worker-19] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.81%
+2026-09-14 14:21:41.891 INFO  [http-nio-8080-exec-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.71%
+2026-09-14 14:21:41.895 INFO  [ForkJoinPool.commonPool-worker-20] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.96%
+2026-09-14 14:21:41.897 INFO  [ForkJoinPool.commonPool-worker-15] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.58%
+2026-09-14 14:21:41.898 INFO  [ForkJoinPool.commonPool-worker-18] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.17%
+2026-09-14 14:21:41.904 INFO  [ForkJoinPool.commonPool-worker-22] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.42%
+2026-09-14 14:21:41.911 INFO  [ForkJoinPool.commonPool-worker-14] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 82.03%
+2026-09-14 14:21:41.911 INFO  [ForkJoinPool.commonPool-worker-12] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.65%
+2026-09-14 14:21:41.913 INFO  [ForkJoinPool.commonPool-worker-17] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.90%
+2026-09-14 14:21:41.917 INFO  [ForkJoinPool.commonPool-worker-21] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.40%
+2026-09-14 14:21:41.922 INFO  [ForkJoinPool.commonPool-worker-16] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.80%
+2026-09-14 14:21:41.922 INFO  [ForkJoinPool.commonPool-worker-19] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.66%
+2026-09-14 14:21:41.924 INFO  [ForkJoinPool.commonPool-worker-15] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.63%
+2026-09-14 14:21:41.926 INFO  [ForkJoinPool.commonPool-worker-13] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 82.47%
+2026-09-14 14:21:41.926 INFO  [ForkJoinPool.commonPool-worker-20] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.64%
+2026-09-14 14:21:41.930 INFO  [ForkJoinPool.commonPool-worker-18] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.54%
+2026-09-14 14:21:41.930 INFO  [ForkJoinPool.commonPool-worker-22] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 82.29%
+2026-09-14 14:21:41.934 INFO  [ForkJoinPool.commonPool-worker-12] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.33%
+2026-09-14 14:21:41.940 INFO  [ForkJoinPool.commonPool-worker-14] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.19%
+2026-09-14 14:21:41.941 INFO  [ForkJoinPool.commonPool-worker-17] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.66%
+2026-09-14 14:21:41.941 INFO  [ForkJoinPool.commonPool-worker-21] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.66%
+2026-09-14 14:21:41.941 INFO  [http-nio-8080-exec-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.71%
+2026-09-14 14:21:41.950 INFO  [ForkJoinPool.commonPool-worker-13] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.06%
+2026-09-14 14:21:41.951 INFO  [ForkJoinPool.commonPool-worker-16] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.26%
+2026-09-14 14:21:41.954 INFO  [ForkJoinPool.commonPool-worker-22] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.31%
+2026-09-14 14:21:41.957 INFO  [ForkJoinPool.commonPool-worker-20] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.70%
+2026-09-14 14:21:41.960 INFO  [ForkJoinPool.commonPool-worker-17] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.69%
+2026-09-14 14:21:41.963 INFO  [ForkJoinPool.commonPool-worker-15] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.51%
+2026-09-14 14:21:41.964 INFO  [ForkJoinPool.commonPool-worker-19] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.19%
+2026-09-14 14:21:41.966 INFO  [ForkJoinPool.commonPool-worker-18] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.43%
+2026-09-14 14:21:41.971 INFO  [ForkJoinPool.commonPool-worker-13] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.68%
+2026-09-14 14:21:41.976 INFO  [ForkJoinPool.commonPool-worker-21] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 82.88%
+2026-09-14 14:21:41.976 INFO  [ForkJoinPool.commonPool-worker-12] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.94%
+2026-09-14 14:21:41.979 INFO  [ForkJoinPool.commonPool-worker-14] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.17%
+2026-09-14 14:21:41.979 INFO  [http-nio-8080-exec-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.45%
+2026-09-14 14:21:41.987 INFO  [ForkJoinPool.commonPool-worker-16] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.42%
+2026-09-14 14:21:41.990 INFO  [ForkJoinPool.commonPool-worker-22] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.28%
+2026-09-14 14:21:41.992 INFO  [ForkJoinPool.commonPool-worker-20] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.33%
+2026-09-14 14:21:41.994 INFO  [ForkJoinPool.commonPool-worker-19] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.70%
+2026-09-14 14:21:42.004 INFO  [ForkJoinPool.commonPool-worker-17] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.94%
+2026-09-14 14:21:42.005 INFO  [ForkJoinPool.commonPool-worker-12] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.45%
+2026-09-14 14:21:42.008 INFO  [ForkJoinPool.commonPool-worker-18] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.36%
+2026-09-14 14:21:42.014 INFO  [ForkJoinPool.commonPool-worker-13] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.29%
+2026-09-14 14:21:42.019 INFO  [http-nio-8080-exec-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.69%
+2026-09-14 14:21:42.020 INFO  [ForkJoinPool.commonPool-worker-14] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.30%
+2026-09-14 14:21:42.022 INFO  [ForkJoinPool.commonPool-worker-19] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.04%
+2026-09-14 14:21:42.023 INFO  [ForkJoinPool.commonPool-worker-15] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 82.41%
+2026-09-14 14:21:42.023 INFO  [ForkJoinPool.commonPool-worker-16] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.45%
+2026-09-14 14:21:42.025 INFO  [ForkJoinPool.commonPool-worker-22] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.74%
+2026-09-14 14:21:42.026 INFO  [ForkJoinPool.commonPool-worker-21] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.42%
+2026-09-14 14:21:42.029 INFO  [ForkJoinPool.commonPool-worker-20] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.59%
+2026-09-14 14:21:42.034 INFO  [ForkJoinPool.commonPool-worker-17] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.10%
+2026-09-14 14:21:42.035 INFO  [ForkJoinPool.commonPool-worker-18] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.04%
+2026-09-14 14:21:42.038 INFO  [ForkJoinPool.commonPool-worker-13] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.11%
+2026-09-14 14:21:42.040 INFO  [ForkJoinPool.commonPool-worker-14] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.25%
+2026-09-14 14:21:42.044 INFO  [ForkJoinPool.commonPool-worker-12] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.24%
+2026-09-14 14:21:42.043 INFO  [http-nio-8080-exec-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.08%
+2026-09-14 14:21:42.050 INFO  [ForkJoinPool.commonPool-worker-16] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.61%
+2026-09-14 14:21:42.050 INFO  [ForkJoinPool.commonPool-worker-15] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.30%
+2026-09-14 14:21:42.052 INFO  [ForkJoinPool.commonPool-worker-19] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 82.89%
+2026-09-14 14:21:42.052 INFO  [ForkJoinPool.commonPool-worker-22] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 82.47%
+2026-09-14 14:21:42.053 INFO  [ForkJoinPool.commonPool-worker-20] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.82%
+2026-09-14 14:21:42.054 INFO  [ForkJoinPool.commonPool-worker-17] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.09%
+2026-09-14 14:21:42.057 INFO  [ForkJoinPool.commonPool-worker-21] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.02%
+2026-09-14 14:21:42.061 INFO  [ForkJoinPool.commonPool-worker-13] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.04%
+2026-09-14 14:21:42.062 INFO  [ForkJoinPool.commonPool-worker-18] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.10%
+2026-09-14 14:21:42.064 INFO  [ForkJoinPool.commonPool-worker-14] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.00%
+2026-09-14 14:21:42.073 INFO  [ForkJoinPool.commonPool-worker-15] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.78%
+2026-09-14 14:21:42.074 INFO  [ForkJoinPool.commonPool-worker-20] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.67%
+2026-09-14 14:21:42.072 INFO  [ForkJoinPool.commonPool-worker-12] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.25%
+2026-09-14 14:21:42.078 INFO  [ForkJoinPool.commonPool-worker-19] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.02%
+2026-09-14 14:21:42.079 INFO  [ForkJoinPool.commonPool-worker-17] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.70%
+2026-09-14 14:21:42.078 INFO  [ForkJoinPool.commonPool-worker-22] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.19%
+2026-09-14 14:21:42.080 INFO  [ForkJoinPool.commonPool-worker-16] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.74%
+2026-09-14 14:21:42.081 INFO  [ForkJoinPool.commonPool-worker-13] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.85%
+2026-09-14 14:21:42.082 INFO  [http-nio-8080-exec-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.63%
+2026-09-14 14:21:42.082 INFO  [ForkJoinPool.commonPool-worker-18] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.47%
+2026-09-14 14:21:42.082 INFO  [ForkJoinPool.commonPool-worker-21] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.99%
+2026-09-14 14:21:42.091 INFO  [ForkJoinPool.commonPool-worker-14] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.42%
+2026-09-14 14:21:42.096 INFO  [ForkJoinPool.commonPool-worker-12] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.50%
+2026-09-14 14:21:42.099 INFO  [ForkJoinPool.commonPool-worker-20] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.16%
+2026-09-14 14:21:42.104 INFO  [ForkJoinPool.commonPool-worker-19] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.94%
+2026-09-14 14:21:42.106 INFO  [ForkJoinPool.commonPool-worker-18] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.67%
+2026-09-14 14:21:42.106 INFO  [ForkJoinPool.commonPool-worker-22] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.44%
+2026-09-14 14:21:42.105 INFO  [ForkJoinPool.commonPool-worker-15] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.33%
+2026-09-14 14:21:42.107 INFO  [ForkJoinPool.commonPool-worker-21] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.10%
+2026-09-14 14:21:42.112 INFO  [ForkJoinPool.commonPool-worker-16] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.65%
+2026-09-14 14:21:42.112 INFO  [ForkJoinPool.commonPool-worker-13] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.02%
+2026-09-14 14:21:42.114 INFO  [ForkJoinPool.commonPool-worker-14] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 82.23%
+2026-09-14 14:21:42.116 INFO  [ForkJoinPool.commonPool-worker-17] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.39%
+2026-09-14 14:21:42.118 INFO  [http-nio-8080-exec-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.39%
+2026-09-14 14:21:42.124 INFO  [ForkJoinPool.commonPool-worker-20] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 82.66%
+2026-09-14 14:21:42.126 INFO  [ForkJoinPool.commonPool-worker-12] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.16%
+2026-09-14 14:21:42.129 INFO  [ForkJoinPool.commonPool-worker-18] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.83%
+2026-09-14 14:21:42.130 INFO  [ForkJoinPool.commonPool-worker-19] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.95%
+2026-09-14 14:21:42.130 INFO  [ForkJoinPool.commonPool-worker-21] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.67%
+2026-09-14 14:21:42.131 INFO  [ForkJoinPool.commonPool-worker-13] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.87%
+2026-09-14 14:21:42.133 INFO  [ForkJoinPool.commonPool-worker-16] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.92%
+2026-09-14 14:21:42.140 INFO  [ForkJoinPool.commonPool-worker-22] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.40%
+2026-09-14 14:21:42.140 INFO  [ForkJoinPool.commonPool-worker-15] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.48%
+2026-09-14 14:21:42.145 INFO  [ForkJoinPool.commonPool-worker-14] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.21%
+2026-09-14 14:21:42.146 INFO  [ForkJoinPool.commonPool-worker-20] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.66%
+2026-09-14 14:21:42.148 INFO  [ForkJoinPool.commonPool-worker-18] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.67%
+2026-09-14 14:21:42.152 INFO  [ForkJoinPool.commonPool-worker-19] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.54%
+2026-09-14 14:21:42.154 INFO  [ForkJoinPool.commonPool-worker-17] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.39%
+2026-09-14 14:21:42.154 INFO  [ForkJoinPool.commonPool-worker-13] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.62%
+2026-09-14 14:21:42.154 INFO  [ForkJoinPool.commonPool-worker-12] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.23%
+2026-09-14 14:21:42.155 INFO  [http-nio-8080-exec-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 82.21%
+2026-09-14 14:21:42.166 INFO  [ForkJoinPool.commonPool-worker-14] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.18%
+2026-09-14 14:21:42.167 INFO  [ForkJoinPool.commonPool-worker-18] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.59%
+2026-09-14 14:21:42.167 INFO  [ForkJoinPool.commonPool-worker-20] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.10%
+2026-09-14 14:21:42.171 INFO  [ForkJoinPool.commonPool-worker-15] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.37%
+2026-09-14 14:21:42.171 INFO  [ForkJoinPool.commonPool-worker-16] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.97%
+2026-09-14 14:21:42.172 INFO  [ForkJoinPool.commonPool-worker-21] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.67%
+2026-09-14 14:21:42.176 INFO  [ForkJoinPool.commonPool-worker-13] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.04%
+2026-09-14 14:21:42.179 INFO  [ForkJoinPool.commonPool-worker-17] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.58%
+2026-09-14 14:21:42.182 INFO  [ForkJoinPool.commonPool-worker-12] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.97%
+2026-09-14 14:21:42.185 INFO  [ForkJoinPool.commonPool-worker-18] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.06%
+2026-09-14 14:21:42.185 INFO  [ForkJoinPool.commonPool-worker-19] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.76%
+2026-09-14 14:21:42.186 INFO  [ForkJoinPool.commonPool-worker-22] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.20%
+2026-09-14 14:21:42.187 INFO  [ForkJoinPool.commonPool-worker-14] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.49%
+2026-09-14 14:21:42.188 INFO  [ForkJoinPool.commonPool-worker-20] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.29%
+2026-09-14 14:21:42.196 INFO  [ForkJoinPool.commonPool-worker-21] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.43%
+2026-09-14 14:21:42.195 INFO  [http-nio-8080-exec-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.33%
+2026-09-14 14:21:42.197 INFO  [ForkJoinPool.commonPool-worker-16] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.92%
+2026-09-14 14:21:42.202 INFO  [ForkJoinPool.commonPool-worker-12] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.00%
+2026-09-14 14:21:42.203 INFO  [ForkJoinPool.commonPool-worker-15] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.82%
+2026-09-14 14:21:42.203 INFO  [ForkJoinPool.commonPool-worker-19] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.28%
+2026-09-14 14:21:42.204 INFO  [ForkJoinPool.commonPool-worker-13] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 82.57%
+2026-09-14 14:21:42.205 INFO  [ForkJoinPool.commonPool-worker-14] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.18%
+2026-09-14 14:21:42.207 INFO  [ForkJoinPool.commonPool-worker-22] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.80%
+2026-09-14 14:21:42.208 INFO  [ForkJoinPool.commonPool-worker-18] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 82.01%
+2026-09-14 14:21:42.210 INFO  [ForkJoinPool.commonPool-worker-20] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 82.52%
+2026-09-14 14:21:42.214 INFO  [ForkJoinPool.commonPool-worker-17] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.09%
+2026-09-14 14:21:42.216 INFO  [ForkJoinPool.commonPool-worker-21] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.65%
+2026-09-14 14:21:42.217 INFO  [ForkJoinPool.commonPool-worker-14] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.69%
+2026-09-14 14:21:42.218 INFO  [http-nio-8080-exec-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.06%
+2026-09-14 14:21:42.221 INFO  [ForkJoinPool.commonPool-worker-18] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.02%
+2026-09-14 14:21:42.222 INFO  [ForkJoinPool.commonPool-worker-13] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.49%
+2026-09-14 14:21:42.224 INFO  [ForkJoinPool.commonPool-worker-12] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.33%
+2026-09-14 14:21:42.226 INFO  [ForkJoinPool.commonPool-worker-15] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.41%
+2026-09-14 14:21:42.228 INFO  [ForkJoinPool.commonPool-worker-22] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.81%
+2026-09-14 14:21:42.230 INFO  [ForkJoinPool.commonPool-worker-20] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.55%
+2026-09-14 14:21:42.236 INFO  [ForkJoinPool.commonPool-worker-16] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.48%
+2026-09-14 14:21:42.237 INFO  [ForkJoinPool.commonPool-worker-19] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.44%
+2026-09-14 14:21:42.239 INFO  [ForkJoinPool.commonPool-worker-14] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 82.59%
+2026-09-14 14:21:42.241 INFO  [ForkJoinPool.commonPool-worker-12] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.30%
+2026-09-14 14:21:42.241 INFO  [http-nio-8080-exec-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.35%
+2026-09-14 14:21:42.243 INFO  [ForkJoinPool.commonPool-worker-17] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.65%
+2026-09-14 14:21:42.243 INFO  [ForkJoinPool.commonPool-worker-18] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.30%
+2026-09-14 14:21:42.245 INFO  [ForkJoinPool.commonPool-worker-13] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.57%
+2026-09-14 14:21:42.247 INFO  [ForkJoinPool.commonPool-worker-21] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.65%
+2026-09-14 14:21:42.249 INFO  [ForkJoinPool.commonPool-worker-22] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.58%
+2026-09-14 14:21:42.249 INFO  [ForkJoinPool.commonPool-worker-20] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.75%
+2026-09-14 14:21:42.249 INFO  [ForkJoinPool.commonPool-worker-15] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.79%
+2026-09-14 14:21:42.260 INFO  [ForkJoinPool.commonPool-worker-18] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.28%
+2026-09-14 14:21:42.260 INFO  [ForkJoinPool.commonPool-worker-14] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.89%
+2026-09-14 14:21:42.261 INFO  [ForkJoinPool.commonPool-worker-19] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.89%
+2026-09-14 14:21:42.261 INFO  [http-nio-8080-exec-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.51%
+2026-09-14 14:21:42.261 INFO  [ForkJoinPool.commonPool-worker-16] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.96%
+2026-09-14 14:21:42.262 INFO  [ForkJoinPool.commonPool-worker-12] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.23%
+2026-09-14 14:21:42.262 INFO  [ForkJoinPool.commonPool-worker-17] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.98%
+2026-09-14 14:21:42.262 INFO  [ForkJoinPool.commonPool-worker-13] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.82%
+2026-09-14 14:21:42.274 INFO  [ForkJoinPool.commonPool-worker-20] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.94%
+2026-09-14 14:21:42.275 INFO  [ForkJoinPool.commonPool-worker-22] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.56%
+2026-09-14 14:21:42.277 INFO  [ForkJoinPool.commonPool-worker-21] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.45%
+2026-09-14 14:21:42.280 INFO  [ForkJoinPool.commonPool-worker-15] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.97%
+2026-09-14 14:21:42.285 INFO  [http-nio-8080-exec-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.04%
+2026-09-14 14:21:42.286 INFO  [ForkJoinPool.commonPool-worker-14] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.36%
+2026-09-14 14:21:42.287 INFO  [ForkJoinPool.commonPool-worker-16] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.20%
+2026-09-14 14:21:42.290 INFO  [ForkJoinPool.commonPool-worker-20] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.75%
+2026-09-14 14:21:42.291 INFO  [ForkJoinPool.commonPool-worker-13] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.86%
+2026-09-14 14:21:42.292 INFO  [ForkJoinPool.commonPool-worker-12] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.14%
+2026-09-14 14:21:42.296 INFO  [ForkJoinPool.commonPool-worker-17] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.39%
+2026-09-14 14:21:42.297 INFO  [ForkJoinPool.commonPool-worker-19] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.18%
+2026-09-14 14:21:42.297 INFO  [ForkJoinPool.commonPool-worker-21] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.81%
+2026-09-14 14:21:42.299 INFO  [ForkJoinPool.commonPool-worker-18] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.85%
+2026-09-14 14:21:42.302 INFO  [ForkJoinPool.commonPool-worker-22] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.67%
+2026-09-14 14:21:42.304 INFO  [ForkJoinPool.commonPool-worker-20] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.70%
+2026-09-14 14:21:42.306 INFO  [ForkJoinPool.commonPool-worker-16] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.92%
+2026-09-14 14:21:42.306 INFO  [ForkJoinPool.commonPool-worker-14] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.22%
+2026-09-14 14:21:42.309 INFO  [http-nio-8080-exec-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 82.55%
+2026-09-14 14:21:42.310 INFO  [ForkJoinPool.commonPool-worker-15] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 82.04%
+2026-09-14 14:21:42.317 INFO  [ForkJoinPool.commonPool-worker-13] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.66%
+2026-09-14 14:21:42.320 INFO  [ForkJoinPool.commonPool-worker-21] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.73%
+2026-09-14 14:21:42.322 INFO  [ForkJoinPool.commonPool-worker-17] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.20%
+2026-09-14 14:21:42.326 INFO  [ForkJoinPool.commonPool-worker-20] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.88%
+2026-09-14 14:21:42.327 INFO  [ForkJoinPool.commonPool-worker-22] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.43%
+2026-09-14 14:21:42.328 INFO  [ForkJoinPool.commonPool-worker-19] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.05%
+2026-09-14 14:21:42.328 INFO  [ForkJoinPool.commonPool-worker-18] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.19%
+2026-09-14 14:21:42.329 INFO  [ForkJoinPool.commonPool-worker-15] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.08%
+2026-09-14 14:21:42.329 INFO  [ForkJoinPool.commonPool-worker-16] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.03%
+2026-09-14 14:21:42.330 INFO  [ForkJoinPool.commonPool-worker-14] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.96%
+2026-09-14 14:21:42.335 INFO  [http-nio-8080-exec-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.34%
+2026-09-14 14:21:42.339 INFO  [ForkJoinPool.commonPool-worker-12] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.88%
+2026-09-14 14:21:42.342 INFO  [ForkJoinPool.commonPool-worker-21] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.91%
+2026-09-14 14:21:42.343 INFO  [ForkJoinPool.commonPool-worker-18] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.34%
+2026-09-14 14:21:42.346 INFO  [ForkJoinPool.commonPool-worker-13] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.93%
+2026-09-14 14:21:42.349 INFO  [ForkJoinPool.commonPool-worker-22] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.57%
+2026-09-14 14:21:42.349 INFO  [ForkJoinPool.commonPool-worker-16] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.16%
+2026-09-14 14:21:42.350 INFO  [ForkJoinPool.commonPool-worker-14] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.17%
+2026-09-14 14:21:42.351 INFO  [ForkJoinPool.commonPool-worker-15] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.46%
+2026-09-14 14:21:42.353 INFO  [ForkJoinPool.commonPool-worker-20] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.81%
+2026-09-14 14:21:42.355 INFO  [ForkJoinPool.commonPool-worker-19] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.07%
+2026-09-14 14:21:42.358 INFO  [http-nio-8080-exec-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.64%
+2026-09-14 14:21:42.360 INFO  [ForkJoinPool.commonPool-worker-17] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.86%
+2026-09-14 14:21:42.361 INFO  [ForkJoinPool.commonPool-worker-21] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.50%
+2026-09-14 14:21:42.370 INFO  [ForkJoinPool.commonPool-worker-21] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 86.59%
+2026-09-14 14:21:42.370 INFO  [ForkJoinPool.commonPool-worker-16] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.92%
+2026-09-14 14:21:42.370 INFO  [ForkJoinPool.commonPool-worker-14] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.55%
+2026-09-14 14:21:42.370 INFO  [ForkJoinPool.commonPool-worker-18] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 82.88%
+2026-09-14 14:21:42.372 INFO  [ForkJoinPool.commonPool-worker-15] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.15%
+2026-09-14 14:21:42.373 INFO  [ForkJoinPool.commonPool-worker-20] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.11%
+2026-09-14 14:21:42.374 INFO  [ForkJoinPool.commonPool-worker-22] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 82.77%
+2026-09-14 14:21:42.377 INFO  [ForkJoinPool.commonPool-worker-12] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.12%
+2026-09-14 14:21:42.379 INFO  [ForkJoinPool.commonPool-worker-19] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.48%
+2026-09-14 14:21:42.380 INFO  [ForkJoinPool.commonPool-worker-13] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 82.93%
+2026-09-14 14:21:42.380 INFO  [ForkJoinPool.commonPool-worker-21] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.63%
+2026-09-14 14:21:42.383 INFO  [http-nio-8080-exec-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.37%
+2026-09-14 14:21:42.384 INFO  [ForkJoinPool.commonPool-worker-15] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.49%
+2026-09-14 14:21:42.391 INFO  [ForkJoinPool.commonPool-worker-14] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.25%
+2026-09-14 14:21:42.391 INFO  [ForkJoinPool.commonPool-worker-17] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.27%
+2026-09-14 14:21:42.393 INFO  [ForkJoinPool.commonPool-worker-20] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.00%
+2026-09-14 14:21:42.394 INFO  [ForkJoinPool.commonPool-worker-16] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.35%
+2026-09-14 14:21:42.394 INFO  [ForkJoinPool.commonPool-worker-22] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.06%
+2026-09-14 14:21:42.396 INFO  [ForkJoinPool.commonPool-worker-12] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.19%
+2026-09-14 14:21:42.403 INFO  [ForkJoinPool.commonPool-worker-18] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.33%
+2026-09-14 14:21:42.404 INFO  [ForkJoinPool.commonPool-worker-15] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.39%
+2026-09-14 14:21:42.404 INFO  [ForkJoinPool.commonPool-worker-21] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.02%
+2026-09-14 14:21:42.405 INFO  [http-nio-8080-exec-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.03%
+2026-09-14 14:21:42.406 INFO  [ForkJoinPool.commonPool-worker-13] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.80%
+2026-09-14 14:21:42.407 INFO  [ForkJoinPool.commonPool-worker-16] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.90%
+2026-09-14 14:21:42.409 INFO  [ForkJoinPool.commonPool-worker-14] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.04%
+2026-09-14 14:21:42.412 INFO  [ForkJoinPool.commonPool-worker-19] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.65%
+2026-09-14 14:21:42.413 INFO  [ForkJoinPool.commonPool-worker-20] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.49%
+2026-09-14 14:21:42.413 INFO  [ForkJoinPool.commonPool-worker-17] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.36%
+2026-09-14 14:21:42.418 INFO  [ForkJoinPool.commonPool-worker-12] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.57%
+2026-09-14 14:21:42.424 INFO  [ForkJoinPool.commonPool-worker-21] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.44%
+2026-09-14 14:21:42.424 INFO  [ForkJoinPool.commonPool-worker-16] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.29%
+2026-09-14 14:21:42.425 INFO  [ForkJoinPool.commonPool-worker-15] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 82.56%
+2026-09-14 14:21:42.426 INFO  [http-nio-8080-exec-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.23%
+2026-09-14 14:21:42.426 INFO  [ForkJoinPool.commonPool-worker-18] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.41%
+2026-09-14 14:21:42.429 INFO  [ForkJoinPool.commonPool-worker-20] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.40%
+2026-09-14 14:21:42.429 INFO  [ForkJoinPool.commonPool-worker-14] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.23%
+2026-09-14 14:21:42.433 INFO  [ForkJoinPool.commonPool-worker-19] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.73%
+2026-09-14 14:21:42.433 INFO  [ForkJoinPool.commonPool-worker-17] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.03%
+2026-09-14 14:21:42.437 INFO  [ForkJoinPool.commonPool-worker-12] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.91%
+2026-09-14 14:21:42.444 INFO  [http-nio-8080-exec-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.62%
+2026-09-14 14:21:42.444 INFO  [ForkJoinPool.commonPool-worker-18] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.61%
+2026-09-14 14:21:42.446 INFO  [ForkJoinPool.commonPool-worker-19] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.53%
+2026-09-14 14:21:42.447 INFO  [ForkJoinPool.commonPool-worker-20] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.38%
+2026-09-14 14:21:42.447 INFO  [ForkJoinPool.commonPool-worker-14] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.17%
+2026-09-14 14:21:42.448 INFO  [ForkJoinPool.commonPool-worker-17] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.46%
+2026-09-14 14:21:42.461 INFO  [ForkJoinPool.commonPool-worker-19] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.51%
+2026-09-14 14:21:42.463 INFO  [ForkJoinPool.commonPool-worker-18] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.13%
+2026-09-14 14:21:42.464 INFO  [ForkJoinPool.commonPool-worker-14] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.03%
+2026-09-14 14:21:42.464 INFO  [ForkJoinPool.commonPool-worker-20] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 85.33%
+2026-09-14 14:21:42.466 INFO  [ForkJoinPool.commonPool-worker-17] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 82.83%
+2026-09-14 14:21:42.466 INFO  [http-nio-8080-exec-7] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.33%
+2026-09-14 14:21:42.477 INFO  [ForkJoinPool.commonPool-worker-19] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.96%
+2026-09-14 14:21:42.480 INFO  [ForkJoinPool.commonPool-worker-14] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.30%
+2026-09-14 14:21:42.481 INFO  [ForkJoinPool.commonPool-worker-18] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.61%
+2026-09-14 14:21:42.494 INFO  [ForkJoinPool.commonPool-worker-14] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.68%
+2026-09-14 14:21:42.495 INFO  [ForkJoinPool.commonPool-worker-19] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.90%
+2026-09-14 14:21:42.499 INFO  [ForkJoinPool.commonPool-worker-18] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 83.64%
+2026-09-14 14:21:42.511 INFO  [ForkJoinPool.commonPool-worker-14] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.49%
+2026-09-14 14:21:42.514 INFO  [ForkJoinPool.commonPool-worker-19] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 82.93%
+2026-09-14 14:21:42.516 INFO  [ForkJoinPool.commonPool-worker-18] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 84.65%
+2026-09-14 14:21:42.531 INFO  [ForkJoinPool.commonPool-worker-18] RandomForest.lambda$fit$2:421 - Decision tree OOB accuracy: 82.62%
+2026-09-14 14:21:42.531 INFO  [http-nio-8080-exec-7] LottoMlPredictor.predictProbabilities:70 - Smile RandomForest 모델 학습 완료
+2026-09-14 14:38:22.054 INFO  [SpringApplicationShutdownHook] GracefulShutdown.shutDownGracefully:54 - Commencing graceful shutdown. Waiting for active requests to complete
+2026-09-14 14:38:24.945 INFO  [main] StartupInfoLogger.logStarting:54 - Starting Application using Java 17.0.19 with PID 6808 (C:\Users\admin\IdeaProjects\jwlee\lotto-crawling\build\classes\java\main started by admin in C:\Users\admin\IdeaProjects\jwlee\lotto-crawling)
+2026-09-14 14:38:24.947 INFO  [main] SpringApplication.logStartupProfileInfo:652 - No active profile set, falling back to 1 default profile: "default"
+2026-09-14 14:38:25.312 INFO  [main] RepositoryConfigurationDelegate.registerRepositoriesIn:145 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-09-14 14:38:25.351 INFO  [main] RepositoryConfigurationDelegate.registerRepositoriesIn:213 - Finished Spring Data repository scanning in 33 ms. Found 1 JPA repository interface.
+2026-09-14 14:38:25.622 INFO  [main] TomcatWebServer.initialize:114 - Tomcat initialized with port 8080 (http)
+2026-09-14 14:38:25.630 INFO  [main] DirectJDKLog.log:168 - Starting service [Tomcat]
+2026-09-14 14:38:25.630 INFO  [main] DirectJDKLog.log:168 - Starting Servlet engine: [Apache Tomcat/11.0.15]
+2026-09-14 14:38:25.668 INFO  [main] WebApplicationContextInitializer.prepareWebApplicationContext:77 - Root WebApplicationContext: initialization completed in 692 ms
+2026-09-14 14:38:25.756 INFO  [main] LogHelper.logPersistenceUnitInformation:102 - HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-09-14 14:38:25.793 INFO  [main] Version.logVersion:41 - HHH000001: Hibernate ORM core version 7.2.0.Final
+2026-09-14 14:38:26.093 INFO  [main] SpringPersistenceUnitInfo.addTransformer:128 - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-09-14 14:38:26.117 INFO  [main] HikariDataSource.getConnection:109 - HikariPool-1 - Starting...
+2026-09-14 14:38:26.205 INFO  [main] HikariPool.checkFailFast:580 - HikariPool-1 - Added connection org.mariadb.jdbc.Connection@5d5ae6aa
+2026-09-14 14:38:26.205 INFO  [main] HikariDataSource.getConnection:122 - HikariPool-1 - Start completed.
+2026-09-14 14:38:26.239 WARN  [main] Dialect.checkVersion:384 - HHH000511: The 10.3.32 version for [org.hibernate.dialect.MariaDBDialect] is no longer supported, hence certain features may not work properly.The minimum supported version is 10.6.0. Check the community dialects project for available legacy versions.
+2026-09-14 14:38:26.266 INFO  [main] JdbcEnvironmentInitiator.logConnectionInfo:179 - HHH10001005: Database info:
+	Database JDBC URL [jdbc:mariadb://19341.synology.me/lotto?user=jwlee&password=***]
+	Database driver: MariaDB Connector/J
+	Database dialect: MariaDBDialect
+	Database version: 10.3.32
+	Default catalog/schema: lotto/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-09-14 14:38:26.856 INFO  [main] JtaPlatformInitiator.initiateService:53 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-09-14 14:38:26.863 INFO  [main] AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory:444 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-09-14 14:38:26.921 INFO  [main] QueryEnhancerFactories.<clinit>:48 - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-09-14 14:38:27.622 INFO  [main] LottoPatternModelService.load:60 - 패턴 모델 로드 완료: 기준 1240회, 405건
+2026-09-14 14:38:27.703 INFO  [main] WelcomePageHandlerMapping.<init>:60 - Adding welcome page template: index
+2026-09-14 14:38:27.950 INFO  [main] TomcatWebServer.start:240 - Tomcat started on port 8080 (http) with context path '/'
+2026-09-14 14:38:27.957 INFO  [main] StartupInfoLogger.logStarted:60 - Started Application in 3.378 seconds (process running for 3.912)
+2026-09-14 14:38:33.006 INFO  [http-nio-8080-exec-1] DirectJDKLog.log:168 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-09-14 14:38:33.007 INFO  [http-nio-8080-exec-1] FrameworkServlet.initServletBean:523 - Initializing Servlet 'dispatcherServlet'
+2026-09-14 14:38:33.008 INFO  [http-nio-8080-exec-1] FrameworkServlet.initServletBean:545 - Completed initialization in 1 ms
+2026-09-14 15:46:11.908 INFO  [SpringApplicationShutdownHook] GracefulShutdown.shutDownGracefully:54 - Commencing graceful shutdown. Waiting for active requests to complete
+2026-09-14 15:46:15.675 INFO  [main] StartupInfoLogger.logStarting:54 - Starting Application using Java 17.0.19 with PID 21456 (C:\Users\admin\IdeaProjects\jwlee\lotto-crawling\build\classes\java\main started by admin in C:\Users\admin\IdeaProjects\jwlee\lotto-crawling)
+2026-09-14 15:46:15.685 INFO  [main] SpringApplication.logStartupProfileInfo:652 - No active profile set, falling back to 1 default profile: "default"
+2026-09-14 15:46:16.243 INFO  [main] RepositoryConfigurationDelegate.registerRepositoriesIn:145 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-09-14 15:46:16.278 INFO  [main] RepositoryConfigurationDelegate.registerRepositoriesIn:213 - Finished Spring Data repository scanning in 28 ms. Found 1 JPA repository interface.
+2026-09-14 15:46:16.573 INFO  [main] TomcatWebServer.initialize:114 - Tomcat initialized with port 8080 (http)
+2026-09-14 15:46:16.582 INFO  [main] DirectJDKLog.log:168 - Starting service [Tomcat]
+2026-09-14 15:46:16.582 INFO  [main] DirectJDKLog.log:168 - Starting Servlet engine: [Apache Tomcat/11.0.15]
+2026-09-14 15:46:16.623 INFO  [main] WebApplicationContextInitializer.prepareWebApplicationContext:77 - Root WebApplicationContext: initialization completed in 824 ms
+2026-09-14 15:46:16.712 INFO  [main] LogHelper.logPersistenceUnitInformation:102 - HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-09-14 15:46:16.789 INFO  [main] Version.logVersion:41 - HHH000001: Hibernate ORM core version 7.2.0.Final
+2026-09-14 15:46:17.204 INFO  [main] SpringPersistenceUnitInfo.addTransformer:128 - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-09-14 15:46:17.240 INFO  [main] HikariDataSource.getConnection:109 - HikariPool-1 - Starting...
+2026-09-14 15:46:17.541 INFO  [main] HikariPool.checkFailFast:580 - HikariPool-1 - Added connection org.mariadb.jdbc.Connection@256a5df0
+2026-09-14 15:46:17.543 INFO  [main] HikariDataSource.getConnection:122 - HikariPool-1 - Start completed.
+2026-09-14 15:46:17.614 WARN  [main] Dialect.checkVersion:384 - HHH000511: The 10.3.32 version for [org.hibernate.dialect.MariaDBDialect] is no longer supported, hence certain features may not work properly.The minimum supported version is 10.6.0. Check the community dialects project for available legacy versions.
+2026-09-14 15:46:17.679 INFO  [main] JdbcEnvironmentInitiator.logConnectionInfo:179 - HHH10001005: Database info:
+	Database JDBC URL [jdbc:mariadb://19341.synology.me/lotto?user=jwlee&password=***]
+	Database driver: MariaDB Connector/J
+	Database dialect: MariaDBDialect
+	Database version: 10.3.32
+	Default catalog/schema: lotto/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-09-14 15:46:18.592 INFO  [main] JtaPlatformInitiator.initiateService:53 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-09-14 15:46:18.598 INFO  [main] AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory:444 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-09-14 15:46:18.650 INFO  [main] QueryEnhancerFactories.<clinit>:48 - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-09-14 15:46:19.211 INFO  [main] LottoPatternModelService.load:60 - 패턴 모델 로드 완료: 기준 1240회, 405건
+2026-09-14 15:46:19.281 INFO  [main] WelcomePageHandlerMapping.<init>:60 - Adding welcome page template: index
+2026-09-14 15:46:19.509 INFO  [main] TomcatWebServer.start:240 - Tomcat started on port 8080 (http) with context path '/'
+2026-09-14 15:46:19.515 INFO  [main] StartupInfoLogger.logStarted:60 - Started Application in 4.34 seconds (process running for 5.353)
+2026-09-14 15:46:47.552 INFO  [http-nio-8080-exec-1] DirectJDKLog.log:168 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-09-14 15:46:47.553 INFO  [http-nio-8080-exec-1] FrameworkServlet.initServletBean:523 - Initializing Servlet 'dispatcherServlet'
+2026-09-14 15:46:47.554 INFO  [http-nio-8080-exec-1] FrameworkServlet.initServletBean:545 - Completed initialization in 1 ms
+2026-09-14 15:46:54.408 INFO  [SpringApplicationShutdownHook] GracefulShutdown.shutDownGracefully:54 - Commencing graceful shutdown. Waiting for active requests to complete
+2026-09-14 15:46:54.600 INFO  [tomcat-shutdown] GracefulShutdown.doShutdown:76 - Graceful shutdown complete
+2026-09-14 15:46:54.603 INFO  [SpringApplicationShutdownHook] AbstractEntityManagerFactoryBean.destroy:667 - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-09-14 15:46:54.605 INFO  [SpringApplicationShutdownHook] HikariDataSource.close:349 - HikariPool-1 - Shutdown initiated...
+2026-09-14 15:46:54.629 INFO  [SpringApplicationShutdownHook] HikariDataSource.close:351 - HikariPool-1 - Shutdown completed.
+2026-09-14 15:46:56.675 INFO  [main] StartupInfoLogger.logStarting:54 - Starting Application using Java 17.0.19 with PID 27256 (C:\Users\admin\IdeaProjects\jwlee\lotto-crawling\build\classes\java\main started by admin in C:\Users\admin\IdeaProjects\jwlee\lotto-crawling)
+2026-09-14 15:46:56.677 INFO  [main] SpringApplication.logStartupProfileInfo:652 - No active profile set, falling back to 1 default profile: "default"
+2026-09-14 15:46:57.063 INFO  [main] RepositoryConfigurationDelegate.registerRepositoriesIn:145 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-09-14 15:46:57.099 INFO  [main] RepositoryConfigurationDelegate.registerRepositoriesIn:213 - Finished Spring Data repository scanning in 30 ms. Found 1 JPA repository interface.
+2026-09-14 15:46:57.378 INFO  [main] TomcatWebServer.initialize:114 - Tomcat initialized with port 8080 (http)
+2026-09-14 15:46:57.388 INFO  [main] DirectJDKLog.log:168 - Starting service [Tomcat]
+2026-09-14 15:46:57.388 INFO  [main] DirectJDKLog.log:168 - Starting Servlet engine: [Apache Tomcat/11.0.15]
+2026-09-14 15:46:57.427 INFO  [main] WebApplicationContextInitializer.prepareWebApplicationContext:77 - Root WebApplicationContext: initialization completed in 721 ms
+2026-09-14 15:46:57.518 INFO  [main] LogHelper.logPersistenceUnitInformation:102 - HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-09-14 15:46:57.556 INFO  [main] Version.logVersion:41 - HHH000001: Hibernate ORM core version 7.2.0.Final
+2026-09-14 15:46:57.873 INFO  [main] SpringPersistenceUnitInfo.addTransformer:128 - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-09-14 15:46:57.897 INFO  [main] HikariDataSource.getConnection:109 - HikariPool-1 - Starting...
+2026-09-14 15:46:58.024 INFO  [main] HikariPool.checkFailFast:580 - HikariPool-1 - Added connection org.mariadb.jdbc.Connection@2bc2e022
+2026-09-14 15:46:58.026 INFO  [main] HikariDataSource.getConnection:122 - HikariPool-1 - Start completed.
+2026-09-14 15:46:58.062 WARN  [main] Dialect.checkVersion:384 - HHH000511: The 10.3.32 version for [org.hibernate.dialect.MariaDBDialect] is no longer supported, hence certain features may not work properly.The minimum supported version is 10.6.0. Check the community dialects project for available legacy versions.
+2026-09-14 15:46:58.088 INFO  [main] JdbcEnvironmentInitiator.logConnectionInfo:179 - HHH10001005: Database info:
+	Database JDBC URL [jdbc:mariadb://19341.synology.me/lotto?user=jwlee&password=***]
+	Database driver: MariaDB Connector/J
+	Database dialect: MariaDBDialect
+	Database version: 10.3.32
+	Default catalog/schema: lotto/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-09-14 15:46:58.968 INFO  [main] JtaPlatformInitiator.initiateService:53 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-09-14 15:46:58.976 INFO  [main] AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory:444 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-09-14 15:46:59.048 INFO  [main] QueryEnhancerFactories.<clinit>:48 - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-09-14 15:46:59.851 INFO  [main] LottoPatternModelService.load:60 - 패턴 모델 로드 완료: 기준 1240회, 405건
+2026-09-14 15:46:59.963 INFO  [main] WelcomePageHandlerMapping.<init>:60 - Adding welcome page template: index
+2026-09-14 15:47:00.294 INFO  [main] TomcatWebServer.start:240 - Tomcat started on port 8080 (http) with context path '/'
+2026-09-14 15:47:00.302 INFO  [main] StartupInfoLogger.logStarted:60 - Started Application in 3.966 seconds (process running for 4.565)
+2026-09-14 15:47:06.258 INFO  [http-nio-8080-exec-1] DirectJDKLog.log:168 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-09-14 15:47:06.258 INFO  [http-nio-8080-exec-1] FrameworkServlet.initServletBean:523 - Initializing Servlet 'dispatcherServlet'
+2026-09-14 15:47:06.259 INFO  [http-nio-8080-exec-1] FrameworkServlet.initServletBean:545 - Completed initialization in 1 ms
+2026-09-14 18:09:07.672 INFO  [SpringApplicationShutdownHook] GracefulShutdown.shutDownGracefully:54 - Commencing graceful shutdown. Waiting for active requests to complete

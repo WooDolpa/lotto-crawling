@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>번호 등록 · jwlee 로또 연구소</title>
+    <link rel="stylesheet" th:href="@{/css/lotto-sheet.css}" href="/css/lotto-sheet.css">
+    <link rel="stylesheet" th:href="@{/css/sidebar.css}" href="/css/sidebar.css">
+    <link rel="stylesheet" th:href="@{/css/register.css}" href="/css/register.css">
+    <script defer th:src="@{/js/sidebar.js}" src="/js/sidebar.js"></script>
+    <script defer th:src="@{/js/register.js}" src="/js/register.js"></script>
+</head>
+<body>
+<th:block th:replace="~{fragments/navigation :: sidebar('register')}"></th:block>
+<div class="app-content"><main id="main-content" tabindex="-1">
+    <header><span class="eyebrow">jwlee 로또 연구소</span><h1>번호 등록</h1><p>엑셀 파일 또는 직접 입력으로 회차별 당첨 번호를 등록하세요.</p></header>
+    <div class="history-tabs" role="tablist" aria-label="번호 등록 방식">
+        <button id="bulk-tab" class="history-tab" type="button" role="tab" aria-selected="true" aria-controls="bulk-panel">대량등록</button>
+        <button id="single-tab" class="history-tab" type="button" role="tab" aria-selected="false" aria-controls="single-panel" tabindex="-1">단일등록</button>
+    </div>
+    <section id="bulk-panel" class="registration-panel" role="tabpanel" aria-labelledby="bulk-tab">
+        <h2>엑셀 업로드</h2><p>기존 등록 양식의 .xlsx 또는 .xls 파일을 선택해 주세요. 같은 회차가 있으면 기존 데이터를 갱신합니다.</p>
+        <p class="upload-format">첫 번째 시트 · B열 회차 · C~H열 당첨 번호 · I열 보너스 · K열 당첨 인원 · L열 당첨금</p>
+        <form id="bulk-form" th:attr="data-url=@{/system/manual/excel}" data-url="/system/manual/excel">
+            <label for="excel-file">엑셀 파일 (최대 10MB)</label>
+            <input id="excel-file" name="file" type="file" accept=".xls,.xlsx" required>
+            <button id="upload-button" type="submit">업로드</button>
+        </form>
+    </section>
+    <section id="single-panel" class="registration-panel" role="tabpanel" aria-labelledby="single-tab" hidden>
+        <h2>당첨 정보 입력</h2><p>* 항목은 필수입니다. 기존 회차의 중복 등록은 불가합니다.</p>
+        <form id="single-form" th:attr="data-url=@{/api/lotto/history}" data-url="/api/lotto/history">
+            <div class="registration-grid">
+                <div class="field"><label for="draw-no">추첨 회차 *</label><input id="draw-no" name="drawNo" type="number" min="1" max="2147483647" step="1" required></div>
+                <div class="field"><label for="draw-date">추첨일 *</label><input id="draw-date" name="drawDate" type="date" required></div>
+            </div>
+            <fieldset><legend>당첨 번호 6개 *</legend><div class="number-inputs">
+                <input name="number" type="number" min="1" max="45" step="1" aria-label="당첨 번호 1" required>
+                <input name="number" type="number" min="1" max="45" step="1" aria-label="당첨 번호 2" required>
+                <input name="number" type="number" min="1" max="45" step="1" aria-label="당첨 번호 3" required>
+                <input name="number" type="number" min="1" max="45" step="1" aria-label="당첨 번호 4" required>
+                <input name="number" type="number" min="1" max="45" step="1" aria-label="당첨 번호 5" required>
+                <input name="number" type="number" min="1" max="45" step="1" aria-label="당첨 번호 6" required>
+            </div></fieldset>
+            <div class="registration-grid">
+                <div class="field"><label for="bonus-number">보너스 번호 *</label><input id="bonus-number" name="bonusNumber" type="number" min="1" max="45" step="1" required></div>
+                <div class="field"><label for="total-sales">총 판매액 (원)</label><input id="total-sales" name="totalSales" type="number" min="0" max="9007199254740991" step="1"></div>
+                <div class="field"><label for="prize-amount">1등 당첨금 (1게임당, 원)</label><input id="prize-amount" name="firstPrizeAmount" type="number" min="0" max="9007199254740991" step="1"></div>
+                <div class="field"><label for="prize-winners">1등 당첨 인원</label><input id="prize-winners" name="firstPrizeWinners" type="number" min="0" max="2147483647" step="1"></div>
+            </div>
+            <button id="save-button" type="submit">저장</button>
+        </form>
+    </section>
+    <p id="registration-status" role="status" aria-live="polite"></p>
+    <p id="registration-model-status" role="status" aria-live="polite" th:attr="data-url=@{/api/lotto/pattern/status}" data-url="/api/lotto/pattern/status"></p>
+</main></div>
+</body></html>

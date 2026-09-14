@@ -29,6 +29,7 @@ public class SystemService {
 
     private final LottoHistoryRepository lottoHistoryRepository;
     private final ObjectMapper objectMapper;
+    private final org.springframework.context.ApplicationEventPublisher events;
 
     private static final String DONGHAENG_API_URL = "https://www.dhlottery.co.kr/common.do?method=getLottoNumber&drwNo=";
     private static final String USER_AGENT = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36";
@@ -110,6 +111,7 @@ public class SystemService {
         }
 
         log.info("동행복권 API 동기화 완료 (총 {}건 적재)", syncedCount);
+        if (syncedCount > 0) events.publishEvent(new LottoHistoryChanged());
         return syncedCount;
     }
 
@@ -181,6 +183,7 @@ public class SystemService {
             }
 
             lottoHistoryRepository.saveAll(historyList);
+            if (!historyList.isEmpty()) events.publishEvent(new LottoHistoryChanged());
             log.info("엑셀 파일 파싱 및 DB 적재 완료 (총 {}건 저장)", historyList.size());
         }
 

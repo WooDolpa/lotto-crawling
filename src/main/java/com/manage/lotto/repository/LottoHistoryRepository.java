@@ -9,6 +9,10 @@ import java.util.Optional;
 
 @Repository
 public interface LottoHistoryRepository extends JpaRepository<LottoHistory, Integer> {
+    @org.springframework.data.jpa.repository.Query("select h.drwNo from LottoHistory h order by h.drwNo asc")
+    List<Integer> findDrawNumbers();
+
+    List<LottoHistory> findByDrwNoBetweenOrderByDrwNoAsc(Integer fromDrawNo, Integer toDrawNo);
 
     /**
      * 가장 최신 회차 조회

@@ -11,7 +11,6 @@ spring:
       driver-class-name: org.mariadb.jdbc.Driver
       minimum-idle: 5
       idle-timeout: 60000
-
   jpa:
     hibernate:
       ddl-auto: none
@@ -19,8 +18,26 @@ spring:
       hibernate:
         format_sql: true
     open-in-view: false
-
   servlet:
     multipart:
       max-file-size: 10MB
       max-request-size: 10MB
+
+
+lotto:
+  pattern:
+    model-file: ${LOTTO_PATTERN_MODEL_FILE:models/lotto-pattern.bin}
+    check-interval-ms: 60000
+
+logging:
+  file:
+    name: ${HOME_DIR}/logs/lotto.log
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss.SSS} %clr(%-5level) [%thread] %class{0}.%method:%line - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%thread] %class{0}.%method:%line - %msg%n"
+  logback:
+    rollingpolicy:
+      file-name-pattern: ${HOME_DIR}/logs/lotto.%d{yyyy-MM-dd}.%i.log.gz
+  level:
+    root: info
+    com.manage.lotto: info

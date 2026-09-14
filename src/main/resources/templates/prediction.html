@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>번호 예측 · jwlee 로또 연구소</title>
+    <link rel="stylesheet" href="/css/lotto-sheet.css" th:href="@{/css/lotto-sheet.css}">
+    <link rel="stylesheet" href="/css/sidebar.css" th:href="@{/css/sidebar.css}">
+    <script defer src="/js/sidebar.js" th:src="@{/js/sidebar.js}"></script>
+    <script defer src="/js/lotto-sheet.js" th:src="@{/js/lotto-sheet.js}"></script>
+    <script defer src="/js/prediction.js" th:src="@{/js/prediction.js}"></script>
+</head>
+<body>
+<th:block th:replace="~{fragments/navigation :: sidebar('prediction')}"></th:block>
+<div class="app-content">
+<main id="main-content" tabindex="-1">
+<header><span class="eyebrow">jwlee 로또 연구소</span><h1>번호 예측</h1><p>학습된 모델의 다음 회차 후보를 확인하세요.</p></header>
+    <section class="experiment-panel" aria-labelledby="prediction-title">
+        <h2 id="prediction-title">다음 회차 1게임</h2>
+        <p>저장된 모델을 재사용합니다. 전체 당첨 이력이 변경되면 자동 재학습하며, 학습 중에는 기존 모델을 사용합니다.</p>
+        <div id="model-controls" th:attr="data-url=@{/api/lotto/pattern}" data-url="/api/lotto/pattern">
+            <button id="predict-button" type="button">번호 예측</button>
+            <button id="train-button" type="button">학습 상태 확인 및 갱신</button>
+        </div>
+        <p id="model-status" role="status" aria-live="polite"></p>
+        <div id="prediction-results" class="sheets"></div>
+    </section>
+</main>
+</div>
+</body>
+</html>

@@ -2,9 +2,36 @@
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>로또 연구소</title>
+    <link rel="stylesheet" href="/css/lotto-sheet.css" th:href="@{/css/lotto-sheet.css}">
+    <link rel="stylesheet" href="/css/sidebar.css" th:href="@{/css/sidebar.css}">
+    <script defer src="/js/sidebar.js" th:src="@{/js/sidebar.js}"></script>
+    <script defer src="/js/lotto-sheet.js" th:src="@{/js/lotto-sheet.js}"></script>
+    <script defer src="/js/history.js" th:src="@{/js/history.js}"></script>
 </head>
 <body>
-
+<th:block th:replace="~{fragments/navigation :: sidebar('history')}"></th:block>
+<div class="app-content">
+<main data-draws-url="/api/lotto/draws" data-history-url="/api/lotto/history"
+      id="main-content" tabindex="-1"
+      th:attr="data-draws-url=@{/api/lotto/draws},data-history-url=@{/api/lotto/history}">
+    <header><span class="eyebrow">로또 연구소</span><h1>당첨 번호 궤적</h1><p>회차별 당첨 번호를 용지 위에서 이어 보세요.</p></header>
+    <form id="search-form" class="search-panel">
+        <div class="field"><label for="from-draw">시작 회차</label><select id="from-draw" disabled required><option value="">불러오는 중</option></select></div>
+        <span class="range" aria-hidden="true">~</span>
+        <div class="field"><label for="to-draw">종료 회차</label><select id="to-draw" disabled required><option value="">불러오는 중</option></select></div>
+        <button id="search-button" type="submit" disabled>검색</button>
+    </form>
+    <div class="result-heading"><h2>당첨 이력</h2></div>
+    <div class="history-tabs" role="tablist" aria-label="당첨 이력 표시 방식">
+        <button id="numbers-tab" class="history-tab" type="button" role="tab" aria-selected="true" aria-controls="results" tabindex="0">번호</button>
+        <button id="cards-tab" class="history-tab" type="button" role="tab" aria-selected="false" aria-controls="results" tabindex="-1">카드</button>
+    </div>
+    <p id="status" role="status" aria-live="polite">회차 목록을 불러오는 중입니다.</p>
+    <section id="results" class="history-numbers" role="tabpanel" aria-labelledby="numbers-tab" tabindex="0" aria-busy="true"></section>
+    <nav id="history-pagination" class="history-pagination" aria-label="당첨 이력 페이지" hidden></nav>
+</main>
+</div>
 </body>
 </html>

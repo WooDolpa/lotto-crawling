@@ -1,0 +1,16 @@
+.registration-panel { background: #fff; border: 1px solid #e5e3df; border-radius: 12px; padding: 24px; }
+.registration-panel[hidden] { display: none; }
+.registration-panel h2 { margin-top: 0; }
+.registration-panel p, #registration-model-status { color: #737b88; font-size: 13px; line-height: 1.7; }
+.registration-panel form { display: grid; gap: 24px; }
+.registration-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 20px; }
+.registration-panel .field { min-width: 0; }
+.registration-panel input { min-width: 0; width: 100%; min-height: 44px; border: 1px solid #d9dce1; border-radius: 7px; padding: 10px 12px; font: inherit; font-size: 16px; color: #243044; background: #fff; }
+.registration-panel input[type="file"] { padding: 14px; }
+.registration-panel fieldset { margin: 0; padding: 0; border: 0; min-width: 0; }
+.registration-panel legend { margin-bottom: 12px; font-size: 13px; font-weight: 700; }
+.number-inputs { display: grid; grid-template-columns: repeat(6,minmax(0,1fr)); gap: 10px; }
+.registration-panel button { justify-self: start; }
+#registration-status { font-size: 14px; line-height: 1.7; }
+#registration-status.error { color: #b22e3b; }
+@media(max-width:600px) { .registration-panel { padding: 18px; } .registration-grid { grid-template-columns: 1fr; } .number-inputs { grid-template-columns: repeat(3,minmax(0,1fr)); } }

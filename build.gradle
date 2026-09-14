@@ -49,6 +49,22 @@ dependencies {
 }
 
 // gradle clean 시 QClass 전부 삭제
+tasks.register('patternExperimentCheck', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'com.manage.lotto.PatternExperimentCheck'
+}
+tasks.register('patternModelCheck', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'com.manage.lotto.PatternModelCheck'
+}
+tasks.register('lottoRegistrationCheck', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'com.manage.lotto.LottoRegistrationCheck'
+}
+
 clean {	delete file('src/main/generated')}
 
 // profile 설정
