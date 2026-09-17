@@ -5,13 +5,13 @@ import com.manage.lotto.domain.LottoHistory;
 import com.manage.lotto.repository.LottoHistoryRepository;
 import jakarta.persistence.EntityManager;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.server.ResponseStatusException;
 
-@Repository
+@Service
 @RequiredArgsConstructor
 public class LottoHistoryRegistrationService {
     private final LottoHistoryRepository repository;
