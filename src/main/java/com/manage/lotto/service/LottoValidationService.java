@@ -7,6 +7,7 @@ import com.manage.lotto.dto.ValidationReport.Baseline;
 import com.manage.lotto.dto.ValidationReport.DrawResult;
 import com.manage.lotto.dto.ValidationReport.GameResult;
 import com.manage.lotto.dto.ValidationReport.Pick;
+import com.manage.lotto.dto.ValidationReport.Popularity;
 import com.manage.lotto.dto.ValidationStatus;
 import com.manage.lotto.exception.InvalidLottoDataException;
 import com.manage.lotto.exception.ValidationInProgressException;
@@ -14,6 +15,8 @@ import com.manage.lotto.ml.LottoFeatureExtractor;
 import com.manage.lotto.ml.LottoGameGenerator;
 import com.manage.lotto.ml.LottoMlPredictor;
 import com.manage.lotto.ml.LottoPatternTrainer;
+import com.manage.lotto.ml.PopularityPredictor;
+import com.manage.lotto.ml.PopularityStatistics;
 import com.manage.lotto.ml.RandomMatchStatistics;
 import com.manage.lotto.ml.UnpopularGameGenerator;
 import com.manage.lotto.repository.LottoHistoryRepository;
@@ -38,6 +41,9 @@ import java.util.stream.IntStream;
  * 검증 회차마다 그 회차보다 이전 이력만 사용한다. 학습은 REFIT_INTERVAL 회차마다 다시 하고,
  * 구간 안에서는 같은 모델에 최신 특징을 넣는다 (운영 모델이 재학습 전 쓰는 방식과 같음).
  * 수 분 걸릴 수 있어 백그라운드 스레드 하나에서 한 번에 한 건만 실행한다.
+ * <p>
+ * 두 가지를 따로 잰다. A·B·C는 <b>맞힌 개수</b>를 무작위 이론값과 비교하고, D는 노리는 것이 적중률이
+ * 아니므로 <b>인기도 예측이 실제와 맞았는지</b>를 따로 잰다 ({@link PopularityStatistics}).
  */
 @Slf4j
 @Service
@@ -61,6 +67,7 @@ public class LottoValidationService {
     private final LottoMlPredictor probabilityPredictor;
     private final LottoGameGenerator gameGenerator;
     private final UnpopularGameGenerator unpopularGenerator;
+    private final PopularityPredictor popularityPredictor;
 
     private final ExecutorService worker = Executors.newSingleThreadExecutor(runnable -> {
         Thread thread = new Thread(runnable, "model-validation");
@@ -142,6 +149,7 @@ public class LottoValidationService {
 
         // 2단계: REFIT_INTERVAL 회차마다 그 이전 이력으로 다시 학습하고, 구간 안의 회차를 맞힘
         List<DrawResult> draws = new ArrayList<>();
+        PopularitySamples popularitySamples = new PopularitySamples();
         for (int blockStart = firstTest; blockStart < size; blockStart += REFIT_INTERVAL) {
             checkCancelled();
             List<double[]> rows = new ArrayList<>();
@@ -158,6 +166,8 @@ public class LottoValidationService {
             // A·B는 같은 기본 6개 특징을 쓰고 학습 설정과 번호 고르는 방식만 다름
             RandomForest score = patternTrainer.fit(x, y, SEED);
             RandomForest probability = probabilityPredictor.train(new LottoFeatureExtractor.FeatureDataset(x, y));
+            // D는 공이 아니라 당첨 조합의 생김새를 보므로 위 특징과 무관하게 따로 학습한다
+            PopularityPredictor.Model popularity = trainPopularity(histories.subList(0, blockStart));
 
             for (int t = blockStart; t < Math.min(size, blockStart + REFIT_INTERVAL); t++) {
                 LottoHistory target = histories.get(t);
@@ -166,9 +176,10 @@ public class LottoValidationService {
                 List<List<Integer>> picks = List.of(
                         patternTrainer.infer(score, features[t]),
                         gameGenerator.generate(probabilityPredictor.probabilities(probability, features[t]), 1, random).get(0).numbers(),
-                        unpopularGenerator.generate(histories.get(t - 1).getNumbers(), random));
+                        unpopularGenerator.generate(random));
                 draws.add(new DrawResult(target.getDrwNo(), actual,
                         picks.stream().map(numbers -> new Pick(numbers, matches(numbers, actual))).toList()));
+                popularitySamples.add(popularity, target);
             }
             status = status.progress(++completed);
         }
@@ -179,8 +190,60 @@ public class LottoValidationService {
                 .toList();
         Baseline random = new Baseline(RandomMatchStatistics.expectedMatches(), RandomMatchStatistics.prizeProbability(),
                 IntStream.rangeClosed(0, LottoRules.NUMBERS_PER_DRAW).mapToObj(RandomMatchStatistics::matchProbability).toList());
+        // 인기도는 적중률과 다른 가설을 한 번만 검정하므로 게임 수로 나누지 않는다
         return new ValidationReport(draws.get(0).drawNo(), draws.get(draws.size() - 1).drawNo(), testDraws, REFIT_INTERVAL,
-                SEED, level, random, games, draws);
+                SEED, level, random, games, draws, popularitySamples.summarize(SIGNIFICANCE));
+    }
+
+    /**
+     * 판매금액·5등 당첨자 수가 있는 회차가 부족한 구간에서는 인기도 검증만 건너뜀 (적중률 검증은 그대로 진행)
+     *
+     * @return 학습하지 못했으면 null
+     */
+    private PopularityPredictor.Model trainPopularity(List<LottoHistory> past) {
+        try {
+            return popularityPredictor.train(past);
+        } catch (InvalidLottoDataException e) {
+            log.info("인기도 검증 건너뜀 ({}회차까지): {}", past.size(), e.getMessage());
+            return null;
+        }
+    }
+
+    /**
+     * 회차별 (직전 이력으로 학습한 모델의 예측 인기도, 실제 인기도) 모음
+     * <p>
+     * 판매금액이나 5등 당첨자 수가 없는 회차는 건너뛰므로 적중률 검증보다 회차 수가 적을 수 있다.
+     */
+    private static final class PopularitySamples {
+
+        private final List<Double> predicted = new ArrayList<>();
+        private final List<Double> actual = new ArrayList<>();
+        private final List<Integer> drawNos = new ArrayList<>();
+
+        void add(PopularityPredictor.Model model, LottoHistory target) {
+            Double index = PopularityPredictor.popularityIndex(target);
+            if (model == null || index == null) {
+                return;
+            }
+            predicted.add(model.popularityOf(target.getNumbers()));
+            actual.add(index);
+            drawNos.add(target.getDrwNo());
+        }
+
+        Popularity summarize(double level) {
+            if (predicted.size() < PopularityStatistics.MIN_DRAWS) {
+                return Popularity.unavailable("판매금액과 5등 당첨자 수가 모두 있는 검증 회차가 " + predicted.size()
+                        + "회뿐입니다 (최소 " + PopularityStatistics.MIN_DRAWS + "회). /system/sync로 동기화해 주세요.");
+            }
+            PopularityStatistics.Accuracy accuracy = PopularityStatistics.of(toArray(predicted), toArray(actual));
+            return new Popularity(true, null, predicted.size(), drawNos.get(0), drawNos.get(drawNos.size() - 1),
+                    accuracy.correlation(), accuracy.slope(), accuracy.pValue(), accuracy.lowQuartileIndex(),
+                    accuracy.highQuartileIndex(), accuracy.pValue() < level);
+        }
+
+        private static double[] toArray(List<Double> values) {
+            return values.stream().mapToDouble(Double::doubleValue).toArray();
+        }
     }
 
     private static GameResult summarize(int game, List<DrawResult> draws, double level) {

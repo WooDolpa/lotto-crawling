@@ -15,6 +15,10 @@ public final class LottoRules {
     public static final int NUMBERS_PER_DRAW = 6;
     /** 당첨 등수 (1~5등) */
     public static final int PRIZE_RANKS = 5;
+    /** 로또 용지 한 줄의 칸 수 (lotto-sheet.js 용지 배치와 같음) */
+    public static final int SHEET_COLUMNS = 7;
+    /** 6/45 전체 조합 수 = C(45,6) */
+    public static final int TOTAL_COMBINATIONS = 8_145_060;
 
     private LottoRules() {
     }

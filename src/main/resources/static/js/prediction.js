@@ -11,11 +11,33 @@
     const output = document.getElementById('prediction-results');
     const emptyState = output.firstElementChild;
     const dateFormat = new Intl.DateTimeFormat('ko-KR', { dateStyle: 'medium', timeStyle: 'short' });
-    // 응답 키, 게임 라벨, 화면 이름 (group: 모델 상태 영역, 학습하지 않는 C는 없음)
+    const percent = value => `${Math.round(Math.abs(value) * 100)}%`;
+    // 학습한 모델(A·B·D)의 공통 안내. 학습 결과가 최신인지부터 알린다.
+    const trainedMeta = result => result.staleModel ? '당첨 이력이 바뀐 뒤 재학습 전인 이전 학습 결과로 계산했습니다.'
+        : result.model.trainingSamples === 0 ? '이력이 부족해 모든 번호를 같은 확률로 뽑았습니다.'
+        : `${result.model.trainedBaseDrawNo}회까지 학습한 결과로 계산했습니다.`;
+    /**
+     * 응답 키, 게임 라벨, 화면 이름, 게임 아래 안내 문구
+     * group: 모델 상태 영역 (학습하지 않는 C는 없음), samples: 상태 영역의 학습 샘플 단위
+     */
     const models = [
-        { key: 'pattern', tag: 'A', name: '점수 모델' },
-        { key: 'probability', tag: 'B', name: '확률 모델' },
-        { key: 'unpopular', tag: 'C', name: '인기 조합 제외' }
+        { key: 'pattern', tag: 'A', name: '점수 모델', samples: '개', meta: trainedMeta },
+        { key: 'probability', tag: 'B', name: '확률 모델', samples: '개', meta: trainedMeta },
+        {
+            key: 'unpopular', tag: 'C', name: '인기 조합 제외',
+            meta: () => '6개가 모두 31 이하인 생일 조합은 피했습니다. 실측으로 근거가 확인된 제외 규칙은 이것 하나뿐입니다.'
+        },
+        {
+            key: 'popularity', tag: 'D', name: '인기도 모델', samples: '회',
+            // 예상 인기도는 평균 대비 비율이다 (0.9 = 평균보다 10% 덜 붐빔)
+            meta: result => result.popularity == null || result.staleModel ? trainedMeta(result)
+                : result.popularity < 1 ? `평균보다 ${percent(1 - result.popularity)} 덜 붐비는 조합입니다. ${trainedMeta(result)}`
+                : `평균만큼 붐비는 조합입니다. 후보 중 더 나은 조합을 찾지 못했습니다. ${trainedMeta(result)}`
+        },
+        {
+            key: 'random', tag: 'E', name: '무작위 기준선',
+            meta: () => '아무 규칙 없이 뽑았습니다. 위 네 게임이 이보다 나은지 견주는 기준입니다.'
+        }
     ].map(model => ({ ...model, game: document.getElementById(`game-${model.key}`), group: document.getElementById(`status-${model.key}`) }));
     const trainedModels = models.filter(model => model.group);
     const field = (root, name) => root.querySelector(`[data-field="${name}"]`);
@@ -34,12 +56,12 @@
             return element;
         });
     }
-    function renderModelStatus({ group }, status) {
+    function renderModelStatus({ group, samples }, status) {
         field(group, 'state').textContent = status.available ? '사용 가능' : '없음';
         field(group, 'trained-base').textContent = status.trainedBaseDrawNo ? `${status.trainedBaseDrawNo}회` : '-';
         field(group, 'history-count').textContent = status.available ? count(status.historyCount, '건') : '-';
         field(group, 'trained-at').textContent = status.trainedAt ? dateFormat.format(new Date(status.trainedAt)) : '-';
-        field(group, 'samples').textContent = status.available ? count(status.trainingSamples, '개') : '-';
+        field(group, 'samples').textContent = status.available ? count(status.trainingSamples, samples) : '-';
         field(group, 'error').textContent = status.lastError ? `최근 오류: ${status.lastError}` : '';
     }
     function renderStatus(data) {
@@ -83,10 +105,7 @@
             element.style.setProperty('--delay', `${(order * 6 + index) * 60}ms`);
             return element;
         }));
-        meta.textContent = !model.group ? `많이 고르는 조합 규칙을 모두 통과했습니다. ${data.baseDrawNo}회 당첨 번호와는 1개 이하로 겹칩니다.`
-            : result.staleModel ? '당첨 이력이 바뀐 뒤 재학습 전인 이전 학습 결과로 계산했습니다.'
-            : result.model.trainingSamples === 0 ? '이력이 부족해 모든 번호를 같은 확률로 뽑았습니다.'
-            : `${result.model.trainedBaseDrawNo}회까지 학습한 결과로 계산했습니다.`;
+        meta.textContent = model.meta(result, data);
         meta.classList.toggle('is-warning', result.staleModel);
         return sheet({ drawNo: nextDrawNo, numbers }, { title: `${model.tag} · ${model.name}`, subtitle: `${nextDrawNo}회 후보` });
     }

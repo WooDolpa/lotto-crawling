@@ -12,7 +12,7 @@
         <div>
             <p class="page-eyebrow">로또 번호</p>
             <h1 class="page-title">번호 예측</h1>
-            <p class="page-description">두 학습 모델과 인기 조합 제외 규칙으로 다음 회차 후보 번호를 1게임씩 확인하세요.</p>
+            <p class="page-description">세 학습 모델과 두 규칙으로 다음 회차 후보 번호를 1게임씩, 모두 5게임 확인하세요.</p>
         </div>
         <div class="page-actions"><span id="model-badge" class="badge">상태 확인 중</span></div>
     </header>
@@ -21,7 +21,7 @@
         <section class="panel prediction-hero" aria-labelledby="prediction-label">
             <div class="hero-body">
                 <div class="hero-result" aria-live="polite">
-                    <p id="prediction-label" class="hero-label">다음 회차 3게임</p>
+                    <p id="prediction-label" class="hero-label">다음 회차 5게임</p>
                     <h2 id="prediction-draw" class="hero-draw">후보 번호</h2>
                     <ol class="game-list">
                         <li id="game-pattern" class="game-row">
@@ -43,13 +43,29 @@
                         <li id="game-unpopular" class="game-row">
                             <div class="game-head">
                                 <span class="game-tag" aria-hidden="true">C</span>
-                                <div><h3 class="game-name">인기 조합 제외</h3><p class="game-desc">무작위로 뽑고 생일 번호·연번·같은 간격·용지 일자 모양·지난 회차와 겹치는 조합 제외</p></div>
+                                <div><h3 class="game-name">인기 조합 제외</h3><p class="game-desc">무작위로 뽑고 6개가 모두 31 이하인 생일 조합만 제외</p></div>
+                            </div>
+                            <div class="ball-row ball-row-lg" data-field="balls"></div>
+                            <p class="game-meta" data-field="meta"></p>
+                        </li>
+                        <li id="game-popularity" class="game-row">
+                            <div class="game-head">
+                                <span class="game-tag" aria-hidden="true">D</span>
+                                <div><h3 class="game-name">인기도 모델</h3><p class="game-desc">회차별 5등 당첨자 수로 어떤 조합이 붐비는지 학습해 덜 붐비는 쪽 선택</p></div>
+                            </div>
+                            <div class="ball-row ball-row-lg" data-field="balls"></div>
+                            <p class="game-meta" data-field="meta"></p>
+                        </li>
+                        <li id="game-random" class="game-row">
+                            <div class="game-head">
+                                <span class="game-tag" aria-hidden="true">E</span>
+                                <div><h3 class="game-name">무작위 기준선</h3><p class="game-desc">규칙도 학습도 없이 1~45에서 6개. 나머지 네 게임의 비교 기준</p></div>
                             </div>
                             <div class="ball-row ball-row-lg" data-field="balls"></div>
                             <p class="game-meta" data-field="meta"></p>
                         </li>
                     </ol>
-                    <p class="hero-meta">A·B는 학습해 둔 결과로 계산하며, 시작할 때·번호를 등록한 뒤·1시간마다 당첨 이력이 바뀌었는지 확인해 다시 학습합니다. C는 학습 없이 누를 때마다 새로 뽑습니다. 어떤 게임도 당첨 확률은 같습니다.</p>
+                    <p class="hero-meta">A·B·D는 학습해 둔 결과로 계산하며, 시작할 때·이력이 바뀐 뒤·1시간마다 당첨 이력이 바뀌었는지 확인해 다시 학습합니다. C·E는 학습 없이 누를 때마다 새로 뽑습니다. <b>다섯 게임 모두 당첨 확률은 같습니다.</b> C·D는 당첨됐을 때 당첨금을 나눠 가질 사람 수를 줄이려는 게임이고, E는 나머지가 정말 무작위보다 나은지 견주어 보라고 둔 기준입니다.</p>
                 </div>
                 <div class="button-row">
                     <button id="predict-button" class="btn btn-primary btn-lg" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6.3 6.3l2.8 2.8M14.9 14.9l2.8 2.8M6.3 17.7l2.8-2.8M14.9 9.1l2.8-2.8"/></svg>번호 예측</button>
@@ -87,6 +103,17 @@
                         <div><dt>학습 이력</dt><dd data-field="history-count">-</dd></div>
                         <div><dt>학습 시각</dt><dd data-field="trained-at">-</dd></div>
                         <div><dt>학습 샘플</dt><dd data-field="samples">-</dd></div>
+                    </dl>
+                    <p class="status-text error model-error" data-field="error"></p>
+                </section>
+                <section id="status-popularity" class="model-group" aria-labelledby="status-popularity-title">
+                    <h3 id="status-popularity-title" class="model-group-title">D · 인기도 모델</h3>
+                    <dl class="detail-list">
+                        <div><dt>상태</dt><dd data-field="state">-</dd></div>
+                        <div><dt>학습 기준 회차</dt><dd data-field="trained-base">-</dd></div>
+                        <div><dt>학습 이력</dt><dd data-field="history-count">-</dd></div>
+                        <div><dt>학습 시각</dt><dd data-field="trained-at">-</dd></div>
+                        <div><dt>인기도 계산 회차</dt><dd data-field="samples">-</dd></div>
                     </dl>
                     <p class="status-text error model-error" data-field="error"></p>
                 </section>

@@ -19,10 +19,10 @@ import java.util.concurrent.RejectedExecutionException;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
- * 예측 모델(A 점수 모델, B v1 확률 모델)의 학습 시점 관리
+ * 예측 모델(A 점수 모델, B v1 확률 모델, D 인기도 모델)의 학습 시점 관리
  * <p>
  * 시작 시, 이력 변경 커밋 후, 주기 점검(기본 1시간) 때 학습을 요청한다.
- * 한 백그라운드 스레드에서 두 모델을 차례로 확인하며, 각 모델은 이력이 마지막 학습 때와 다를 때만 다시 학습한다.
+ * 한 백그라운드 스레드에서 모델을 차례로 확인하며, 각 모델은 이력이 마지막 학습 때와 다를 때만 다시 학습한다.
  */
 @Slf4j
 @Service
@@ -32,6 +32,7 @@ public class LottoModelTrainingService {
     private final LottoHistoryRepository repository;
     private final LottoPatternModelService patternModel;
     private final LottoRecommendationService probabilityModel;
+    private final LottoPopularityModelService popularityModel;
 
     private final ExecutorService worker = Executors.newSingleThreadExecutor(runnable -> {
         Thread thread = new Thread(runnable, "model-training");
@@ -111,6 +112,7 @@ public class LottoModelTrainingService {
         // 각 모델은 실패해도 오류만 기록하므로 한 모델의 실패가 다른 모델 학습을 막지 않는다.
         patternModel.refresh(histories);
         probabilityModel.refresh(histories);
+        popularityModel.refresh(histories);
     }
 
     @PreDestroy

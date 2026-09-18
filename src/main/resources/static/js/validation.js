@@ -8,7 +8,7 @@
     const progressState = document.getElementById('progress-state');
     const progressTrack = document.getElementById('progress-track');
     const progressMeta = document.getElementById('progress-meta');
-    const panels = ['summary-panel', 'distribution-panel', 'draws-panel'].map(id => document.getElementById(id));
+    const panels = ['summary-panel', 'popularity-panel', 'distribution-panel', 'draws-panel'].map(id => document.getElementById(id));
     const $ = id => document.getElementById(id);
     const POLL_INTERVAL = 2000;
     const STANDARD_TEST_DRAWS = [100, 300, 500];
@@ -95,6 +95,47 @@
         $('summary-note').textContent = `우연일 확률은 "사실은 무작위와 같은데 운으로 이만큼 맞혔을 확률"입니다. ${report.games.length}개 게임을 함께 비교하므로 이 값이 ${percent(report.significanceLevel, 2)}보다 작을 때만 "무작위보다 나음"으로 판정합니다. 학습과 번호 뽑기에 시드 ${report.seed}를 써서, 같은 이력으로 다시 실행하면 같은 결과가 나옵니다.`;
     }
 
+    /**
+     * 인기도 지수 1.0(평균만큼 붐빔) 기준으로 얼마나 덜·더 붐볐는지
+     */
+    function crowd(index) {
+        return `평균보다 ${percent(Math.abs(1 - index))} ${index < 1 ? '덜' : '더'} 붐볐습니다`;
+    }
+    function metricRow(label, value, note) {
+        const row = document.createElement('tr');
+        row.append(rowHeader(label), valueCell(value), element('td', 'cell-muted', note));
+        return row;
+    }
+    /**
+     * D 인기도 모델은 맞힌 개수가 아니라 "예측 인기도와 실제 인기도가 같이 움직였는지"로 잼
+     */
+    function renderPopularity(report) {
+        const popularity = report.popularity;
+        const verdict = $('popularity-verdict');
+        verdict.classList.toggle('is-positive', popularity.available && popularity.betterThanChance);
+        if (!popularity.available) {
+            $('popularity-meta').textContent = '잴 수 없음';
+            verdict.replaceChildren(element('span', '', popularity.message));
+            $('popularity-body').replaceChildren();
+            $('popularity-note').textContent = '인기도는 회차별 판매금액과 5등 당첨자 수로 계산합니다. 두 값이 채워진 회차만 검증에 들어갑니다.';
+            return;
+        }
+        // 인기도는 검정할 가설이 하나라 게임 수로 나누지 않은 0.05를 기준으로 쓴다
+        const level = report.significanceLevel * report.games.length;
+        $('popularity-meta').textContent = `${popularity.firstDrawNo}회 ~ ${popularity.lastDrawNo}회 · ${popularity.draws}회차`;
+        verdict.replaceChildren(element('span', '', popularity.betterThanChance
+            ? `인기도 예측이 실제와 같이 움직였습니다. 덜 붐빌 것으로 본 회차는 실제로 ${percent(Math.abs(1 - popularity.lowQuartileIndex))} 덜 붐볐습니다.`
+            : '인기도 예측과 실제 사이에 뚜렷한 관계가 없습니다. 차이가 우연으로 설명될 수 있는 수준입니다.'));
+        $('popularity-body').replaceChildren(
+            metricRow('예측-실제 상관계수', popularity.correlation.toFixed(3), '1에 가까울수록 잘 맞힌 것, 0이면 맞히지 못한 것'),
+            metricRow('보정 기울기', popularity.slope.toFixed(2),
+                `예측한 차이의 ${percent(popularity.slope, 0)}만 실제로 나타납니다. 1보다 작으면 예측이 낙관적이라는 뜻입니다.`),
+            metricRow('덜 붐빌 것으로 본 25% 회차', popularity.lowQuartileIndex.toFixed(3), crowd(popularity.lowQuartileIndex)),
+            metricRow('더 붐빌 것으로 본 25% 회차', popularity.highQuartileIndex.toFixed(3), crowd(popularity.highQuartileIndex)),
+            metricRow('우연일 확률', chance(popularity.pValue), `${percent(level, 0)}보다 작을 때만 관계가 있다고 봅니다`));
+        $('popularity-note').textContent = '생성한 조합의 실제 인기도는 잴 방법이 없어(당첨되지 않았으니 5등 당첨자 수도 없습니다), 대신 그 회차 실제 당첨 조합의 인기도를 직전 이력만으로 학습한 모델이 얼마나 맞히는지 쟀습니다. 당첨 조합은 무작위로 정해지므로 모델이 처음 보는, 고르게 뽑힌 표본입니다. 인기도 지수는 실제 5등 당첨자 수 ÷ 기대 5등 당첨자 수이며, 1.0이면 평균만큼 붐빈 조합입니다. 이 값은 당첨 확률과 무관하고, 당첨됐을 때 당첨금을 몇 명과 나누는지만 말해 줍니다.';
+    }
+
     function renderDistribution(report) {
         const rows = report.games.map(game => {
             const row = document.createElement('tr');
@@ -171,6 +212,7 @@
         panels.forEach(panel => { panel.hidden = !report; });
         if (report) {
             renderSummary(report);
+            renderPopularity(report);
             renderDistribution(report);
             renderDraws(report);
         }
