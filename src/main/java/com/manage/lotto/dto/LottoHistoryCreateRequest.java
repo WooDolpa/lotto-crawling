@@ -1,20 +1,24 @@
 package com.manage.lotto.dto;
 
-import java.time.LocalDate;
-import java.util.List;
-import java.util.HashSet;
-import org.springframework.http.HttpStatus;
-import org.springframework.web.server.ResponseStatusException;
+import com.manage.lotto.domain.LottoRules;
+import com.manage.lotto.exception.InvalidLottoDataException;
 
-public record LottoHistoryCreateRequest(Integer drawNo, LocalDate drawDate, List<Integer> numbers,
-        Integer bonusNumber, Long totalSales, Long firstPrizeAmount, Integer firstPrizeWinners) {
+import java.util.List;
+
+public record LottoHistoryCreateRequest(Integer drawNo, List<Integer> numbers, Integer bonusNumber,
+                                        Long firstPrizeAmount, Integer firstPrizeWinners) {
+
     public void validate() {
-        if (drawNo == null || drawNo <= 0 || drawDate == null || numbers == null || numbers.size() != 6 ||
-                numbers.stream().anyMatch(n -> n == null || n < 1 || n > 45) || new HashSet<>(numbers).size() != 6 ||
-                bonusNumber == null || bonusNumber < 1 || bonusNumber > 45 || numbers.contains(bonusNumber) ||
-                (totalSales != null && totalSales < 0) || (firstPrizeAmount != null && firstPrizeAmount < 0) ||
-                (firstPrizeWinners != null && firstPrizeWinners < 0)) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "필수 정보를 입력하고 번호 범위·중복 및 금액을 확인해 주세요.");
+        boolean invalid = drawNo == null || drawNo <= 0
+                || !LottoRules.isValidNumbers(numbers)
+                || !LottoRules.isValidNumber(bonusNumber) || numbers.contains(bonusNumber)
+                || isNegative(firstPrizeAmount) || isNegative(firstPrizeWinners);
+        if (invalid) {
+            throw new InvalidLottoDataException("필수 정보를 입력하고 번호 범위·중복 및 금액을 확인해 주세요.");
         }
+    }
+
+    private static boolean isNegative(Number value) {
+        return value != null && value.longValue() < 0;
     }
 }

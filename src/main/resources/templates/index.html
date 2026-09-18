@@ -1,36 +1,50 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>로또 연구소</title>
-    <link rel="stylesheet" href="/css/lotto-sheet.css" th:href="@{/css/lotto-sheet.css}">
-    <link rel="stylesheet" href="/css/sidebar.css" th:href="@{/css/sidebar.css}">
-    <script defer src="/js/sidebar.js" th:src="@{/js/sidebar.js}"></script>
-    <script defer src="/js/lotto-sheet.js" th:src="@{/js/lotto-sheet.js}"></script>
-    <script defer src="/js/history.js" th:src="@{/js/history.js}"></script>
+<head th:replace="~{fragments/head :: head(~{::title}, ~{}, ~{::script})}">
+    <title>당첨 이력 · jwlee 로또 연구소</title>
+    <script defer th:src="@{/js/history.js}"></script>
 </head>
 <body>
 <th:block th:replace="~{fragments/navigation :: sidebar('history')}"></th:block>
 <div class="app-content">
-<main data-draws-url="/api/lotto/draws" data-history-url="/api/lotto/history"
-      id="main-content" tabindex="-1"
+<main id="main-content" class="page" tabindex="-1"
       th:attr="data-draws-url=@{/api/lotto/draws},data-history-url=@{/api/lotto/history}">
-    <header><span class="eyebrow">로또 연구소</span><h1>당첨 번호 궤적</h1><p>회차별 당첨 번호를 용지 위에서 이어 보세요.</p></header>
-    <form id="search-form" class="search-panel">
-        <div class="field"><label for="from-draw">시작 회차</label><select id="from-draw" disabled required><option value="">불러오는 중</option></select></div>
-        <span class="range" aria-hidden="true">~</span>
-        <div class="field"><label for="to-draw">종료 회차</label><select id="to-draw" disabled required><option value="">불러오는 중</option></select></div>
-        <button id="search-button" type="submit" disabled>검색</button>
-    </form>
-    <div class="result-heading"><h2>당첨 이력</h2></div>
-    <div class="history-tabs" role="tablist" aria-label="당첨 이력 표시 방식">
-        <button id="numbers-tab" class="history-tab" type="button" role="tab" aria-selected="true" aria-controls="results" tabindex="0">번호</button>
-        <button id="cards-tab" class="history-tab" type="button" role="tab" aria-selected="false" aria-controls="results" tabindex="-1">카드</button>
-    </div>
-    <p id="status" role="status" aria-live="polite">회차 목록을 불러오는 중입니다.</p>
-    <section id="results" class="history-numbers" role="tabpanel" aria-labelledby="numbers-tab" tabindex="0" aria-busy="true"></section>
-    <nav id="history-pagination" class="history-pagination" aria-label="당첨 이력 페이지" hidden></nav>
+    <header class="page-header">
+        <div>
+            <p class="page-eyebrow">당첨 이력</p>
+            <h1 class="page-title">당첨 번호 궤적</h1>
+            <p class="page-description">회차별 당첨 번호를 목록으로 보거나 용지 위에서 이어 보세요.</p>
+        </div>
+    </header>
+
+    <section class="stat-grid" aria-label="조회 요약">
+        <div class="stat"><span class="stat-label">저장된 회차</span><span id="stat-total" class="stat-value">-</span><span class="stat-meta">DB에 적재된 전체 회차</span></div>
+        <div class="stat"><span class="stat-label">최신 회차</span><span id="stat-latest" class="stat-value">-</span><span id="stat-latest-meta" class="stat-meta">-</span></div>
+        <div class="stat"><span class="stat-label">조회 결과</span><span id="stat-range" class="stat-value">-</span><span id="stat-range-meta" class="stat-meta">-</span></div>
+        <div class="stat"><span class="stat-label">조회 범위 최다 번호</span><span id="stat-frequent" class="stat-value">-</span><span id="stat-frequent-meta" class="stat-meta">-</span></div>
+    </section>
+
+    <section class="panel" aria-labelledby="history-title">
+        <h2 id="history-title" class="visually-hidden">당첨 이력</h2>
+        <div class="panel-toolbar">
+            <form id="search-form" class="search-form">
+                <div class="field"><label for="from-draw">시작 회차</label><select id="from-draw" class="control" disabled required><option value="">불러오는 중</option></select></div>
+                <span class="range-sep" aria-hidden="true">~</span>
+                <div class="field"><label for="to-draw">종료 회차</label><select id="to-draw" class="control" disabled required><option value="">불러오는 중</option></select></div>
+                <button id="search-button" class="btn btn-primary" type="submit" disabled><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>검색</button>
+            </form>
+            <div class="segmented" role="tablist" aria-label="당첨 이력 표시 방식">
+                <button id="numbers-tab" class="segmented-tab" type="button" role="tab" aria-selected="true" aria-controls="results" tabindex="0">번호</button>
+                <button id="cards-tab" class="segmented-tab" type="button" role="tab" aria-selected="false" aria-controls="results" tabindex="-1">카드</button>
+            </div>
+        </div>
+        <p id="status" class="status-text panel-status" role="status" aria-live="polite">회차 목록을 불러오는 중입니다.</p>
+        <section id="results" class="table-wrap" role="tabpanel" aria-labelledby="numbers-tab" tabindex="0" aria-busy="true"></section>
+        <div id="history-footer" class="panel-footer" hidden>
+            <span id="page-summary" class="page-summary"></span>
+            <nav id="history-pagination" class="pagination" aria-label="당첨 이력 페이지"></nav>
+        </div>
+    </section>
 </main>
 </div>
 </body>

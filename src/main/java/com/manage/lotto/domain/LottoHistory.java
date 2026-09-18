@@ -2,6 +2,8 @@ package com.manage.lotto.domain;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.AccessLevel;
@@ -10,125 +12,143 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Comment;
+import org.hibernate.annotations.CreationTimestamp;
 
-import java.time.LocalDate;
-import java.util.Arrays;
+import java.time.LocalDateTime;
 import java.util.List;
+import java.util.stream.Stream;
 
 /**
- * 로또 6/45 회차별 당첨 이력 및 통계 정보 엔티티
+ * 로또 회차별 당첨 정보 엔티티
  */
 @Entity
 @Table(name = "lotto_history")
-@Comment("로또 6/45 회차별 당첨 이력 및 통계 정보 테이블")
+@Comment("로또 회차별 당첨 정보")
 @Getter
-@Builder
-@AllArgsConstructor
+@Builder(access = AccessLevel.PRIVATE)
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class LottoHistory {
 
     /**
-     * 로또 추첨 회차 (PK)
-     * 예: 1, 1000, 1240
+     * 회차 당첨 정보 생성 (1등 당첨 금액·인원이 없으면 0으로 저장)
+     *
+     * @param numbers 당첨 번호 6개 (전달된 순서대로 1~6번째 번호에 저장)
+     */
+    public static LottoHistory of(int drwNo, List<Integer> numbers, int bonusNo, Long firstWinAmt, Integer firstWinCo) {
+        return LottoHistory.builder()
+                .drwNo(drwNo)
+                .winNo1(numbers.get(0))
+                .winNo2(numbers.get(1))
+                .winNo3(numbers.get(2))
+                .winNo4(numbers.get(3))
+                .winNo5(numbers.get(4))
+                .winNo6(numbers.get(5))
+                .bonusNo(bonusNo)
+                .firstWinCo(firstWinCo != null ? firstWinCo : 0)
+                .firstWinAmt(firstWinAmt != null ? firstWinAmt : 0L)
+                .build();
+    }
+
+    /**
+     * 로또 회차별 아이디 (PK, 자동 증가)
      */
     @Id
-    @Column(name = "drw_no", nullable = false)
-    @Comment("로또 추첨 회차 (기본키, 예: 1240)")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false)
+    @Comment("로또 회차별 아이디")
+    private Integer id;
+
+    /**
+     * 로또 추첨 회차 (유니크)
+     * 예: 1, 1000, 1240
+     */
+    @Column(name = "drw_no", nullable = false, unique = true)
+    @Comment("로또 추첨 회차")
     private Integer drwNo;
 
-    /**
-     * 로또 추첨 일자
-     * 예: 2002-12-07 (1회차), 2026-03-07
-     */
-    @Column(name = "drw_date")
-    @Comment("로또 추첨 일자 (토요일, 예: 2026-03-07)")
-    private LocalDate drwDate;
+    @Column(name = "win_no1", nullable = false)
+    @Comment("1번째 당첨번호 (1 ~ 45)")
+    private Integer winNo1;
 
-    /**
-     * 1번째 당첨 번호 (1~45)
-     */
-    @Column(name = "drwt_no1", nullable = false)
-    @Comment("1번째 당첨 번호 (1~45)")
-    private Integer drwtNo1;
+    @Column(name = "win_no2", nullable = false)
+    @Comment("2번째 당첨번호 (1 ~ 45)")
+    private Integer winNo2;
 
-    /**
-     * 2번째 당첨 번호 (1~45)
-     */
-    @Column(name = "drwt_no2", nullable = false)
-    @Comment("2번째 당첨 번호 (1~45)")
-    private Integer drwtNo2;
+    @Column(name = "win_no3", nullable = false)
+    @Comment("3번째 당첨번호 (1 ~ 45)")
+    private Integer winNo3;
 
-    /**
-     * 3번째 당첨 번호 (1~45)
-     */
-    @Column(name = "drwt_no3", nullable = false)
-    @Comment("3번째 당첨 번호 (1~45)")
-    private Integer drwtNo3;
+    @Column(name = "win_no4", nullable = false)
+    @Comment("4번째 당첨번호 (1 ~ 45)")
+    private Integer winNo4;
 
-    /**
-     * 4번째 당첨 번호 (1~45)
-     */
-    @Column(name = "drwt_no4", nullable = false)
-    @Comment("4번째 당첨 번호 (1~45)")
-    private Integer drwtNo4;
+    @Column(name = "win_no5", nullable = false)
+    @Comment("5번째 당첨번호 (1 ~ 45)")
+    private Integer winNo5;
 
-    /**
-     * 5번째 당첨 번호 (1~45)
-     */
-    @Column(name = "drwt_no5", nullable = false)
-    @Comment("5번째 당첨 번호 (1~45)")
-    private Integer drwtNo5;
-
-    /**
-     * 6번째 당첨 번호 (1~45)
-     */
-    @Column(name = "drwt_no6", nullable = false)
-    @Comment("6번째 당첨 번호 (1~45)")
-    private Integer drwtNo6;
+    @Column(name = "win_no6", nullable = false)
+    @Comment("6번째 당첨번호 (1 ~ 45)")
+    private Integer winNo6;
 
     /**
      * 2등 결정용 보너스 번호 (1~45)
      */
-    @Column(name = "bnus_no", nullable = false)
-    @Comment("보너스 당첨 번호 (1~45, 2등 결정용)")
-    private Integer bnusNo;
-
-    /**
-     * 해당 회차 총 판매 금액 (단위: 원)
-     */
-    @Column(name = "tot_sellamnt")
-    @Comment("해당 회차 총 판매 금액 (단위: 원)")
-    private Long totSellamnt;
-
-    /**
-     * 1등 1게임당 당첨 금액 (단위: 원)
-     */
-    @Column(name = "first_winamnt")
-    @Comment("1등 1게임당 당첨 금액 (단위: 원)")
-    private Long firstWinamnt;
+    @Column(name = "bonus_no", nullable = false)
+    @Comment("보너스 당첨 번호 (1 ~ 45)")
+    private Integer bonusNo;
 
     /**
      * 1등 당첨 게임(인원) 수
      */
-    @Column(name = "first_przwner_co")
-    @Comment("1등 당첨 게임(인원) 수")
-    private Integer firstPrzwnerCo;
+    @Column(name = "first_win_co", nullable = false)
+    @Comment("1등 당첨 인원 수")
+    private Integer firstWinCo;
+
+    /**
+     * 1등 1게임당 당첨 금액 (단위: 원)
+     */
+    @Column(name = "first_win_amt", nullable = false)
+    @Comment("1등 당첨 금액")
+    private Long firstWinAmt;
+
+    /**
+     * 등록일 (최초 저장 시 자동 입력, 갱신 시 유지)
+     */
+    @CreationTimestamp
+    @Column(name = "created_date", nullable = false, updatable = false)
+    @Comment("등록일")
+    private LocalDateTime createdDate;
 
     /**
      * 6개 당첨 번호를 오름차순 정렬된 리스트로 반환
      */
     public List<Integer> getNumbers() {
-        return Arrays.asList(drwtNo1, drwtNo2, drwtNo3, drwtNo4, drwtNo5, drwtNo6)
-                .stream()
+        return Stream.of(winNo1, winNo2, winNo3, winNo4, winNo5, winNo6)
                 .sorted()
                 .toList();
+    }
+
+    /**
+     * 당첨 번호와 보너스 번호를 갱신하고, 1등 당첨 정보는 값이 있을 때만 갱신
+     */
+    public void updateWinningInfo(List<Integer> numbers, int bonusNo, Long firstWinAmt, Integer firstWinCo) {
+        this.winNo1 = numbers.get(0);
+        this.winNo2 = numbers.get(1);
+        this.winNo3 = numbers.get(2);
+        this.winNo4 = numbers.get(3);
+        this.winNo5 = numbers.get(4);
+        this.winNo6 = numbers.get(5);
+        this.bonusNo = bonusNo;
+        if (firstWinAmt != null) this.firstWinAmt = firstWinAmt;
+        if (firstWinCo != null) this.firstWinCo = firstWinCo;
     }
 
     /**
      * 특정 번호가 당첨 번호에 포함되어 있는지 확인
      */
     public boolean contains(int num) {
-        return drwtNo1 == num || drwtNo2 == num || drwtNo3 == num ||
-                drwtNo4 == num || drwtNo5 == num || drwtNo6 == num;
+        return winNo1 == num || winNo2 == num || winNo3 == num ||
+                winNo4 == num || winNo5 == num || winNo6 == num;
     }
 }

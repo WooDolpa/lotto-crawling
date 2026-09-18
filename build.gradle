@@ -35,37 +35,12 @@ dependencies {
 
     runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
 
-    // QueryDSL
-    implementation 'com.querydsl:querydsl-jpa:5.0.0:jakarta'
-    annotationProcessor "com.querydsl:querydsl-apt:${dependencyManagement.importedProperties['querydsl.version']}:jakarta"
-    annotationProcessor "jakarta.annotation:jakarta.annotation-api"
-    annotationProcessor "jakarta.persistence:jakarta.persistence-api"
-
     // Apache POI (엑셀 파싱)
     implementation 'org.apache.poi:poi-ooxml:5.2.5'
 
     // Smile ML (Java 머신러닝)
     implementation 'com.github.haifengl:smile-core:3.1.1'
 }
-
-// gradle clean 시 QClass 전부 삭제
-tasks.register('patternExperimentCheck', JavaExec) {
-    dependsOn testClasses
-    classpath = sourceSets.test.runtimeClasspath
-    mainClass = 'com.manage.lotto.PatternExperimentCheck'
-}
-tasks.register('patternModelCheck', JavaExec) {
-    dependsOn testClasses
-    classpath = sourceSets.test.runtimeClasspath
-    mainClass = 'com.manage.lotto.PatternModelCheck'
-}
-tasks.register('lottoRegistrationCheck', JavaExec) {
-    dependsOn testClasses
-    classpath = sourceSets.test.runtimeClasspath
-    mainClass = 'com.manage.lotto.LottoRegistrationCheck'
-}
-
-clean {	delete file('src/main/generated')}
 
 // profile 설정
 ext.profile = (!project.hasProperty('profile') || !profile) ? 'local' : profile
@@ -78,4 +53,3 @@ sourceSets {
         }
     }
 }
-

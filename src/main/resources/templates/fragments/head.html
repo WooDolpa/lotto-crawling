@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<!-- 사용: <head th:replace="~{fragments/head :: head(~{::title}, ~{::link}, ~{::script})}"> 안에 페이지 전용 title·link·script -->
+<head th:fragment="head(title, links, scripts)">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title th:replace="${title}">jwlee 로또 연구소</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+    <link rel="stylesheet" th:href="@{/css/base.css}">
+    <link rel="stylesheet" th:href="@{/css/components.css}">
+    <link rel="stylesheet" th:href="@{/css/layout.css}">
+    <link rel="stylesheet" th:href="@{/css/pages.css}">
+    <th:block th:replace="${links}"></th:block>
+    <script defer th:src="@{/js/common.js}"></script>
+    <script defer th:src="@{/js/sidebar.js}"></script>
+    <script defer th:src="@{/js/lotto-sheet.js}"></script>
+    <th:block th:replace="${scripts}"></th:block>
+</head>
+</html>

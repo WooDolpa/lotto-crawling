@@ -1,32 +1,80 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<head th:replace="~{fragments/head :: head(~{::title}, ~{}, ~{::script})}">
     <title>모델 검증 · jwlee 로또 연구소</title>
-    <link rel="stylesheet" href="/css/lotto-sheet.css" th:href="@{/css/lotto-sheet.css}">
-    <link rel="stylesheet" href="/css/sidebar.css" th:href="@{/css/sidebar.css}">
-    <script defer src="/js/sidebar.js" th:src="@{/js/sidebar.js}"></script>
-    <script defer src="/js/lotto-sheet.js" th:src="@{/js/lotto-sheet.js}"></script>
-    <script defer src="/js/validation.js" th:src="@{/js/validation.js}"></script>
+    <script defer th:src="@{/js/validation.js}"></script>
 </head>
 <body>
 <th:block th:replace="~{fragments/navigation :: sidebar('validation')}"></th:block>
 <div class="app-content">
-<main id="main-content" tabindex="-1">
-<header><span class="eyebrow">jwlee 로또 연구소</span><h1>모델 검증</h1><p>과거 회차에서 실제 번호와 모델의 예측을 비교합니다.</p></header>
-    <section class="experiment-panel" aria-labelledby="experiment-title">
-        <h2 id="experiment-title">시간순 검증</h2>
-        <p>최근 최대 300회차로 학습합니다. 번호 특징에 최근 10회차의 선 길이·꺾임·위치 분포를 추가해 비교합니다.</p>
-        <p>패턴 유사도와 번호 적중은 별개이며, 이 실험은 당첨 예측력을 입증하지 않습니다.</p>
-        <form id="experiment-form" th:attr="data-url=@{/api/lotto/pattern/experiment}" data-url="/api/lotto/pattern/experiment">
-            <label for="test-draws">검증 회차 수</label>
-            <select id="test-draws"><option value="5">5회차</option><option value="10">10회차</option><option value="20">20회차</option></select>
-            <button id="experiment-button" type="submit">실험 실행</button>
-        </form>
-        <p id="experiment-status" role="status" aria-live="polite"></p>
-        <div id="experiment-summary"></div>
-        <div id="experiment-results" class="sheets"></div>
+<main id="main-content" class="page" tabindex="-1">
+    <header class="page-header">
+        <div>
+            <p class="page-eyebrow">모델 검증</p>
+            <h1 class="page-title">시간순 검증</h1>
+            <p class="page-description">과거 회차를 모르는 척 맞혀 보고, 무작위로 고른 것보다 나은지 확인합니다.</p>
+        </div>
+    </header>
+
+    <div class="validation-layout">
+        <section class="panel" aria-labelledby="settings-title">
+            <div class="panel-header"><h2 id="settings-title" class="panel-title">검증 설정</h2><span class="panel-subtitle">20회차마다 다시 학습</span></div>
+            <div class="panel-body form-stack">
+                <p class="experiment-description">최근 회차를 하나씩, <b>그 회차보다 이전 기록만</b> 보고 맞혀 봅니다. A 점수 모델, B 확률 모델, C 인기 조합 제외를 무작위로 골랐을 때의 이론값과 비교합니다.</p>
+                <form id="validation-form" class="experiment-form" th:attr="data-url=@{/api/lotto/validation}">
+                    <div class="field">
+                        <label for="test-draws">검증 회차 수</label>
+                        <select id="test-draws" class="control" disabled><option value="">확인 중</option></select>
+                    </div>
+                    <button id="validation-button" class="btn btn-primary" type="submit" disabled><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4v16l13-8Z"/></svg>검증 실행</button>
+                </form>
+                <p class="callout"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg><span>수 분 걸릴 수 있습니다. 페이지를 떠나도 서버에서 계속 진행되며, 다시 들어오면 진행 상황과 결과를 볼 수 있습니다.</span></p>
+            </div>
+        </section>
+
+        <section class="panel" aria-labelledby="progress-title">
+            <div class="panel-header"><h2 id="progress-title" class="panel-title">진행 상태</h2></div>
+            <div class="panel-body progress-body" aria-live="polite">
+                <p id="progress-state" class="progress-state">상태 확인 중</p>
+                <div id="progress-track" class="progress-track" role="progressbar" aria-labelledby="progress-state" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span></span></div>
+                <p id="progress-meta" class="status-text"></p>
+            </div>
+        </section>
+    </div>
+
+    <section id="summary-panel" class="panel" aria-labelledby="summary-title" hidden>
+        <div class="panel-header"><h2 id="summary-title" class="panel-title">무작위와 비교</h2><span id="summary-meta" class="panel-subtitle"></span></div>
+        <p id="verdict" class="verdict"></p>
+        <div class="table-wrap">
+            <table class="data-table metrics-table">
+                <caption class="visually-hidden">게임별 평균 일치 개수, 3개 이상 일치 비율, 우연일 확률과 판정</caption>
+                <thead><tr><th scope="col">게임</th><th scope="col">평균 일치 개수</th><th scope="col">3개 이상 일치</th><th scope="col">우연일 확률</th><th scope="col">판정</th></tr></thead>
+                <tbody id="summary-body"></tbody>
+            </table>
+        </div>
+        <p id="summary-note" class="panel-note"></p>
+    </section>
+
+    <section id="distribution-panel" class="panel" aria-labelledby="distribution-title" hidden>
+        <div class="panel-header"><h2 id="distribution-title" class="panel-title">일치 개수 분포</h2><span class="panel-subtitle">회차 수</span></div>
+        <div class="table-wrap">
+            <table class="data-table">
+                <caption class="visually-hidden">게임별로 0~6개 일치한 회차 수와 무작위 기대 회차 수</caption>
+                <thead><tr><th scope="col">게임</th><th scope="col">0개</th><th scope="col">1개</th><th scope="col">2개</th><th scope="col">3개</th><th scope="col">4개</th><th scope="col">5개</th><th scope="col">6개</th></tr></thead>
+                <tbody id="distribution-body"></tbody>
+            </table>
+        </div>
+    </section>
+
+    <section id="draws-panel" class="panel" aria-labelledby="draws-title" hidden>
+        <div class="panel-header"><h2 id="draws-title" class="panel-title">회차별 일치 개수</h2><span class="panel-subtitle">최신 회차부터 · 3개 이상 강조</span></div>
+        <div class="table-wrap table-scroll">
+            <table class="data-table draws-table">
+                <caption class="visually-hidden">검증 회차별 실제 당첨 번호와 게임별 일치 개수</caption>
+                <thead id="draws-head"></thead>
+                <tbody id="draws-body"></tbody>
+            </table>
+        </div>
     </section>
 </main>
 </div>

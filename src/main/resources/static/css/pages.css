@@ -1,0 +1,155 @@
+/* ===== 당첨 이력 ===== */
+.stat-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+.stat { display: grid; align-content: start; gap: 4px; min-width: 0; padding: 16px 20px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); }
+.stat-label { font-size: var(--text-sm); font-weight: 500; color: var(--text-secondary); }
+.stat-value { display: flex; align-items: center; gap: 8px; min-height: 36px; font-size: var(--text-2xl); font-weight: 700; line-height: 1.3; letter-spacing: -.02em; font-variant-numeric: tabular-nums; }
+.stat-meta { font-size: var(--text-xs); color: var(--text-tertiary); font-variant-numeric: tabular-nums; }
+
+.search-form { display: flex; align-items: flex-end; gap: 12px; flex-wrap: wrap; }
+.search-form .field { width: 160px; }
+.range-sep { padding-bottom: 9px; color: var(--text-tertiary); }
+.panel-status { padding: 12px 20px 0; }
+#results:focus-visible { outline-offset: -2px; }
+
+/* ===== 번호 예측 ===== */
+.prediction-layout { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 20px; align-items: start; }
+.prediction-hero { grid-column: 1; background: linear-gradient(180deg, var(--accent-soft), transparent 70%), var(--surface); }
+.prediction-sheet { grid-column: 2; grid-row: 1 / span 2; }
+.model-panel { grid-column: 1; }
+.hero-body { display: grid; gap: 24px; padding: 28px; }
+.hero-result { display: grid; gap: 16px; }
+.hero-label { font-size: var(--text-sm); font-weight: 600; color: var(--accent); }
+.hero-draw { margin-top: -10px; font-size: var(--text-2xl); font-weight: 700; letter-spacing: -.02em; font-variant-numeric: tabular-nums; }
+.ball-row-lg { gap: 12px; }
+.hero-meta { font-size: var(--text-sm); color: var(--text-secondary); }
+.game-list { display: grid; gap: 12px; margin: 0; padding: 0; list-style: none; }
+.game-row { display: grid; gap: 12px; min-width: 0; padding: 16px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-md); }
+.game-row .ball-lg { --ball-size: 48px; }
+.game-head { display: flex; align-items: center; gap: 10px; min-width: 0; }
+.game-tag { display: grid; place-items: center; flex-shrink: 0; width: 28px; height: 28px; border-radius: 50%; background: var(--accent-soft); color: var(--accent); font-size: var(--text-xs); font-weight: 700; }
+.game-name { font-size: var(--text-md); font-weight: 700; }
+.game-desc { font-size: var(--text-xs); color: var(--text-tertiary); }
+.game-meta { font-size: var(--text-sm); color: var(--text-secondary); }
+.game-meta:empty { display: none; }
+.game-meta.is-warning { color: var(--warning); }
+.game-meta.is-error { color: var(--danger); }
+.button-row { display: flex; flex-wrap: wrap; gap: 8px; }
+.sheet-stack { display: grid; gap: 16px; }
+.sheet-stack .lotto-sheet { max-width: 260px; margin: 0 auto; }
+.model-groups { display: grid; gap: 20px; }
+.model-group + .model-group { padding-top: 20px; border-top: 1px solid var(--border); }
+.model-group-title { margin-bottom: 12px; font-size: var(--text-md); font-weight: 700; }
+.model-error { margin-top: 12px; }
+.detail-list { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px 24px; }
+.detail-list > div { display: grid; gap: 2px; min-width: 0; }
+.detail-list dt { font-size: var(--text-xs); color: var(--text-tertiary); }
+.detail-list dd { font-weight: 600; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+
+/* ===== 번호 등록 ===== */
+.register-layout { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 20px; align-items: start; }
+.register-main { display: grid; gap: 16px; min-width: 0; }
+
+.dropzone {
+    position: relative; display: grid; justify-items: center; gap: 8px; padding: 36px 20px;
+    border: 1.5px dashed var(--border-strong); border-radius: var(--radius-md); background: var(--surface-muted);
+    text-align: center; transition: border-color .15s, background-color .15s;
+}
+.dropzone:hover, .dropzone:focus-within, .dropzone.is-dragover { border-color: var(--accent); background: var(--accent-soft); }
+.dropzone input[type="file"] { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer; }
+.dropzone-icon { display: grid; place-items: center; width: 44px; height: 44px; margin-bottom: 4px; border-radius: var(--radius-md); background: var(--surface); color: var(--accent); box-shadow: var(--shadow-sm); }
+.dropzone-icon svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.dropzone-title { font-weight: 600; }
+.dropzone-hint { font-size: var(--text-xs); color: var(--text-tertiary); }
+.dropzone-file { display: inline-flex; align-items: center; gap: 6px; max-width: 100%; padding: 4px 10px; border-radius: var(--radius-full); background: var(--surface); font-size: var(--text-sm); font-weight: 600; overflow-wrap: anywhere; }
+.dropzone-file:empty { display: none; }
+.column-guide { display: flex; flex-wrap: wrap; gap: 6px; }
+.amount-input { font-variant-numeric: tabular-nums; }
+
+.draw-numbers { display: flex; align-items: flex-end; flex-wrap: wrap; gap: 12px 16px; }
+.number-inputs { display: flex; gap: 8px; }
+.number-plus { padding-bottom: 14px; font-size: var(--text-xl); color: var(--text-tertiary); }
+.ball-input {
+    --ball-input-size: 52px;
+    width: var(--ball-input-size); height: var(--ball-input-size); padding: 0; flex-shrink: 0;
+    border: 1.5px solid var(--border-strong); border-radius: 50%; background: var(--surface); color: var(--text);
+    font-size: var(--text-lg); font-weight: 700; font-variant-numeric: tabular-nums; text-align: center;
+    -moz-appearance: textfield; appearance: textfield;
+    transition: background-color .15s, border-color .15s, box-shadow .15s;
+}
+.ball-input::-webkit-outer-spin-button, .ball-input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+.ball-input::placeholder { color: var(--text-tertiary); font-weight: 500; }
+.ball-input:focus-visible { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
+.ball-input[class*="ball-group-"] { background: var(--ball-bg); color: var(--ball-fg); border-color: transparent; box-shadow: inset 0 -2px 0 rgb(0 0 0 / 10%); }
+.ball-input[aria-invalid="true"] { border-color: var(--danger); box-shadow: 0 0 0 3px var(--danger-soft); }
+.bonus-field { display: grid; justify-items: center; gap: 6px; }
+.bonus-field label { font-size: var(--text-xs); font-weight: 500; color: var(--text-tertiary); }
+
+.guide-list { display: grid; gap: 16px; margin: 0; padding: 0; list-style: none; }
+.guide-list li { display: grid; grid-template-columns: 28px minmax(0, 1fr); gap: 12px; }
+.guide-step { display: grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; background: var(--accent-soft); color: var(--accent); font-size: var(--text-xs); font-weight: 700; }
+.guide-title { font-size: var(--text-sm); font-weight: 600; }
+.guide-text { margin-top: 2px; font-size: var(--text-sm); color: var(--text-secondary); line-height: 1.6; }
+.model-note { margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border); }
+
+/* ===== 모델 검증 ===== */
+.validation-layout { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 20px; align-items: start; }
+.experiment-description { font-size: var(--text-sm); color: var(--text-secondary); line-height: 1.7; }
+.experiment-form { display: flex; align-items: flex-end; flex-wrap: wrap; gap: 12px; }
+.experiment-form .field { width: 160px; }
+.progress-body { display: grid; gap: 12px; }
+.progress-state { font-size: var(--text-lg); font-weight: 700; font-variant-numeric: tabular-nums; }
+.progress-track { height: 8px; border-radius: var(--radius-full); background: var(--surface-muted); overflow: hidden; }
+.progress-track > span { display: block; width: 0; height: 100%; border-radius: inherit; background: var(--accent); transition: width .3s ease-out; }
+.progress-track.is-failed > span { background: var(--danger); }
+.verdict { padding: 16px 20px; border-bottom: 1px solid var(--border); font-weight: 600; line-height: 1.6; }
+.verdict.is-positive { color: var(--success); }
+.cell-sub { display: block; margin-top: 2px; font-size: var(--text-xs); font-weight: 400; color: var(--text-tertiary); }
+.data-table tr.is-baseline > * { background: var(--surface-muted); color: var(--text-secondary); }
+.table-scroll { max-height: 560px; overflow: auto; }
+.table-scroll thead th { position: sticky; top: 0; z-index: 1; }
+.draws-table .ball { --ball-size: 26px; }
+.match-count { color: var(--text-secondary); font-variant-numeric: tabular-nums; }
+.match-count.is-hit { color: var(--success); font-weight: 700; }
+@media (prefers-reduced-motion: reduce) { .progress-track > span { transition: none; } }
+
+@media (max-width: 1080px) {
+    .stat-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .prediction-layout, .register-layout, .validation-layout { grid-template-columns: minmax(0, 1fr); }
+    .prediction-hero, .prediction-sheet, .model-panel { grid-column: 1; grid-row: auto; }
+    .sheet-stack { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+}
+
+@media (max-width: 600px) {
+    .stat-grid { gap: 12px; }
+    .stat { padding: 14px 16px; }
+    .stat-value { font-size: var(--text-xl); min-height: 32px; }
+    .stat .ball { --ball-size: 28px; }
+    .panel-toolbar { padding: 16px; }
+    .search-form, .experiment-form { width: 100%; }
+    .search-form .field, .experiment-form .field { flex: 1 1 0; width: auto; }
+    .search-form .btn, .experiment-form .btn { width: 100%; }
+    .segmented, .register-tabs { width: 100%; }
+    .segmented-tab { flex: 1; }
+    .data-table th, .data-table td { padding: 10px 12px; }
+    .data-table .ball { --ball-size: 30px; }
+    .data-table .ball-row { gap: 4px; flex-wrap: nowrap; }
+    .panel-footer { justify-content: center; padding: 12px 16px; }
+    .sheet-grid { grid-template-columns: 1fr; padding: 16px; }
+    .sheet-grid .lotto-sheet { max-width: 280px; margin: 0 auto; }
+    .hero-body { padding: 20px; gap: 20px; }
+    /* 공 6개 + 간격 5개가 한 줄에 들어가도록 (페이지·패널 여백 104px 제외) */
+    .ball-lg { --ball-size: min(44px, calc((100vw - 110px) / 6)); }
+    .ball-row-lg { gap: 6px; flex-wrap: nowrap; }
+    /* 게임 카드 여백·테두리 30px을 추가로 제외 */
+    .game-row { padding: 14px; }
+    .game-row .ball-lg { --ball-size: min(44px, calc((100vw - 140px) / 6)); }
+    .sheet-stack { grid-template-columns: minmax(0, 1fr); }
+    .button-row .btn, .form-actions .btn { flex: 1 1 100%; }
+    .detail-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .form-grid, .form-grid-3 { grid-template-columns: minmax(0, 1fr); }
+    /* 번호 6개 + 간격 5개가 한 줄에 들어가도록 (페이지·패널 여백 약 74px 제외) */
+    .draw-numbers .ball-input { --ball-input-size: min(48px, calc((100vw - 120px) / 6)); font-size: var(--text-md); }
+    .number-plus { display: none; }
+    .verdict { padding: 14px 16px; }
+    .draws-table .ball { --ball-size: 24px; }
+}

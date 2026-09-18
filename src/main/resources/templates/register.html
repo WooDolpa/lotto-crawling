@@ -1,56 +1,111 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<head th:replace="~{fragments/head :: head(~{::title}, ~{}, ~{::script})}">
     <title>번호 등록 · jwlee 로또 연구소</title>
-    <link rel="stylesheet" th:href="@{/css/lotto-sheet.css}" href="/css/lotto-sheet.css">
-    <link rel="stylesheet" th:href="@{/css/sidebar.css}" href="/css/sidebar.css">
-    <link rel="stylesheet" th:href="@{/css/register.css}" href="/css/register.css">
-    <script defer th:src="@{/js/sidebar.js}" src="/js/sidebar.js"></script>
-    <script defer th:src="@{/js/register.js}" src="/js/register.js"></script>
+    <script defer th:src="@{/js/register.js}"></script>
 </head>
 <body>
 <th:block th:replace="~{fragments/navigation :: sidebar('register')}"></th:block>
-<div class="app-content"><main id="main-content" tabindex="-1">
-    <header><span class="eyebrow">jwlee 로또 연구소</span><h1>번호 등록</h1><p>엑셀 파일 또는 직접 입력으로 회차별 당첨 번호를 등록하세요.</p></header>
-    <div class="history-tabs" role="tablist" aria-label="번호 등록 방식">
-        <button id="bulk-tab" class="history-tab" type="button" role="tab" aria-selected="true" aria-controls="bulk-panel">대량등록</button>
-        <button id="single-tab" class="history-tab" type="button" role="tab" aria-selected="false" aria-controls="single-panel" tabindex="-1">단일등록</button>
+<div class="app-content">
+<main id="main-content" class="page" tabindex="-1">
+    <header class="page-header">
+        <div>
+            <p class="page-eyebrow">로또 번호</p>
+            <h1 class="page-title">번호 등록</h1>
+            <p class="page-description">엑셀 파일로 한 번에 올리거나, 회차 당첨 정보를 직접 입력하세요.</p>
+        </div>
+        <div class="segmented register-tabs" role="tablist" aria-label="번호 등록 방식">
+            <button id="bulk-tab" class="segmented-tab" type="button" role="tab" aria-selected="true" aria-controls="bulk-panel">대량등록</button>
+            <button id="single-tab" class="segmented-tab" type="button" role="tab" aria-selected="false" aria-controls="single-panel" tabindex="-1">단일등록</button>
+        </div>
+    </header>
+
+    <div class="register-layout">
+        <div class="register-main">
+            <section id="bulk-panel" class="panel" role="tabpanel" aria-labelledby="bulk-tab">
+                <div class="panel-header">
+                    <h2 class="panel-title">엑셀 업로드</h2>
+                    <span class="panel-subtitle">.xlsx · .xls · 최대 10MB</span>
+                </div>
+                <form id="bulk-form" class="panel-body form-stack" novalidate th:attr="data-url=@{/system/manual/excel}">
+                    <div class="dropzone">
+                        <span class="dropzone-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 16V4M7 9l5-5 5 5"/><path d="M4 16v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3"/></svg></span>
+                        <label for="excel-file" class="dropzone-title">엑셀 파일을 끌어다 놓거나 클릭해서 선택하세요</label>
+                        <span class="dropzone-hint">동행복권에서 내려받은 당첨 번호 엑셀 양식 · 첫 번째 시트를 읽습니다</span>
+                        <span id="excel-file-name" class="dropzone-file" aria-live="polite"></span>
+                        <input id="excel-file" name="file" type="file" accept=".xls,.xlsx" required>
+                    </div>
+                    <div class="form-section">
+                        <p class="form-section-title">읽는 열</p>
+                        <div class="column-guide">
+                            <span class="chip"><b>B</b>회차</span>
+                            <span class="chip"><b>C~H</b>당첨 번호</span>
+                            <span class="chip"><b>I</b>보너스</span>
+                            <span class="chip"><b>K</b>1등 당첨 인원</span>
+                            <span class="chip"><b>L</b>1등 당첨금</span>
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <button id="upload-button" class="btn btn-primary btn-lg" type="submit"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16V4M7 9l5-5 5 5"/><path d="M4 16v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3"/></svg>업로드</button>
+                    </div>
+                </form>
+            </section>
+
+            <section id="single-panel" class="panel" role="tabpanel" aria-labelledby="single-tab" hidden>
+                <div class="panel-header">
+                    <h2 class="panel-title">당첨 정보 입력</h2>
+                    <span class="panel-subtitle">새 회차만 등록할 수 있습니다</span>
+                </div>
+                <form id="single-form" class="panel-body form-stack" novalidate th:attr="data-url=@{/api/lotto/history}">
+                    <div class="form-grid">
+                        <div class="field"><label for="draw-no">추첨 회차</label><input id="draw-no" class="control" name="drawNo" type="number" min="1" max="2147483647" step="1" placeholder="예: 1189" required></div>
+                    </div>
+                    <div class="draw-numbers">
+                        <fieldset class="form-section">
+                            <legend class="form-section-title">당첨 번호 6개</legend>
+                            <div class="number-inputs">
+                                <input class="ball-input" name="number" type="number" min="1" max="45" step="1" placeholder="1" aria-label="당첨 번호 1" required>
+                                <input class="ball-input" name="number" type="number" min="1" max="45" step="1" placeholder="2" aria-label="당첨 번호 2" required>
+                                <input class="ball-input" name="number" type="number" min="1" max="45" step="1" placeholder="3" aria-label="당첨 번호 3" required>
+                                <input class="ball-input" name="number" type="number" min="1" max="45" step="1" placeholder="4" aria-label="당첨 번호 4" required>
+                                <input class="ball-input" name="number" type="number" min="1" max="45" step="1" placeholder="5" aria-label="당첨 번호 5" required>
+                                <input class="ball-input" name="number" type="number" min="1" max="45" step="1" placeholder="6" aria-label="당첨 번호 6" required>
+                            </div>
+                        </fieldset>
+                        <span class="number-plus" aria-hidden="true">+</span>
+                        <div class="bonus-field">
+                            <label for="bonus-number">보너스</label>
+                            <input id="bonus-number" class="ball-input" name="bonusNumber" type="number" min="1" max="45" step="1" placeholder="B" required>
+                        </div>
+                    </div>
+                    <fieldset class="form-section">
+                        <legend class="form-section-title">1등 당첨 정보 <span class="optional-tag">선택 · 비우면 0으로 저장</span></legend>
+                        <div class="form-grid">
+                            <div class="field"><label for="prize-amount">1등 당첨금 (1게임당, 원)</label><input id="prize-amount" class="control amount-input" name="firstPrizeAmount" type="text" inputmode="numeric" autocomplete="off" placeholder="예: 1,791,817,758" aria-describedby="prize-amount-hint"><p id="prize-amount-hint" class="field-hint" aria-live="polite"></p></div>
+                            <div class="field"><label for="prize-winners">1등 당첨 인원</label><input id="prize-winners" class="control amount-input" name="firstPrizeWinners" type="text" inputmode="numeric" autocomplete="off" placeholder="예: 16"></div>
+                        </div>
+                    </fieldset>
+                    <div class="form-actions">
+                        <button id="save-button" class="btn btn-primary btn-lg" type="submit"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg>저장</button>
+                    </div>
+                </form>
+            </section>
+
+        </div>
+
+        <aside class="panel" aria-labelledby="guide-title">
+            <div class="panel-header"><h2 id="guide-title" class="panel-title">등록 안내</h2></div>
+            <div class="panel-body">
+                <ol class="guide-list">
+                    <li><span class="guide-step" aria-hidden="true">1</span><div><p class="guide-title">대량등록</p><p class="guide-text">새 회차는 추가하고, 이미 있는 회차는 당첨 번호만 갱신하고, 엑셀의 빈 칸은 기존 값을 유지합니다.</p></div></li>
+                    <li><span class="guide-step" aria-hidden="true">2</span><div><p class="guide-title">단일등록</p><p class="guide-text">새 회차 1건을 직접 입력합니다. 이미 등록된 회차는 덮어쓰지 않습니다.</p></div></li>
+                    <li><span class="guide-step" aria-hidden="true">3</span><div><p class="guide-title">모델 반영</p><p class="guide-text">등록이 끝나면 점수 모델과 확률 모델이 변경을 확인해 백그라운드에서 다시 학습합니다.</p></div></li>
+                </ol>
+                <p id="registration-model-status" class="status-text model-note" role="status" aria-live="polite" th:attr="data-url=@{/api/lotto/prediction/status}">등록이 끝나면 모델 반영 상태가 여기에 표시됩니다.</p>
+            </div>
+        </aside>
     </div>
-    <section id="bulk-panel" class="registration-panel" role="tabpanel" aria-labelledby="bulk-tab">
-        <h2>엑셀 업로드</h2><p>기존 등록 양식의 .xlsx 또는 .xls 파일을 선택해 주세요. 같은 회차가 있으면 기존 데이터를 갱신합니다.</p>
-        <p class="upload-format">첫 번째 시트 · B열 회차 · C~H열 당첨 번호 · I열 보너스 · K열 당첨 인원 · L열 당첨금</p>
-        <form id="bulk-form" th:attr="data-url=@{/system/manual/excel}" data-url="/system/manual/excel">
-            <label for="excel-file">엑셀 파일 (최대 10MB)</label>
-            <input id="excel-file" name="file" type="file" accept=".xls,.xlsx" required>
-            <button id="upload-button" type="submit">업로드</button>
-        </form>
-    </section>
-    <section id="single-panel" class="registration-panel" role="tabpanel" aria-labelledby="single-tab" hidden>
-        <h2>당첨 정보 입력</h2><p>* 항목은 필수입니다. 기존 회차의 중복 등록은 불가합니다.</p>
-        <form id="single-form" th:attr="data-url=@{/api/lotto/history}" data-url="/api/lotto/history">
-            <div class="registration-grid">
-                <div class="field"><label for="draw-no">추첨 회차 *</label><input id="draw-no" name="drawNo" type="number" min="1" max="2147483647" step="1" required></div>
-                <div class="field"><label for="draw-date">추첨일 *</label><input id="draw-date" name="drawDate" type="date" required></div>
-            </div>
-            <fieldset><legend>당첨 번호 6개 *</legend><div class="number-inputs">
-                <input name="number" type="number" min="1" max="45" step="1" aria-label="당첨 번호 1" required>
-                <input name="number" type="number" min="1" max="45" step="1" aria-label="당첨 번호 2" required>
-                <input name="number" type="number" min="1" max="45" step="1" aria-label="당첨 번호 3" required>
-                <input name="number" type="number" min="1" max="45" step="1" aria-label="당첨 번호 4" required>
-                <input name="number" type="number" min="1" max="45" step="1" aria-label="당첨 번호 5" required>
-                <input name="number" type="number" min="1" max="45" step="1" aria-label="당첨 번호 6" required>
-            </div></fieldset>
-            <div class="registration-grid">
-                <div class="field"><label for="bonus-number">보너스 번호 *</label><input id="bonus-number" name="bonusNumber" type="number" min="1" max="45" step="1" required></div>
-                <div class="field"><label for="total-sales">총 판매액 (원)</label><input id="total-sales" name="totalSales" type="number" min="0" max="9007199254740991" step="1"></div>
-                <div class="field"><label for="prize-amount">1등 당첨금 (1게임당, 원)</label><input id="prize-amount" name="firstPrizeAmount" type="number" min="0" max="9007199254740991" step="1"></div>
-                <div class="field"><label for="prize-winners">1등 당첨 인원</label><input id="prize-winners" name="firstPrizeWinners" type="number" min="0" max="2147483647" step="1"></div>
-            </div>
-            <button id="save-button" type="submit">저장</button>
-        </form>
-    </section>
-    <p id="registration-status" role="status" aria-live="polite"></p>
-    <p id="registration-model-status" role="status" aria-live="polite" th:attr="data-url=@{/api/lotto/pattern/status}" data-url="/api/lotto/pattern/status"></p>
-</main></div>
-</body></html>
+</main>
+</div>
+</body>
+</html>

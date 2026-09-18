@@ -1,0 +1,393 @@
+{
+  "$schema": "https://raw.githubusercontent.com/dineug/erd-editor/main/json-schema/schema.json",
+  "version": "3.0.0",
+  "settings": {
+    "width": 2000,
+    "height": 2000,
+    "scrollTop": 0,
+    "scrollLeft": 0,
+    "originX": 1725.877,
+    "originY": 839.8308,
+    "zoomLevel": 0.79,
+    "show": 511,
+    "database": 1,
+    "databaseName": "",
+    "canvasType": "ERD",
+    "language": 1,
+    "tableNameCase": 4,
+    "columnNameCase": 2,
+    "bracketType": 1,
+    "relationshipDataTypeSync": true,
+    "relationshipOptimization": false,
+    "columnOrder": [
+      1,
+      2,
+      4,
+      8,
+      16,
+      32,
+      64
+    ],
+    "maxWidthComment": -1,
+    "ignoreSaveSettings": 0
+  },
+  "doc": {
+    "tableIds": [
+      "-RzX8j6OtInEMpiE04dif"
+    ],
+    "relationshipIds": [],
+    "indexIds": [
+      "EuVB60s-FH2AY0OUkBOa1"
+    ],
+    "memoIds": []
+  },
+  "collections": {
+    "tableEntities": {
+      "-RzX8j6OtInEMpiE04dif": {
+        "id": "-RzX8j6OtInEMpiE04dif",
+        "name": "lotto_history",
+        "comment": "로또 회차별 당첨 정보",
+        "columnIds": [
+          "x2OQCRcngSz3Vh1Z_551m",
+          "IqwVn0Yd35-pLzW7PoWOV",
+          "MTvpKOKyVDCSngF6vLRdN",
+          "qKZ2TkfgAdw1wgkyp3dq4",
+          "AtM5ihcZhKaRr1apbkkrp",
+          "uECMgrbBh7fGL6Puh1qdi",
+          "tsa9LhuvRpPA_2rxjRL8L",
+          "xHfCDSfpbipG6i7KeqhKu",
+          "-8Kx6kz7LA5abUJMzxbYe",
+          "AIGEAgcw2n3enrZvN5q2q",
+          "MItWgsWfRlRnlnPu-7lkO",
+          "rfvIZxVAxNLuW3oysiuQz"
+        ],
+        "seqColumnIds": [
+          "x2OQCRcngSz3Vh1Z_551m",
+          "IqwVn0Yd35-pLzW7PoWOV",
+          "MTvpKOKyVDCSngF6vLRdN",
+          "qKZ2TkfgAdw1wgkyp3dq4",
+          "AtM5ihcZhKaRr1apbkkrp",
+          "uECMgrbBh7fGL6Puh1qdi",
+          "tsa9LhuvRpPA_2rxjRL8L",
+          "xHfCDSfpbipG6i7KeqhKu",
+          "-8Kx6kz7LA5abUJMzxbYe",
+          "AIGEAgcw2n3enrZvN5q2q",
+          "MItWgsWfRlRnlnPu-7lkO",
+          "rfvIZxVAxNLuW3oysiuQz"
+        ],
+        "ui": {
+          "x": -1593.0514,
+          "y": -981.9914,
+          "zIndex": 2,
+          "widthName": 68,
+          "widthComment": 120,
+          "color": ""
+        },
+        "meta": {
+          "updateAt": 1789630426918,
+          "createAt": 1789628509512
+        }
+      }
+    },
+    "tableColumnEntities": {
+      "x2OQCRcngSz3Vh1Z_551m": {
+        "id": "x2OQCRcngSz3Vh1Z_551m",
+        "tableId": "-RzX8j6OtInEMpiE04dif",
+        "name": "id",
+        "comment": "로또 회차별 아이디",
+        "dataType": "INT",
+        "default": "",
+        "options": 11,
+        "ui": {
+          "keys": 1,
+          "widthName": 60,
+          "widthComment": 105,
+          "widthDataType": 60,
+          "widthDefault": 60
+        },
+        "meta": {
+          "updateAt": 1789628647891,
+          "createAt": 1789628573917
+        }
+      },
+      "IqwVn0Yd35-pLzW7PoWOV": {
+        "id": "IqwVn0Yd35-pLzW7PoWOV",
+        "tableId": "-RzX8j6OtInEMpiE04dif",
+        "name": "drw_no",
+        "comment": "로또 추첨 회차",
+        "dataType": "INT",
+        "default": "",
+        "options": 8,
+        "ui": {
+          "keys": 0,
+          "widthName": 60,
+          "widthComment": 81,
+          "widthDataType": 60,
+          "widthDefault": 60
+        },
+        "meta": {
+          "updateAt": 1789630838035,
+          "createAt": 1789628648010
+        }
+      },
+      "MTvpKOKyVDCSngF6vLRdN": {
+        "id": "MTvpKOKyVDCSngF6vLRdN",
+        "tableId": "-RzX8j6OtInEMpiE04dif",
+        "name": "win_no1",
+        "comment": "1번째 당첨번호 (1 ~ 45)",
+        "dataType": "TINYINT",
+        "default": "",
+        "options": 8,
+        "ui": {
+          "keys": 0,
+          "widthName": 60,
+          "widthComment": 128,
+          "widthDataType": 60,
+          "widthDefault": 60
+        },
+        "meta": {
+          "updateAt": 1789628748775,
+          "createAt": 1789628670430
+        }
+      },
+      "qKZ2TkfgAdw1wgkyp3dq4": {
+        "id": "qKZ2TkfgAdw1wgkyp3dq4",
+        "tableId": "-RzX8j6OtInEMpiE04dif",
+        "name": "win_no2",
+        "comment": "2번째 당첨번호 (1 ~ 45)",
+        "dataType": "TINYINT",
+        "default": "",
+        "options": 8,
+        "ui": {
+          "keys": 0,
+          "widthName": 60,
+          "widthComment": 128,
+          "widthDataType": 60,
+          "widthDefault": 60
+        },
+        "meta": {
+          "updateAt": 1789628768830,
+          "createAt": 1789628749390
+        }
+      },
+      "AtM5ihcZhKaRr1apbkkrp": {
+        "id": "AtM5ihcZhKaRr1apbkkrp",
+        "tableId": "-RzX8j6OtInEMpiE04dif",
+        "name": "win_no3",
+        "comment": "3번째 당첨번호 (1 ~ 45)",
+        "dataType": "TINYINT",
+        "default": "",
+        "options": 8,
+        "ui": {
+          "keys": 0,
+          "widthName": 60,
+          "widthComment": 128,
+          "widthDataType": 60,
+          "widthDefault": 60
+        },
+        "meta": {
+          "updateAt": 1789628782957,
+          "createAt": 1789628769329
+        }
+      },
+      "uECMgrbBh7fGL6Puh1qdi": {
+        "id": "uECMgrbBh7fGL6Puh1qdi",
+        "tableId": "-RzX8j6OtInEMpiE04dif",
+        "name": "win_no4",
+        "comment": "4번째 당첨번호 (1 ~ 45)",
+        "dataType": "TINYINT",
+        "default": "",
+        "options": 8,
+        "ui": {
+          "keys": 0,
+          "widthName": 60,
+          "widthComment": 128,
+          "widthDataType": 60,
+          "widthDefault": 60
+        },
+        "meta": {
+          "updateAt": 1789628801249,
+          "createAt": 1789628783287
+        }
+      },
+      "tsa9LhuvRpPA_2rxjRL8L": {
+        "id": "tsa9LhuvRpPA_2rxjRL8L",
+        "tableId": "-RzX8j6OtInEMpiE04dif",
+        "name": "win_no5",
+        "comment": "5번째 당첨번호 (1 ~ 45)",
+        "dataType": "TINYINT",
+        "default": "",
+        "options": 8,
+        "ui": {
+          "keys": 0,
+          "widthName": 60,
+          "widthComment": 128,
+          "widthDataType": 60,
+          "widthDefault": 60
+        },
+        "meta": {
+          "updateAt": 1789628823926,
+          "createAt": 1789628801562
+        }
+      },
+      "xHfCDSfpbipG6i7KeqhKu": {
+        "id": "xHfCDSfpbipG6i7KeqhKu",
+        "tableId": "-RzX8j6OtInEMpiE04dif",
+        "name": "win_no6",
+        "comment": "6번째 당첨번호 (1 ~ 45)",
+        "dataType": "TINYINT",
+        "default": "",
+        "options": 8,
+        "ui": {
+          "keys": 0,
+          "widthName": 60,
+          "widthComment": 128,
+          "widthDataType": 60,
+          "widthDefault": 60
+        },
+        "meta": {
+          "updateAt": 1789628846108,
+          "createAt": 1789628824214
+        }
+      },
+      "-8Kx6kz7LA5abUJMzxbYe": {
+        "id": "-8Kx6kz7LA5abUJMzxbYe",
+        "tableId": "-RzX8j6OtInEMpiE04dif",
+        "name": "bonus_no",
+        "comment": "보너스 당첨 번호 (1 ~ 45)",
+        "dataType": "TINYINT",
+        "default": "",
+        "options": 8,
+        "ui": {
+          "keys": 0,
+          "widthName": 60,
+          "widthComment": 137,
+          "widthDataType": 60,
+          "widthDefault": 60
+        },
+        "meta": {
+          "updateAt": 1789629453479,
+          "createAt": 1789628846304
+        }
+      },
+      "AIGEAgcw2n3enrZvN5q2q": {
+        "id": "AIGEAgcw2n3enrZvN5q2q",
+        "tableId": "-RzX8j6OtInEMpiE04dif",
+        "name": "first_win_co",
+        "comment": "1등 당첨 인원 수",
+        "dataType": "INT",
+        "default": "",
+        "options": 8,
+        "ui": {
+          "keys": 0,
+          "widthName": 63,
+          "widthComment": 90,
+          "widthDataType": 60,
+          "widthDefault": 60
+        },
+        "meta": {
+          "updateAt": 1789629000996,
+          "createAt": 1789628893359
+        }
+      },
+      "MItWgsWfRlRnlnPu-7lkO": {
+        "id": "MItWgsWfRlRnlnPu-7lkO",
+        "tableId": "-RzX8j6OtInEMpiE04dif",
+        "name": "first_win_amt",
+        "comment": "1등 당첨 금액",
+        "dataType": "BIGINT",
+        "default": "",
+        "options": 8,
+        "ui": {
+          "keys": 0,
+          "widthName": 71,
+          "widthComment": 75,
+          "widthDataType": 60,
+          "widthDefault": 60
+        },
+        "meta": {
+          "updateAt": 1789629037642,
+          "createAt": 1789629001345
+        }
+      },
+      "rfvIZxVAxNLuW3oysiuQz": {
+        "id": "rfvIZxVAxNLuW3oysiuQz",
+        "tableId": "-RzX8j6OtInEMpiE04dif",
+        "name": "created_date",
+        "comment": "등록일",
+        "dataType": "TIMESTAMP",
+        "default": "",
+        "options": 8,
+        "ui": {
+          "keys": 0,
+          "widthName": 70,
+          "widthComment": 60,
+          "widthDataType": 65,
+          "widthDefault": 60
+        },
+        "meta": {
+          "updateAt": 1789629211151,
+          "createAt": 1789629175552
+        }
+      }
+    },
+    "relationshipEntities": {},
+    "indexEntities": {
+      "IREFirB2Jnn5iX3h7FAmk": {
+        "id": "IREFirB2Jnn5iX3h7FAmk",
+        "name": "uq_lotto_history_01",
+        "tableId": "-RzX8j6OtInEMpiE04dif",
+        "indexColumnIds": [
+          "JJVOA4H-KN0KtuaXgxKeM"
+        ],
+        "seqIndexColumnIds": [
+          "JJVOA4H-KN0KtuaXgxKeM"
+        ],
+        "unique": false,
+        "meta": {
+          "updateAt": 1789629995441,
+          "createAt": 1789629952732
+        }
+      },
+      "EuVB60s-FH2AY0OUkBOa1": {
+        "id": "EuVB60s-FH2AY0OUkBOa1",
+        "name": "uk_lotto_history_drw_no",
+        "tableId": "-RzX8j6OtInEMpiE04dif",
+        "indexColumnIds": [
+          "MGcX67inaoNKWDSOH01QO"
+        ],
+        "seqIndexColumnIds": [
+          "MGcX67inaoNKWDSOH01QO"
+        ],
+        "unique": true,
+        "meta": {
+          "updateAt": 1789630644908,
+          "createAt": 1789630426918
+        }
+      }
+    },
+    "indexColumnEntities": {
+      "JJVOA4H-KN0KtuaXgxKeM": {
+        "id": "JJVOA4H-KN0KtuaXgxKeM",
+        "indexId": "IREFirB2Jnn5iX3h7FAmk",
+        "columnId": "IqwVn0Yd35-pLzW7PoWOV",
+        "orderType": 1,
+        "meta": {
+          "updateAt": 1789629960284,
+          "createAt": 1789629957428
+        }
+      },
+      "MGcX67inaoNKWDSOH01QO": {
+        "id": "MGcX67inaoNKWDSOH01QO",
+        "indexId": "EuVB60s-FH2AY0OUkBOa1",
+        "columnId": "IqwVn0Yd35-pLzW7PoWOV",
+        "orderType": 1,
+        "meta": {
+          "updateAt": 1789630426918,
+          "createAt": 1789630426918
+        }
+      }
+    },
+    "memoEntities": {}
+  }
+}

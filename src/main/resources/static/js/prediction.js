@@ -1,42 +1,126 @@
 (() => {
     'use strict';
-    const { getJson, validHistory, sheet } = window.LottoSheet;
+    const { fetchJson, notify } = window.LottoCommon;
+    const { validHistory, ball, sheet } = window.LottoSheet;
     const modelControls = document.getElementById('model-controls');
-    const modelStatus = document.getElementById('model-status');
+    const modelBadge = document.getElementById('model-badge');
     const predictButton = document.getElementById('predict-button');
     const trainButton = document.getElementById('train-button');
+    const drawTitle = document.getElementById('prediction-draw');
+    const inputBase = document.getElementById('input-base');
+    const output = document.getElementById('prediction-results');
+    const emptyState = output.firstElementChild;
+    const dateFormat = new Intl.DateTimeFormat('ko-KR', { dateStyle: 'medium', timeStyle: 'short' });
+    // 응답 키, 게임 라벨, 화면 이름 (group: 모델 상태 영역, 학습하지 않는 C는 없음)
+    const models = [
+        { key: 'pattern', tag: 'A', name: '점수 모델' },
+        { key: 'probability', tag: 'B', name: '확률 모델' },
+        { key: 'unpopular', tag: 'C', name: '인기 조합 제외' }
+    ].map(model => ({ ...model, game: document.getElementById(`game-${model.key}`), group: document.getElementById(`status-${model.key}`) }));
+    const trainedModels = models.filter(model => model.group);
+    const field = (root, name) => root.querySelector(`[data-field="${name}"]`);
+    const count = (value, unit) => `${value.toLocaleString('ko-KR')}${unit}`;
+
+    function setBadge(text, tone) {
+        modelBadge.textContent = text;
+        modelBadge.className = `badge${tone ? ` badge-${tone}` : ''}`;
+    }
+    function placeholders() {
+        return Array.from({ length: 6 }, () => {
+            const element = document.createElement('span');
+            element.className = 'ball ball-lg ball-placeholder';
+            element.setAttribute('aria-hidden', 'true');
+            element.textContent = '?';
+            return element;
+        });
+    }
+    function renderModelStatus({ group }, status) {
+        field(group, 'state').textContent = status.available ? '사용 가능' : '없음';
+        field(group, 'trained-base').textContent = status.trainedBaseDrawNo ? `${status.trainedBaseDrawNo}회` : '-';
+        field(group, 'history-count').textContent = status.available ? count(status.historyCount, '건') : '-';
+        field(group, 'trained-at').textContent = status.trainedAt ? dateFormat.format(new Date(status.trainedAt)) : '-';
+        field(group, 'samples').textContent = status.available ? count(status.trainingSamples, '개') : '-';
+        field(group, 'error').textContent = status.lastError ? `최근 오류: ${status.lastError}` : '';
+    }
+    function renderStatus(data) {
+        const statuses = trainedModels.map(model => data[model.key]);
+        trainedModels.forEach((model, index) => renderModelStatus(model, statuses[index]));
+        const ready = statuses.filter(status => status.available).length;
+        if (data.training) setBadge('학습 중', 'warning');
+        else if (statuses.some(status => status.lastError)) setBadge('최근 학습 오류', 'danger');
+        else if (ready === trainedModels.length) setBadge('모델 준비됨', 'success');
+        else if (ready) setBadge('일부 모델 준비됨', 'warning');
+        else setBadge('모델 없음');
+    }
     async function showModelStatus() {
         try {
-            const data = await getJson(`${modelControls.dataset.url}/status`);
-            modelStatus.textContent = `${data.training ? '학습 중 · ' : ''}${data.modelAvailable ? `학습 기준 ${data.trainedBaseDrawNo}회 · 전체 ${data.historyCount}건` : '사용 가능한 모델 없음'}${data.lastError ? ` · 최근 오류: ${data.lastError}` : ''}`;
-        } catch (error) { modelStatus.textContent = '모델 상태를 불러오지 못했습니다.'; }
+            renderStatus(await fetchJson(`${modelControls.dataset.url}/status`));
+        } catch (error) {
+            setBadge('상태 확인 실패', 'danger');
+            notify('잠시 후 다시 시도하거나 서버 상태를 확인해 주세요.', { type: 'error', title: '모델 상태를 불러오지 못했습니다' });
+        }
     }
+    /**
+     * 게임 1개를 그리고, 예측에 성공했으면 용지 카드를 반환
+     */
+    function renderGame(model, result, data, order) {
+        const { nextDrawNo } = data;
+        const balls = field(model.game, 'balls');
+        const meta = field(model.game, 'meta');
+        if (model.group) renderModelStatus(model, result.model);
+        meta.classList.remove('is-warning', 'is-error');
+        if (!result.available) {
+            balls.replaceChildren(...placeholders());
+            meta.textContent = result.message || '이 게임을 만들지 못했습니다.';
+            meta.classList.add('is-error');
+            notify(meta.textContent, { type: 'error', title: `${model.tag} · ${model.name} 게임을 만들지 못했습니다` });
+            return null;
+        }
+        const numbers = [...result.numbers].sort((a, b) => a - b);
+        balls.replaceChildren(...numbers.map((number, index) => {
+            const element = ball(number);
+            element.classList.add('ball-lg', 'ball-pop');
+            element.style.setProperty('--delay', `${(order * 6 + index) * 60}ms`);
+            return element;
+        }));
+        meta.textContent = !model.group ? `많이 고르는 조합 규칙을 모두 통과했습니다. ${data.baseDrawNo}회 당첨 번호와는 1개 이하로 겹칩니다.`
+            : result.staleModel ? '당첨 이력이 바뀐 뒤 재학습 전인 이전 학습 결과로 계산했습니다.'
+            : result.model.trainingSamples === 0 ? '이력이 부족해 모든 번호를 같은 확률로 뽑았습니다.'
+            : `${result.model.trainedBaseDrawNo}회까지 학습한 결과로 계산했습니다.`;
+        meta.classList.toggle('is-warning', result.staleModel);
+        return sheet({ drawNo: nextDrawNo, numbers }, { title: `${model.tag} · ${model.name}`, subtitle: `${nextDrawNo}회 후보` });
+    }
+    function validResponse(data) {
+        return data && Number.isInteger(data.nextDrawNo) && models.every(({ key, group }) => {
+            const result = data[key];
+            return result && (!group || result.model) && (!result.available || validHistory({ drawNo: data.nextDrawNo, numbers: result.numbers }));
+        });
+    }
+
+    models.forEach(({ game }) => field(game, 'balls').replaceChildren(...placeholders()));
     trainButton.addEventListener('click', async () => {
         trainButton.disabled = true;
         try {
-            const response = await fetch(`${modelControls.dataset.url}/train`, { method: 'POST' });
-            if (!response.ok) throw new Error('학습 요청 실패');
-            await showModelStatus();
-        } catch (error) { modelStatus.textContent = '학습 갱신을 요청하지 못했습니다.'; }
+            renderStatus(await fetchJson(`${modelControls.dataset.url}/train`, { method: 'POST' }));
+            notify('당첨 이력이 바뀐 모델만 백그라운드에서 다시 학습합니다.', { title: '변경 확인을 요청했습니다' });
+        } catch (error) { notify('잠시 후 다시 시도해 주세요.', { type: 'error', title: '학습 갱신을 요청하지 못했습니다' }); }
         finally { trainButton.disabled = false; }
     });
     predictButton.addEventListener('click', async () => {
         predictButton.disabled = true;
-        const output = document.getElementById('prediction-results');
-        output.replaceChildren();
         try {
-            const response = await fetch(`${modelControls.dataset.url}/predict`, { headers: { Accept: 'application/json' } });
-            if (!response.ok) throw new Error(response.status === 503 ? '모델이 아직 없습니다. 학습 상태를 확인해 주세요.' : '예측에 실패했습니다. 모델 상태와 서버 로그를 확인해 주세요.');
-            const data = await response.json();
-            if (!validHistory({ drawNo: data.nextDrawNo, numbers: data.numbers })) throw new Error('예측 응답 형식이 올바르지 않습니다.');
-            const card = sheet({ drawNo: data.nextDrawNo, numbers: data.numbers });
-            card.querySelector('h3').textContent = `${data.nextDrawNo}회 후보`;
-            card.querySelector('time').textContent = '저장 모델';
-            output.append(card);
-            modelStatus.textContent = `입력 기준 ${data.baseDrawNo}회 · 학습 기준 ${data.trainedBaseDrawNo}회 · 학습 ${data.historyCount}건 / ${data.trainingSamples}개 샘플${data.staleModel ? ' · 데이터 변경 후 이전 모델을 사용 중입니다.' : ''}`;
-        } catch (error) { modelStatus.textContent = error.message; }
-        finally { predictButton.disabled = false; }
+            const data = await fetchJson(modelControls.dataset.url).catch(error => {
+                throw new Error(error.serverMessage || '예측에 실패했습니다. 모델 상태와 서버 로그를 확인해 주세요.');
+            });
+            if (!validResponse(data)) throw new Error('예측 응답 형식이 올바르지 않습니다.');
+            drawTitle.textContent = `${data.nextDrawNo}회 후보`;
+            inputBase.textContent = `입력 기준 회차 ${data.baseDrawNo}회`;
+            const cards = models.map((model, order) => renderGame(model, data[model.key], data, order)).filter(Boolean);
+            output.replaceChildren(...(cards.length ? cards : [emptyState]));
+        } catch (error) {
+            notify(error.message, { type: 'error', title: '예측하지 못했습니다' });
+            if (!output.querySelector('.sheet-card')) output.replaceChildren(emptyState);
+        } finally { predictButton.disabled = false; }
     });
     showModelStatus();
-
 })();

@@ -3,248 +3,136 @@ package com.manage.lotto.service;
 import com.manage.lotto.domain.LottoHistory;
 import com.manage.lotto.dto.GameRecommendationDto;
 import com.manage.lotto.dto.LottoRecommendResponse;
+import com.manage.lotto.dto.ModelStatus;
+import com.manage.lotto.dto.PredictedGame;
+import com.manage.lotto.exception.ModelNotReadyException;
+import com.manage.lotto.ml.HistoryFingerprint;
 import com.manage.lotto.ml.LottoFeatureExtractor;
+import com.manage.lotto.ml.LottoGameGenerator;
 import com.manage.lotto.ml.LottoMlPredictor;
-import com.manage.lotto.repository.LottoHistoryRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
-import java.util.*;
+import java.time.Instant;
+import java.util.List;
+import java.util.Map;
 
+/**
+ * v1 확률 모델: 번호별 출현 확률을 학습해 두고, 확률 가중 샘플링으로 게임 생성
+ * (학습 시점은 {@link LottoModelTrainingService}가 정함)
+ */
 @Slf4j
 @Service
 @RequiredArgsConstructor
 public class LottoRecommendationService {
 
-    private final LottoHistoryRepository lottoHistoryRepository;
+    /** 이력 지문 계산용 버전 (특징이나 학습 방식이 바뀌면 함께 변경) */
+    private static final String MODEL_VERSION = "recommend-v1.1-cooccurrence-rate-seed42";
+
     private final LottoFeatureExtractor featureExtractor;
     private final LottoMlPredictor mlPredictor;
-
-    private static final String[] GAME_LABELS = {"A", "B", "C", "D", "E"};
-
-    // 캐시 저장소 (기준 회차 번호, 데이터 건수, 번호별 확률)
-    private volatile Integer cachedBaseDrawNo = null;
-    private volatile int cachedDataSize = 0;
-    private volatile Map<Integer, Double> cachedProbabilities = null;
-    private final Object lock = new Object();
+    private final LottoGameGenerator gameGenerator;
 
     /**
-     * 머신러닝 예측 확률 기반 5게임 추천 생성 (캐시 적용)
+     * 학습 결과
+     *
+     * @param hash            학습에 사용한 이력 지문
+     * @param baseDrawNo      학습에 사용한 마지막 회차 (이력이 없으면 null)
+     * @param trainingSamples 학습 샘플 수 (이력이 부족해 균등 확률을 쓰면 0)
+     * @param probabilities   1~45번 번호별 출현 확률 (합계 1)
+     */
+    private record TrainedProbabilities(String hash, Integer baseDrawNo, int historyCount, int trainingSamples,
+                                        Instant trainedAt, Map<Integer, Double> probabilities) {}
+
+    private volatile TrainedProbabilities current;
+    private volatile String error;
+
+    /**
+     * 학습된 확률로 5게임 추천 (학습하지 않음)
+     *
+     * @throws ModelNotReadyException 아직 학습되지 않았을 때
      */
     public LottoRecommendResponse recommend5Games() {
-        List<LottoHistory> histories = lottoHistoryRepository.findAllByOrderByDrwNoAsc();
-
-        Integer latestDrwNo = histories.isEmpty() ? null : histories.get(histories.size() - 1).getDrwNo();
-        int dataSize = histories.size();
-
-        Map<Integer, Double> probabilities = getOrTrainProbabilities(histories, latestDrwNo, dataSize);
-
-        List<GameRecommendationDto> games = generate5BalancedGames(probabilities);
-
-        return LottoRecommendResponse.builder()
-                .status("SUCCESS")
-                .message("Smile ML 기반 5게임 로또 번호 추천 완료")
-                .baseDrawNo(latestDrwNo)
-                .games(games)
-                .build();
+        TrainedProbabilities trained = requireTrained();
+        List<GameRecommendationDto> games = gameGenerator.generate(trained.probabilities());
+        return new LottoRecommendResponse("SUCCESS", "Smile ML 기반 5게임 로또 번호 추천 완료", trained.baseDrawNo(), games);
     }
 
     /**
-     * 캐시가 유효하면 재사용하고, 데이터 변경이나 초기 구동 시에만 머신러닝 학습 수행
+     * 학습된 확률로 다음 회차 1게임 생성 (학습하지 않음, 호출마다 번호가 달라질 수 있음)
+     *
+     * @param histories 회차 오름차순 전체 이력 (학습 이후 변경 여부 확인용)
+     * @throws ModelNotReadyException 아직 학습되지 않았을 때
      */
-    private Map<Integer, Double> getOrTrainProbabilities(List<LottoHistory> histories, Integer latestDrwNo, int dataSize) {
-        if (cachedProbabilities != null && Objects.equals(cachedBaseDrawNo, latestDrwNo) && cachedDataSize == dataSize) {
-            log.info("캐시된 머신러닝 예측 확률을 재사용합니다. (기준 회차: {}회, 데이터 수: {}건)", cachedBaseDrawNo, cachedDataSize);
-            return cachedProbabilities;
-        }
+    public PredictedGame predict(List<LottoHistory> histories) {
+        TrainedProbabilities trained = requireTrained();
+        List<Integer> numbers = gameGenerator.generate(trained.probabilities(), 1).get(0).numbers();
+        return PredictedGame.of(numbers, !trained.hash().equals(fingerprint(histories)), status(trained));
+    }
 
-        synchronized (lock) {
-            // 이중 검사 (Double-checked locking)
-            if (cachedProbabilities != null && Objects.equals(cachedBaseDrawNo, latestDrwNo) && cachedDataSize == dataSize) {
-                return cachedProbabilities;
+    /**
+     * 이력이 마지막 학습 때와 다르면 번호별 출현 확률을 다시 학습
+     * (이력이 25회 미만이면 균등 확률, 실패하면 오류만 기록하고 기존 확률 유지)
+     *
+     * @param histories 회차 오름차순 전체 이력
+     */
+    public synchronized void refresh(List<LottoHistory> histories) {
+        try {
+            String hash = fingerprint(histories);
+            TrainedProbabilities previous = current;
+            if (previous != null && previous.hash().equals(hash)) {
+                error = null;
+                return;
             }
 
+            Integer latestDrwNo = histories.isEmpty() ? null : histories.get(histories.size() - 1).getDrwNo();
             Map<Integer, Double> probabilities;
-            if (histories.size() >= 25) {
-                log.info("데이터 변경 감지 또는 최초 구동: 머신러닝 학습 및 확률 추론 시작 (기준 회차: {}회, 총 {}건)", latestDrwNo, histories.size());
+            int samples;
+            if (histories.size() >= LottoFeatureExtractor.MIN_TRAINING_DRAWS) {
+                log.info("확률 모델 학습 시작 (기준 회차: {}회, 총 {}건)", latestDrwNo, histories.size());
                 LottoFeatureExtractor.FeatureDataset dataset = featureExtractor.extractTrainingDataset(histories);
                 double[][] inferenceX = featureExtractor.extractInferenceFeatures(histories);
                 probabilities = mlPredictor.predictProbabilities(dataset, inferenceX);
+                samples = dataset.y().length;
             } else {
-                log.warn("DB에 저장된 회차 데이터가 25회 미만({}건)입니다. 기본 확률 가중치를 적용합니다.", histories.size());
+                log.warn("DB에 저장된 회차 데이터가 {}회 미만({}건)입니다. 기본 확률 가중치를 적용합니다.",
+                        LottoFeatureExtractor.MIN_TRAINING_DRAWS, histories.size());
                 probabilities = mlPredictor.createFallbackProbabilities();
+                samples = 0;
             }
 
-            // 캐시 갱신
-            cachedBaseDrawNo = latestDrwNo;
-            cachedDataSize = dataSize;
-            cachedProbabilities = probabilities;
-
-            return probabilities;
+            current = new TrainedProbabilities(hash, latestDrwNo, histories.size(), samples, Instant.now(), Map.copyOf(probabilities));
+            error = null;
+            log.info("확률 모델 학습 완료 (기준 회차: {}회, 총 {}건)", latestDrwNo, histories.size());
+        } catch (Exception e) {
+            // 메시지가 없는 예외도 상태에 오류로 보이도록 예외 이름으로 대신
+            error = e.getMessage() != null ? e.getMessage() : e.getClass().getSimpleName();
+            log.error("확률 모델 학습 실패. 기존 확률을 유지합니다.", e);
         }
     }
 
-    /**
-     * 캐시 수동 초기화
-     */
-    public void clearCache() {
-        synchronized (lock) {
-            this.cachedBaseDrawNo = null;
-            this.cachedDataSize = 0;
-            this.cachedProbabilities = null;
-            log.info("머신러닝 예측 확률 캐시가 초기화되었습니다.");
-        }
+    public ModelStatus status() {
+        return status(current);
     }
 
-    /**
-     * 머신러닝 확률 기반 가중 샘플링 및 5중 밸런스 필터를 적용하여 5게임 생성
-     */
-    private List<GameRecommendationDto> generate5BalancedGames(Map<Integer, Double> probabilities) {
-        List<GameRecommendationDto> resultGames = new ArrayList<>();
-        Set<String> uniqueCombos = new HashSet<>();
-        Random random = new Random();
-
-        int maxAttempts = 500;
-        int attempts = 0;
-
-        while (resultGames.size() < 5 && attempts < maxAttempts) {
-            attempts++;
-            List<Integer> candidate = sample6Numbers(probabilities, random);
-
-            // 1. 중복 조합 체크
-            String comboKey = candidate.toString();
-            if (uniqueCombos.contains(comboKey)) {
-                continue;
-            }
-
-            // 2. 통계 밸런스 필터 검증
-            if (!passesBalanceFilters(candidate)) {
-                continue;
-            }
-
-            uniqueCombos.add(comboKey);
-            String label = GAME_LABELS[resultGames.size()];
-            resultGames.add(createGameDto(label, candidate));
+    private TrainedProbabilities requireTrained() {
+        TrainedProbabilities trained = current;
+        if (trained == null) {
+            throw new ModelNotReadyException("확률 모델이 아직 학습되지 않았습니다. 학습 상태를 확인해 주세요.");
         }
-
-        // 최대 시도 횟수 초과 시, 필터 조건을 일부 완화하여 5게임을 채움
-        while (resultGames.size() < 5) {
-            List<Integer> candidate = sample6Numbers(probabilities, random);
-            String comboKey = candidate.toString();
-            if (!uniqueCombos.contains(comboKey)) {
-                uniqueCombos.add(comboKey);
-                String label = GAME_LABELS[resultGames.size()];
-                resultGames.add(createGameDto(label, candidate));
-            }
-        }
-
-        return resultGames;
+        return trained;
     }
 
-    /**
-     * 1~45번 번호 중 가중치(확률)에 따라 비복원 추출로 6개 번호 선택
-     */
-    private List<Integer> sample6Numbers(Map<Integer, Double> probabilities, Random random) {
-        List<Integer> availableBalls = new ArrayList<>();
-        List<Double> weights = new ArrayList<>();
-
-        for (int i = 1; i <= 45; i++) {
-            availableBalls.add(i);
-            weights.add(probabilities.getOrDefault(i, 0.001));
+    private ModelStatus status(TrainedProbabilities trained) {
+        if (trained == null) {
+            return ModelStatus.unavailable(error);
         }
-
-        List<Integer> selected = new ArrayList<>();
-
-        for (int step = 0; step < 6; step++) {
-            double totalWeight = 0.0;
-            for (Double w : weights) {
-                totalWeight += w;
-            }
-
-            double r = random.nextDouble() * totalWeight;
-            double cumulative = 0.0;
-            int chosenIndex = 0;
-
-            for (int i = 0; i < weights.size(); i++) {
-                cumulative += weights.get(i);
-                if (r <= cumulative) {
-                    chosenIndex = i;
-                    break;
-                }
-            }
-
-            selected.add(availableBalls.get(chosenIndex));
-            availableBalls.remove(chosenIndex);
-            weights.remove(chosenIndex);
-        }
-
-        Collections.sort(selected);
-        return selected;
+        return new ModelStatus(true, trained.baseDrawNo(), trained.historyCount(), trained.trainingSamples(),
+                trained.trainedAt(), error);
     }
 
-    /**
-     * 통계 밸런스 필터:
-     * 1. 총합: 100 ~ 175
-     * 2. 홀:짝 비율: 2:4, 3:3, 4:2 허용 (홀수 개수 2~4개)
-     * 3. 고:저 비율: 저번호(1~22) 개수 2~4개
-     * 4. 3연번 이상 배제: 예) 14, 15, 16 포함 시 탈락
-     */
-    private boolean passesBalanceFilters(List<Integer> numbers) {
-        // 총합 필터
-        int sum = numbers.stream().mapToInt(Integer::intValue).sum();
-        if (sum < 100 || sum > 175) {
-            return false;
-        }
-
-        // 홀짝 비율 필터
-        long oddCount = numbers.stream().filter(n -> n % 2 != 0).count();
-        if (oddCount < 2 || oddCount > 4) {
-            return false;
-        }
-
-        // 고저 비율 필터 (1~22: 저, 23~45: 고)
-        long lowCount = numbers.stream().filter(n -> n <= 22).count();
-        if (lowCount < 2 || lowCount > 4) {
-            return false;
-        }
-
-        // 3연번 이상 배제 필터
-        for (int i = 0; i <= numbers.size() - 3; i++) {
-            if (numbers.get(i) + 1 == numbers.get(i + 1) && numbers.get(i + 1) + 1 == numbers.get(i + 2)) {
-                return false;
-            }
-        }
-
-        return true;
-    }
-
-    /**
-     * 게임별 상세 분석 통계 DTO 빌드
-     */
-    private GameRecommendationDto createGameDto(String label, List<Integer> numbers) {
-        int sum = numbers.stream().mapToInt(Integer::intValue).sum();
-        long oddCount = numbers.stream().filter(n -> n % 2 != 0).count();
-        long evenCount = 6 - oddCount;
-
-        long lowCount = numbers.stream().filter(n -> n <= 22).count();
-        long highCount = 6 - lowCount;
-
-        boolean hasConsecutive = false;
-        for (int i = 0; i < numbers.size() - 1; i++) {
-            if (numbers.get(i) + 1 == numbers.get(i + 1)) {
-                hasConsecutive = true;
-                break;
-            }
-        }
-
-        return GameRecommendationDto.builder()
-                .game(label)
-                .numbers(numbers)
-                .sum(sum)
-                .oddEven(oddCount + ":" + evenCount)
-                .highLow(lowCount + ":" + highCount)
-                .hasConsecutive(hasConsecutive)
-                .build();
+    private static String fingerprint(List<LottoHistory> histories) {
+        return HistoryFingerprint.of(MODEL_VERSION, histories);
     }
 }

@@ -1,6 +1,7 @@
 package com.manage.lotto.ml;
 
 import com.manage.lotto.domain.LottoHistory;
+import com.manage.lotto.domain.LottoRules;
 import org.springframework.stereotype.Component;
 
 import java.util.*;
@@ -11,6 +12,14 @@ import java.util.*;
 @Component
 public class LottoFeatureExtractor {
 
+    /** 특징 추출에 필요한 최소 과거 회차 수 (학습 샘플은 21번째 회차부터 생성) */
+    public static final int MIN_PAST_DRAWS = 20;
+    /** v1 추천 모델 학습에 필요한 최소 회차 수 */
+    public static final int MIN_TRAINING_DRAWS = 25;
+    public static final String[] FEATURE_NAMES = {
+            "freq_5", "freq_10", "freq_20", "absence_streak", "co_occurrence_rate", "total_rate"
+    };
+
     public record FeatureDataset(double[][] x, int[] y) {}
 
     /**
@@ -20,21 +29,21 @@ public class LottoFeatureExtractor {
      * @return 학습 데이터셋 (X: 피처 벡터, Y: 1 또는 0)
      */
     public FeatureDataset extractTrainingDataset(List<LottoHistory> histories) {
-        if (histories == null || histories.size() < 25) {
-            throw new IllegalArgumentException("머신러닝 학습을 위해 최소 25회차 이상의 데이터가 필요합니다.");
+        if (histories == null || histories.size() < MIN_TRAINING_DRAWS) {
+            throw new IllegalArgumentException("머신러닝 학습을 위해 최소 " + MIN_TRAINING_DRAWS + "회차 이상의 데이터가 필요합니다.");
         }
 
         List<double[]> featureList = new ArrayList<>();
         List<Integer> labelList = new ArrayList<>();
 
         // 21회차부터 마지막 회차까지 슬라이딩 윈도우로 시점별 피처/타겟 구성
-        for (int t = 20; t < histories.size(); t++) {
+        for (int t = MIN_PAST_DRAWS; t < histories.size(); t++) {
             List<LottoHistory> pastHistories = histories.subList(0, t);
             LottoHistory targetDraw = histories.get(t);
             Set<Integer> winningNumbers = new HashSet<>(targetDraw.getNumbers());
 
             // 1~45번 각 공에 대해 피처 추출 및 타겟(출현 여부) 부여
-            for (int ball = 1; ball <= 45; ball++) {
+            for (int ball = LottoRules.MIN_NUMBER; ball <= LottoRules.MAX_NUMBER; ball++) {
                 double[] features = extractBallFeatures(ball, pastHistories);
                 featureList.add(features);
                 labelList.add(winningNumbers.contains(ball) ? 1 : 0);
@@ -54,12 +63,12 @@ public class LottoFeatureExtractor {
      * @return 45개 번호의 피처 매트릭스 (인덱스 0 = 1번 공, ... 인덱스 44 = 45번 공)
      */
     public double[][] extractInferenceFeatures(List<LottoHistory> histories) {
-        if (histories == null || histories.size() < 20) {
-            throw new IllegalArgumentException("피처 추출을 위해 최소 20회차 이상의 데이터가 필요합니다.");
+        if (histories == null || histories.size() < MIN_PAST_DRAWS) {
+            throw new IllegalArgumentException("피처 추출을 위해 최소 " + MIN_PAST_DRAWS + "회차 이상의 데이터가 필요합니다.");
         }
 
-        double[][] inferenceX = new double[45][6];
-        for (int ball = 1; ball <= 45; ball++) {
+        double[][] inferenceX = new double[LottoRules.MAX_NUMBER][FEATURE_NAMES.length];
+        for (int ball = LottoRules.MIN_NUMBER; ball <= LottoRules.MAX_NUMBER; ball++) {
             inferenceX[ball - 1] = extractBallFeatures(ball, histories);
         }
         return inferenceX;
@@ -71,7 +80,7 @@ public class LottoFeatureExtractor {
      * 2. freq_last_10: 최근 10회 출현 횟수
      * 3. freq_last_20: 최근 20회 출현 횟수
      * 4. absence_streak: 최근 연속 미출현 회차 수
-     * 5. co_occurrence_score: 직전 회차 당첨 번호들과의 역대 동반 출현 점수
+     * 5. co_occurrence_rate: 이 공이 나온 회차마다 직전 회차 당첨 번호가 평균 몇 개 함께 나왔는지
      * 6. total_appearance_rate: 누적 출현율
      */
     public double[] extractBallFeatures(int ball, List<LottoHistory> pastHistories) {
@@ -102,10 +111,12 @@ public class LottoFeatureExtractor {
             absenceStreak++;
         }
 
-        // 5. 직전 회차 당첨 번호들과의 역대 동반 출현 점수
+        // 5. 직전 회차 당첨 번호들과의 동반 출현 (출현 횟수로 나눠, 이력이 길어져도 값의 크기가 커지지 않게 함)
         int coOccurrenceScore = 0;
+        int totalAppearances = 0;
         for (LottoHistory h : pastHistories) {
             if (h.contains(ball)) {
+                totalAppearances++;
                 for (int winNum : lastWinningNumbers) {
                     if (winNum != ball && h.contains(winNum)) {
                         coOccurrenceScore++;
@@ -113,9 +124,9 @@ public class LottoFeatureExtractor {
                 }
             }
         }
+        double coOccurrenceRate = totalAppearances > 0 ? (double) coOccurrenceScore / totalAppearances : 0.0;
 
         // 6. 누적 출현율
-        long totalAppearances = pastHistories.stream().filter(h -> h.contains(ball)).count();
         double totalAppearanceRate = totalDraws > 0 ? (double) totalAppearances / totalDraws : 0.0;
 
         return new double[] {
@@ -123,7 +134,7 @@ public class LottoFeatureExtractor {
                 (double) freq10,
                 (double) freq20,
                 (double) absenceStreak,
-                (double) coOccurrenceScore,
+                coOccurrenceRate,
                 totalAppearanceRate
         };
     }
