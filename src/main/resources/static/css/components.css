@@ -27,15 +27,7 @@
 .control:focus-visible { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
 .control:disabled { background: var(--surface-muted); color: var(--text-tertiary); cursor: not-allowed; }
 .control[aria-invalid="true"] { border-color: var(--danger); box-shadow: 0 0 0 3px var(--danger-soft); }
-.field-hint { min-height: 18px; font-size: var(--text-xs); color: var(--text-tertiary); font-variant-numeric: tabular-nums; }
 .form-stack { display: grid; gap: 24px; }
-.form-section { display: grid; gap: 12px; min-width: 0; margin: 0; padding: 0; border: 0; }
-.form-section-title { display: flex; align-items: center; gap: 8px; padding: 0; font-size: var(--text-md); font-weight: 600; }
-legend.form-section-title { margin-bottom: 12px; }
-.optional-tag { font-size: var(--text-xs); font-weight: 500; color: var(--text-tertiary); }
-.form-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
-.form-grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-.form-actions { display: flex; flex-wrap: wrap; gap: 8px; }
 
 /* ===== Panel ===== */
 .panel { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); min-width: 0; overflow: hidden; }
@@ -61,8 +53,6 @@ legend.form-section-title { margin-bottom: 12px; }
 .status-text { font-size: var(--text-sm); color: var(--text-secondary); }
 .status-text:empty { display: none; }
 .status-text.error { color: var(--danger); }
-.status-banner { padding: 12px 16px; border-radius: var(--radius-md); background: var(--surface-muted); color: var(--text-secondary); font-size: var(--text-sm); font-weight: 500; }
-.status-banner:empty { display: none; }
 .badge {
     display: inline-flex; align-items: center; gap: 6px; height: 28px; padding: 0 10px;
     border-radius: var(--radius-full); background: var(--surface-muted); color: var(--text-secondary);
@@ -72,8 +62,6 @@ legend.form-section-title { margin-bottom: 12px; }
 .badge-success { background: var(--success-soft); color: var(--success); }
 .badge-warning { background: var(--warning-soft); color: var(--warning); }
 .badge-danger { background: var(--danger-soft); color: var(--danger); }
-.chip { display: inline-flex; align-items: center; gap: 6px; height: 26px; padding: 0 10px; border-radius: var(--radius-full); background: var(--surface-muted); color: var(--text-secondary); font-size: var(--text-xs); }
-.chip b { color: var(--text); font-weight: 700; }
 
 /* ===== Table ===== */
 .table-wrap { overflow-x: auto; }
@@ -136,10 +124,6 @@ legend.form-section-title { margin-bottom: 12px; }
 .sheet-number { fill: var(--sheet-number); font-family: var(--font-sans); font-size: 11px; }
 .sheet-number.is-selected { fill: var(--sheet-mark-text); font-weight: 700; }
 /* 패널 안에 제목 없이 용지만 표시 */
-.sheet-bare .sheet-card { padding: 0; border: 0; }
-.sheet-bare .sheet-card:hover { box-shadow: none; }
-.sheet-bare .sheet-heading { display: none; }
-.sheet-bare .lotto-sheet { max-width: 280px; margin: 0 auto; }
 
 /* ===== Misc ===== */
 .callout { display: flex; align-items: flex-start; gap: 10px; padding: 12px 16px; border-radius: var(--radius-md); background: var(--surface-muted); color: var(--text-secondary); font-size: var(--text-sm); line-height: 1.6; }

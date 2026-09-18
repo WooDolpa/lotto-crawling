@@ -35,9 +35,6 @@ dependencies {
 
     runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
 
-    // Apache POI (엑셀 파싱)
-    implementation 'org.apache.poi:poi-ooxml:5.2.5'
-
     // Smile ML (Java 머신러닝)
     implementation 'com.github.haifengl:smile-core:3.1.1'
 }

@@ -30,8 +30,6 @@ public class LottoMlPredictor {
     private static final int MAX_DEPTH = 20;
     private static final int NODE_SIZE = 5;
 
-    public record BallProbability(int ballNumber, double probability, int rank) {}
-
     /**
      * 학습 데이터셋으로 Random Forest 모델을 학습하고 차기 회차 1~45번 번호별 출현 확률 산출
      *

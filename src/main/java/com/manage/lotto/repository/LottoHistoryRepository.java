@@ -27,11 +27,6 @@ public interface LottoHistoryRepository extends JpaRepository<LottoHistory, Inte
     List<LottoHistory> findAllByOrderByDrwNoAsc();
 
     /**
-     * 특정 회차 존재 여부
-     */
-    boolean existsByDrwNo(Integer drwNo);
-
-    /**
      * 여러 회차 한 번에 조회
      */
     List<LottoHistory> findByDrwNoIn(Collection<Integer> drwNos);

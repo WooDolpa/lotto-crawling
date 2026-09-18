@@ -13,11 +13,13 @@ public final class LottoRules {
     public static final int MIN_NUMBER = 1;
     public static final int MAX_NUMBER = 45;
     public static final int NUMBERS_PER_DRAW = 6;
+    /** 당첨 등수 (1~5등) */
+    public static final int PRIZE_RANKS = 5;
 
     private LottoRules() {
     }
 
-    public static boolean isValidNumber(Integer number) {
+    private static boolean isValidNumber(Integer number) {
         return number != null && number >= MIN_NUMBER && number <= MAX_NUMBER;
     }
 

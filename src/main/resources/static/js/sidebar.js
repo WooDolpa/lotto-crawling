@@ -9,9 +9,6 @@
     const toolbar = document.querySelector('.mobile-toolbar');
     const mobile = window.matchMedia('(max-width: 768px)');
     const links = [...sidebar.querySelectorAll('a.sidebar-link')];
-    const groupToggle = document.getElementById('lotto-menu-toggle');
-    const submenu = document.getElementById('lotto-submenu');
-    let groupOpen = groupToggle.getAttribute('aria-expanded') === 'true';
     let collapsed = false;
     let open = false;
     try { collapsed = localStorage.getItem('lotto.sidebar.collapsed') === 'true'; } catch (error) { /* Storage may be unavailable. */ }
@@ -27,8 +24,6 @@
         toggle.setAttribute('aria-expanded', String(mobile.matches ? open : !collapsed));
         toggle.setAttribute('aria-label', mobile.matches ? '메뉴 닫기' : collapsed ? '사이드바 펼치기' : '사이드바 접기');
         toggle.firstElementChild.textContent = mobile.matches ? '×' : collapsed ? '»' : '«';
-        submenu.hidden = !groupOpen || (!mobile.matches && collapsed);
-        groupToggle.setAttribute('aria-expanded', String(!submenu.hidden));
     }
     function close(restoreFocus = true) {
         open = false; render();
@@ -42,13 +37,6 @@
         render();
     });
     backdrop.addEventListener('click', () => close());
-    groupToggle.addEventListener('click', () => {
-        if (!mobile.matches && collapsed) {
-            collapsed = false; groupOpen = true;
-            try { localStorage.setItem('lotto.sidebar.collapsed', 'false'); } catch (error) { }
-        } else groupOpen = !groupOpen;
-        render();
-    });
     document.addEventListener('keydown', event => {
         if (!mobile.matches || !open) return;
         if (event.key === 'Escape') { event.preventDefault(); close(); }

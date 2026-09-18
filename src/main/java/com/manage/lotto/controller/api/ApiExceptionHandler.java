@@ -1,7 +1,6 @@
 package com.manage.lotto.controller.api;
 
 import com.manage.lotto.dto.ErrorResponse;
-import com.manage.lotto.exception.DuplicateDrawException;
 import com.manage.lotto.exception.InvalidLottoDataException;
 import com.manage.lotto.exception.ModelNotReadyException;
 import com.manage.lotto.exception.ValidationInProgressException;
@@ -25,12 +24,6 @@ public class ApiExceptionHandler {
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ErrorResponse malformed() {
         return new ErrorResponse("입력 형식이 올바르지 않습니다.");
-    }
-
-    @ExceptionHandler(DuplicateDrawException.class)
-    @ResponseStatus(HttpStatus.CONFLICT)
-    public ErrorResponse duplicate(DuplicateDrawException e) {
-        return new ErrorResponse(e.getMessage());
     }
 
     @ExceptionHandler(ValidationInProgressException.class)

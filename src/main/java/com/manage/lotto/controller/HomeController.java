@@ -45,17 +45,6 @@ public class HomeController {
     }
 
     /**
-     * 번호 등록 화면
-     * GET /lotto/register
-     * <p>
-     * 엑셀 파일 대량등록 또는 회차 1건 직접 입력으로 당첨 이력을 등록한다.
-     */
-    @GetMapping("/lotto/register")
-    public String register() {
-        return "register";
-    }
-
-    /**
      * 모델 검증 화면
      * GET /validation
      * <p>

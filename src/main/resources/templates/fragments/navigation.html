@@ -16,13 +16,7 @@
     </div>
     <nav aria-label="주요 기능">
         <a class="sidebar-link" th:classappend="${page == 'history' ? 'active' : ''}" href="/" th:href="@{/}" aria-label="당첨 이력" th:attr="aria-current=${page == 'history' ? 'page' : null}"><svg aria-hidden="true" viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg><span class="menu-name">당첨 이력</span><span class="menu-tooltip" aria-hidden="true">당첨 이력</span></a>
-        <div class="sidebar-group">
-            <button id="lotto-menu-toggle" class="sidebar-link sidebar-group-toggle" type="button" aria-label="로또 번호 하위 메뉴" aria-controls="lotto-submenu" th:attr="aria-expanded=${page == 'register' or page == 'prediction'}" th:classappend="${page == 'register' or page == 'prediction' ? 'active' : ''}"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="m12 3 9 9-9 9-9-9Z"/><path d="M8 12h8m-4-4v8"/></svg><span class="menu-name">로또 번호</span><span class="menu-name group-chevron" aria-hidden="true">⌄</span><span class="menu-tooltip" aria-hidden="true">로또 번호</span></button>
-            <div id="lotto-submenu" class="sidebar-submenu" th:hidden="${page != 'register' and page != 'prediction'}">
-                <a class="sidebar-link sidebar-child" href="/lotto/register" th:href="@{/lotto/register}" th:classappend="${page == 'register' ? 'active' : ''}" th:attr="aria-current=${page == 'register' ? 'page' : null}">번호 등록</a>
-                <a class="sidebar-link sidebar-child" href="/lotto/prediction" th:href="@{/lotto/prediction}" th:classappend="${page == 'prediction' ? 'active' : ''}" th:attr="aria-current=${page == 'prediction' ? 'page' : null}">번호 예측</a>
-            </div>
-        </div>
+        <a class="sidebar-link" th:classappend="${page == 'prediction' ? 'active' : ''}" href="/lotto/prediction" th:href="@{/lotto/prediction}" aria-label="번호 예측" th:attr="aria-current=${page == 'prediction' ? 'page' : null}"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="m12 3 9 9-9 9-9-9Z"/><path d="M8 12h8m-4-4v8"/></svg><span class="menu-name">번호 예측</span><span class="menu-tooltip" aria-hidden="true">번호 예측</span></a>
         <a class="sidebar-link" href="/validation" th:href="@{/validation}" th:classappend="${page == 'validation' ? 'active' : ''}" th:attr="aria-current=${page == 'validation' ? 'page' : null}" aria-label="모델 검증"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 4v16h16M8 14l4-4 4 2 4-6"/></svg><span class="menu-name">모델 검증</span><span class="menu-tooltip" aria-hidden="true">모델 검증</span></a>
     </nav>
     <div class="sidebar-footer"><span class="menu-name">번호와 패턴을 살펴보세요</span></div>

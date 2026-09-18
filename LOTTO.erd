@@ -6,7 +6,7 @@
     "height": 2000,
     "scrollTop": 0,
     "scrollLeft": 0,
-    "originX": 1725.877,
+    "originX": 1726.877,
     "originY": 839.8308,
     "zoomLevel": 0.79,
     "show": 511,
@@ -57,8 +57,24 @@
           "tsa9LhuvRpPA_2rxjRL8L",
           "xHfCDSfpbipG6i7KeqhKu",
           "-8Kx6kz7LA5abUJMzxbYe",
+          "q5_-HTxglj2PuI-VWxdtq",
           "AIGEAgcw2n3enrZvN5q2q",
           "MItWgsWfRlRnlnPu-7lkO",
+          "bt5U7v3UE3zNE06UwZIij",
+          "LZDbwtXm16U5Aozq9fMmE",
+          "SIYv75sf9nx1unuWVyqbd",
+          "yqoFz9LI-EOyMjI0esOKa",
+          "0ZScuAzyWTIa_BUEIuXcZ",
+          "lymtiUNSA_W9a0D-IyFGr",
+          "yY8Myrrhxs2iSB7kT-Qhq",
+          "gbcSpehN1fIX-BXl7RMjP",
+          "zIQ5g_RgFVi6aKTmd-K_i",
+          "ImQ6CHUZ8yQfF81QxquN3",
+          "N4dxPVYR1qA4ehLySEQ4l",
+          "wVGyte-DObZMje-hdOgzr",
+          "EQV7Pl1YOuR5-YEdw_xBB",
+          "DmIxjIvJ6blIC2Ijagyen",
+          "t1ggITu2IraKmBlmjQbQv",
           "rfvIZxVAxNLuW3oysiuQz"
         ],
         "seqColumnIds": [
@@ -71,20 +87,36 @@
           "tsa9LhuvRpPA_2rxjRL8L",
           "xHfCDSfpbipG6i7KeqhKu",
           "-8Kx6kz7LA5abUJMzxbYe",
+          "q5_-HTxglj2PuI-VWxdtq",
           "AIGEAgcw2n3enrZvN5q2q",
           "MItWgsWfRlRnlnPu-7lkO",
+          "bt5U7v3UE3zNE06UwZIij",
+          "LZDbwtXm16U5Aozq9fMmE",
+          "SIYv75sf9nx1unuWVyqbd",
+          "yqoFz9LI-EOyMjI0esOKa",
+          "0ZScuAzyWTIa_BUEIuXcZ",
+          "lymtiUNSA_W9a0D-IyFGr",
+          "yY8Myrrhxs2iSB7kT-Qhq",
+          "gbcSpehN1fIX-BXl7RMjP",
+          "zIQ5g_RgFVi6aKTmd-K_i",
+          "ImQ6CHUZ8yQfF81QxquN3",
+          "N4dxPVYR1qA4ehLySEQ4l",
+          "wVGyte-DObZMje-hdOgzr",
+          "EQV7Pl1YOuR5-YEdw_xBB",
+          "DmIxjIvJ6blIC2Ijagyen",
+          "t1ggITu2IraKmBlmjQbQv",
           "rfvIZxVAxNLuW3oysiuQz"
         ],
         "ui": {
-          "x": -1593.0514,
-          "y": -981.9914,
+          "x": -2153.8108,
+          "y": -998.4471,
           "zIndex": 2,
           "widthName": 68,
           "widthComment": 120,
           "color": ""
         },
         "meta": {
-          "updateAt": 1789630426918,
+          "updateAt": 1789696633513,
           "createAt": 1789628509512
         }
       }
@@ -273,11 +305,11 @@
       "AIGEAgcw2n3enrZvN5q2q": {
         "id": "AIGEAgcw2n3enrZvN5q2q",
         "tableId": "-RzX8j6OtInEMpiE04dif",
-        "name": "first_win_co",
+        "name": "win_no1_co",
         "comment": "1등 당첨 인원 수",
         "dataType": "INT",
         "default": "",
-        "options": 8,
+        "options": 0,
         "ui": {
           "keys": 0,
           "widthName": 63,
@@ -286,18 +318,18 @@
           "widthDefault": 60
         },
         "meta": {
-          "updateAt": 1789629000996,
+          "updateAt": 1789696130987,
           "createAt": 1789628893359
         }
       },
       "MItWgsWfRlRnlnPu-7lkO": {
         "id": "MItWgsWfRlRnlnPu-7lkO",
         "tableId": "-RzX8j6OtInEMpiE04dif",
-        "name": "first_win_amt",
+        "name": "win_no1_amt",
         "comment": "1등 당첨 금액",
         "dataType": "BIGINT",
         "default": "",
-        "options": 8,
+        "options": 0,
         "ui": {
           "keys": 0,
           "widthName": 71,
@@ -306,7 +338,7 @@
           "widthDefault": 60
         },
         "meta": {
-          "updateAt": 1789629037642,
+          "updateAt": 1789696137747,
           "createAt": 1789629001345
         }
       },
@@ -328,6 +360,326 @@
         "meta": {
           "updateAt": 1789629211151,
           "createAt": 1789629175552
+        }
+      },
+      "q5_-HTxglj2PuI-VWxdtq": {
+        "id": "q5_-HTxglj2PuI-VWxdtq",
+        "tableId": "-RzX8j6OtInEMpiE04dif",
+        "name": "draw_date",
+        "comment": "추첨일자",
+        "dataType": "VARCHAR(8)",
+        "default": "",
+        "options": 0,
+        "ui": {
+          "keys": 0,
+          "widthName": 60,
+          "widthComment": 60,
+          "widthDataType": 68,
+          "widthDefault": 60
+        },
+        "meta": {
+          "updateAt": 1789695928943,
+          "createAt": 1789695906228
+        }
+      },
+      "bt5U7v3UE3zNE06UwZIij": {
+        "id": "bt5U7v3UE3zNE06UwZIij",
+        "tableId": "-RzX8j6OtInEMpiE04dif",
+        "name": "win_no1_sum_amt",
+        "comment": "1등 총 당첨금",
+        "dataType": "BIGINT",
+        "default": "",
+        "options": 0,
+        "ui": {
+          "keys": 0,
+          "widthName": 98,
+          "widthComment": 75,
+          "widthDataType": 60,
+          "widthDefault": 60
+        },
+        "meta": {
+          "updateAt": 1789696146688,
+          "createAt": 1789695928944
+        }
+      },
+      "LZDbwtXm16U5Aozq9fMmE": {
+        "id": "LZDbwtXm16U5Aozq9fMmE",
+        "tableId": "-RzX8j6OtInEMpiE04dif",
+        "name": "win_no2_co",
+        "comment": "2등 당첨 인원 수",
+        "dataType": "INT",
+        "default": "",
+        "options": 0,
+        "ui": {
+          "keys": 0,
+          "widthName": 63,
+          "widthComment": 90,
+          "widthDataType": 60,
+          "widthDefault": 60
+        },
+        "meta": {
+          "updateAt": 1789696166547,
+          "createAt": 1789696074157
+        }
+      },
+      "SIYv75sf9nx1unuWVyqbd": {
+        "id": "SIYv75sf9nx1unuWVyqbd",
+        "tableId": "-RzX8j6OtInEMpiE04dif",
+        "name": "win_no2_amt",
+        "comment": "2등 당첨 금액",
+        "dataType": "BIGINT",
+        "default": "",
+        "options": 0,
+        "ui": {
+          "keys": 0,
+          "widthName": 71,
+          "widthComment": 75,
+          "widthDataType": 60,
+          "widthDefault": 60
+        },
+        "meta": {
+          "updateAt": 1789696164770,
+          "createAt": 1789696076510
+        }
+      },
+      "yqoFz9LI-EOyMjI0esOKa": {
+        "id": "yqoFz9LI-EOyMjI0esOKa",
+        "tableId": "-RzX8j6OtInEMpiE04dif",
+        "name": "win_no2_sum_amt",
+        "comment": "2등 총 당첨금",
+        "dataType": "BIGINT",
+        "default": "",
+        "options": 0,
+        "ui": {
+          "keys": 0,
+          "widthName": 98,
+          "widthComment": 75,
+          "widthDataType": 60,
+          "widthDefault": 60
+        },
+        "meta": {
+          "updateAt": 1789696162912,
+          "createAt": 1789696077954
+        }
+      },
+      "0ZScuAzyWTIa_BUEIuXcZ": {
+        "id": "0ZScuAzyWTIa_BUEIuXcZ",
+        "tableId": "-RzX8j6OtInEMpiE04dif",
+        "name": "win_no3_co",
+        "comment": "3등 당첨 인원 수",
+        "dataType": "INT",
+        "default": "",
+        "options": 0,
+        "ui": {
+          "keys": 0,
+          "widthName": 63,
+          "widthComment": 90,
+          "widthDataType": 60,
+          "widthDefault": 60
+        },
+        "meta": {
+          "updateAt": 1789696193425,
+          "createAt": 1789696079421
+        }
+      },
+      "lymtiUNSA_W9a0D-IyFGr": {
+        "id": "lymtiUNSA_W9a0D-IyFGr",
+        "tableId": "-RzX8j6OtInEMpiE04dif",
+        "name": "win_no3_amt",
+        "comment": "3등 당첨 금액",
+        "dataType": "BIGINT",
+        "default": "",
+        "options": 0,
+        "ui": {
+          "keys": 0,
+          "widthName": 71,
+          "widthComment": 75,
+          "widthDataType": 60,
+          "widthDefault": 60
+        },
+        "meta": {
+          "updateAt": 1789696191662,
+          "createAt": 1789696080908
+        }
+      },
+      "yY8Myrrhxs2iSB7kT-Qhq": {
+        "id": "yY8Myrrhxs2iSB7kT-Qhq",
+        "tableId": "-RzX8j6OtInEMpiE04dif",
+        "name": "win_no3_sum_amt",
+        "comment": "3등 총 당첨금",
+        "dataType": "BIGINT",
+        "default": "",
+        "options": 0,
+        "ui": {
+          "keys": 0,
+          "widthName": 98,
+          "widthComment": 75,
+          "widthDataType": 60,
+          "widthDefault": 60
+        },
+        "meta": {
+          "updateAt": 1789696189621,
+          "createAt": 1789696086202
+        }
+      },
+      "gbcSpehN1fIX-BXl7RMjP": {
+        "id": "gbcSpehN1fIX-BXl7RMjP",
+        "tableId": "-RzX8j6OtInEMpiE04dif",
+        "name": "win_no4_co",
+        "comment": "4등 당첨 인원 수",
+        "dataType": "INT",
+        "default": "",
+        "options": 0,
+        "ui": {
+          "keys": 0,
+          "widthName": 63,
+          "widthComment": 90,
+          "widthDataType": 60,
+          "widthDefault": 60
+        },
+        "meta": {
+          "updateAt": 1789696213359,
+          "createAt": 1789696086202
+        }
+      },
+      "zIQ5g_RgFVi6aKTmd-K_i": {
+        "id": "zIQ5g_RgFVi6aKTmd-K_i",
+        "tableId": "-RzX8j6OtInEMpiE04dif",
+        "name": "win_no4_amt",
+        "comment": "4등 당첨 금액",
+        "dataType": "BIGINT",
+        "default": "",
+        "options": 0,
+        "ui": {
+          "keys": 0,
+          "widthName": 71,
+          "widthComment": 75,
+          "widthDataType": 60,
+          "widthDefault": 60
+        },
+        "meta": {
+          "updateAt": 1789696211638,
+          "createAt": 1789696086202
+        }
+      },
+      "ImQ6CHUZ8yQfF81QxquN3": {
+        "id": "ImQ6CHUZ8yQfF81QxquN3",
+        "tableId": "-RzX8j6OtInEMpiE04dif",
+        "name": "win_no4_sum_amt",
+        "comment": "4등 총 당첨금",
+        "dataType": "BIGINT",
+        "default": "",
+        "options": 0,
+        "ui": {
+          "keys": 0,
+          "widthName": 98,
+          "widthComment": 75,
+          "widthDataType": 60,
+          "widthDefault": 60
+        },
+        "meta": {
+          "updateAt": 1789696210023,
+          "createAt": 1789696086202
+        }
+      },
+      "N4dxPVYR1qA4ehLySEQ4l": {
+        "id": "N4dxPVYR1qA4ehLySEQ4l",
+        "tableId": "-RzX8j6OtInEMpiE04dif",
+        "name": "win_no5_co",
+        "comment": "5등 당첨 인원 수",
+        "dataType": "INT",
+        "default": "",
+        "options": 0,
+        "ui": {
+          "keys": 0,
+          "widthName": 63,
+          "widthComment": 90,
+          "widthDataType": 60,
+          "widthDefault": 60
+        },
+        "meta": {
+          "updateAt": 1789696229933,
+          "createAt": 1789696088433
+        }
+      },
+      "wVGyte-DObZMje-hdOgzr": {
+        "id": "wVGyte-DObZMje-hdOgzr",
+        "tableId": "-RzX8j6OtInEMpiE04dif",
+        "name": "win_no5_amt",
+        "comment": "5등 당첨 금액",
+        "dataType": "BIGINT",
+        "default": "",
+        "options": 0,
+        "ui": {
+          "keys": 0,
+          "widthName": 71,
+          "widthComment": 75,
+          "widthDataType": 60,
+          "widthDefault": 60
+        },
+        "meta": {
+          "updateAt": 1789696227818,
+          "createAt": 1789696088433
+        }
+      },
+      "EQV7Pl1YOuR5-YEdw_xBB": {
+        "id": "EQV7Pl1YOuR5-YEdw_xBB",
+        "tableId": "-RzX8j6OtInEMpiE04dif",
+        "name": "win_no5_sum_amt",
+        "comment": "5등 총 당첨금",
+        "dataType": "BIGINT",
+        "default": "",
+        "options": 0,
+        "ui": {
+          "keys": 0,
+          "widthName": 98,
+          "widthComment": 75,
+          "widthDataType": 60,
+          "widthDefault": 60
+        },
+        "meta": {
+          "updateAt": 1789696226200,
+          "createAt": 1789696088433
+        }
+      },
+      "DmIxjIvJ6blIC2Ijagyen": {
+        "id": "DmIxjIvJ6blIC2Ijagyen",
+        "tableId": "-RzX8j6OtInEMpiE04dif",
+        "name": "total_win_co",
+        "comment": "전체 당첨자 수",
+        "dataType": "INT",
+        "default": "",
+        "options": 0,
+        "ui": {
+          "keys": 0,
+          "widthName": 67,
+          "widthComment": 81,
+          "widthDataType": 60,
+          "widthDefault": 60
+        },
+        "meta": {
+          "updateAt": 1789696461834,
+          "createAt": 1789696088433
+        }
+      },
+      "t1ggITu2IraKmBlmjQbQv": {
+        "id": "t1ggITu2IraKmBlmjQbQv",
+        "tableId": "-RzX8j6OtInEMpiE04dif",
+        "name": "total_sell_amt",
+        "comment": "총 판매금액",
+        "dataType": "BIGINT",
+        "default": "",
+        "options": 0,
+        "ui": {
+          "keys": 0,
+          "widthName": 74,
+          "widthComment": 65,
+          "widthDataType": 60,
+          "widthDefault": 60
+        },
+        "meta": {
+          "updateAt": 1789696630379,
+          "createAt": 1789696426964
         }
       }
     },
