@@ -5,26 +5,31 @@ import com.manage.lotto.domain.LottoRules;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.function.IntFunction;
 import java.util.function.IntPredicate;
 
 /**
- * 조합 1개의 생김새를 숫자 8개로 바꾸는 특징 추출 (인기도 모델 D 전용)
+ * 조합 1개의 생김새를 숫자 9개로 바꾸는 특징 추출 (인기도 모델 E 전용)
  * <p>
  * A·B가 쓰는 {@link LottoFeatureExtractor}는 "이 공이 다음 회차에 나올까"를 보지만, 여기서는
  * "이 조합을 사람이 고를까"를 본다. 당첨 확률과는 아무 상관이 없고, 당첨됐을 때 당첨금을
  * 나눠 가질 사람 수에만 관계있다.
  * <p>
  * 특징은 사람이 번호를 고를 때 실제로 쓰는 기준에서 골랐다. 생일(31 이하), 고르게 퍼뜨리기,
- * 연번, 끝자리 맞추기, 용지 위 모양 같은 것들이다. 표본이 회차 수만큼뿐이라 특징을 더 늘리면
- * 과적합한다.
+ * 연번, 끝자리 맞추기, 용지 위 모양, 직전 회차 번호와의 겹침 같은 것들이다. 표본이 회차 수만큼뿐이라
+ * 특징을 더 늘리면 과적합한다.
+ * <p>
+ * 마지막 하나(`last_draw_overlap`)만 조합 바깥을 본다. 직전 회차와 2개 이상 겹치는 조합은 실제로
+ * 덜 붐볐다 (406회차 실측: 5등 −2.1% t=−5.0, 3등 −5.6% t=−5.2. 겹침 개수별로도 단조롭다).
+ * "이번에 나온 번호는 또 안 나온다"고 믿는 사람이 그만큼 많다는 뜻이다.
  */
 public final class CombinationFeatures {
 
     /** 특징 이름 (순서가 곧 {@link #of} 반환 배열의 순서) */
     public static final String[] FEATURE_NAMES = {
             "sum", "odd_count", "birthday_count", "max_run",
-            "gap_spread", "tens_groups", "same_last_digit", "sheet_line"
+            "gap_spread", "tens_groups", "same_last_digit", "sheet_line", "last_draw_overlap"
     };
 
     /** 생일로 고를 수 있는 최대 번호 */
@@ -36,10 +41,11 @@ public final class CombinationFeatures {
     }
 
     /**
-     * @param numbers 번호 6개 (정렬 여부 무관)
+     * @param numbers         번호 6개 (정렬 여부 무관)
+     * @param previousNumbers 직전 회차 당첨 번호 6개 (겹침 특징용. 예측 시점에 이미 아는 값이다)
      * @return {@link #FEATURE_NAMES} 순서의 특징 값
      */
-    public static double[] of(List<Integer> numbers) {
+    public static double[] of(List<Integer> numbers, List<Integer> previousNumbers) {
         List<Integer> sorted = numbers.stream().sorted().toList();
         return new double[]{
                 sum(sorted),
@@ -49,8 +55,17 @@ public final class CombinationFeatures {
                 gapSpread(sorted),
                 distinctTensGroups(sorted),
                 maxSameLastDigit(sorted),
-                maxSheetLine(sorted)
+                maxSheetLine(sorted),
+                overlap(sorted, previousNumbers)
         };
+    }
+
+    /**
+     * 직전 회차 당첨 번호와 겹치는 개수 (0~6)
+     */
+    private static double overlap(List<Integer> numbers, List<Integer> previousNumbers) {
+        Set<Integer> previous = Set.copyOf(previousNumbers);
+        return numbers.stream().filter(previous::contains).count();
     }
 
     private static double sum(List<Integer> numbers) {

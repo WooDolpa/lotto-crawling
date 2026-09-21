@@ -12,31 +12,31 @@
     const emptyState = output.firstElementChild;
     const dateFormat = new Intl.DateTimeFormat('ko-KR', { dateStyle: 'medium', timeStyle: 'short' });
     const percent = value => `${Math.round(Math.abs(value) * 100)}%`;
-    // 학습한 모델(A·B·D)의 공통 안내. 학습 결과가 최신인지부터 알린다.
+    // 학습한 모델(A·B·E)의 공통 안내. 학습 결과가 최신인지부터 알린다.
     const trainedMeta = result => result.staleModel ? '당첨 이력이 바뀐 뒤 재학습 전인 이전 학습 결과로 계산했습니다.'
         : result.model.trainingSamples === 0 ? '이력이 부족해 모든 번호를 같은 확률로 뽑았습니다.'
         : `${result.model.trainedBaseDrawNo}회까지 학습한 결과로 계산했습니다.`;
     /**
      * 응답 키, 게임 라벨, 화면 이름, 게임 아래 안내 문구
-     * group: 모델 상태 영역 (학습하지 않는 C는 없음), samples: 상태 영역의 학습 샘플 단위
+     * group: 모델 상태 영역 (학습하지 않는 C·D는 없음), samples: 상태 영역의 학습 샘플 단위
      */
     const models = [
         { key: 'pattern', tag: 'A', name: '점수 모델', samples: '개', meta: trainedMeta },
         { key: 'probability', tag: 'B', name: '확률 모델', samples: '개', meta: trainedMeta },
         {
-            key: 'unpopular', tag: 'C', name: '인기 조합 제외',
-            meta: () => '6개가 모두 31 이하인 생일 조합은 피했습니다. 실측으로 근거가 확인된 제외 규칙은 이것 하나뿐입니다.'
+            key: 'coOccurrence3', tag: 'C', name: '동반출현 3개',
+            meta: () => '당첨 번호에 가장 자주 함께 나온 3개에 무작위 3개를 더했습니다. 많이 나온 조합은 우연이라 당첨 확률은 오르지 않고, 사람들이 많이 고르는 쪽이라 당첨금을 나눌 사람은 오히려 늘 수 있습니다.'
         },
         {
-            key: 'popularity', tag: 'D', name: '인기도 모델', samples: '회',
+            key: 'coOccurrence4', tag: 'D', name: '동반출현 4개',
+            meta: () => '가장 자주 함께 나온 4개에 무작위 2개를 더했습니다. 4개짜리는 후보가 적어, 새 회차에서 순위가 바뀌기 전까지 같은 4개가 계속 나옵니다.'
+        },
+        {
+            key: 'popularity', tag: 'E', name: '인기도 모델', samples: '회',
             // 예상 인기도는 평균 대비 비율이다 (0.9 = 평균보다 10% 덜 붐빔)
             meta: result => result.popularity == null || result.staleModel ? trainedMeta(result)
                 : result.popularity < 1 ? `평균보다 ${percent(1 - result.popularity)} 덜 붐비는 조합입니다. ${trainedMeta(result)}`
                 : `평균만큼 붐비는 조합입니다. 후보 중 더 나은 조합을 찾지 못했습니다. ${trainedMeta(result)}`
-        },
-        {
-            key: 'random', tag: 'E', name: '무작위 기준선',
-            meta: () => '아무 규칙 없이 뽑았습니다. 위 네 게임이 이보다 나은지 견주는 기준입니다.'
         }
     ].map(model => ({ ...model, game: document.getElementById(`game-${model.key}`), group: document.getElementById(`status-${model.key}`) }));
     const trainedModels = models.filter(model => model.group);

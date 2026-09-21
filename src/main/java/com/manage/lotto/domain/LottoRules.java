@@ -19,6 +19,14 @@ public final class LottoRules {
     public static final int SHEET_COLUMNS = 7;
     /** 6/45 전체 조합 수 = C(45,6) */
     public static final int TOTAL_COMBINATIONS = 8_145_060;
+    /**
+     * 인기도 계산을 신뢰할 수 있는 첫 회차 (2018-12-08, 동행복권 수탁 시작)
+     * <p>
+     * 이전 회차는 위탁 운영 기관이 달라 판매금액·당첨자 수 집계와 구매 환경이 지금과 다르다.
+     * 인기도를 같은 자로 잴 수 없으므로 인기도 모델(E)의 학습·검증에서 제외한다.
+     * 추첨된 공 자체는 운영 기관과 무관하므로 번호만 쓰는 계산(A·B 특징, C·D 동반출현, 적중률 검증)에는 적용하지 않는다.
+     */
+    public static final int FIRST_TRUSTED_DRAW = 836;
 
     private LottoRules() {
     }

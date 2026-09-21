@@ -11,6 +11,7 @@ import com.manage.lotto.dto.ValidationReport.Popularity;
 import com.manage.lotto.dto.ValidationStatus;
 import com.manage.lotto.exception.InvalidLottoDataException;
 import com.manage.lotto.exception.ValidationInProgressException;
+import com.manage.lotto.ml.CoOccurrenceGameGenerator;
 import com.manage.lotto.ml.LottoFeatureExtractor;
 import com.manage.lotto.ml.LottoGameGenerator;
 import com.manage.lotto.ml.LottoMlPredictor;
@@ -18,7 +19,6 @@ import com.manage.lotto.ml.LottoPatternTrainer;
 import com.manage.lotto.ml.PopularityPredictor;
 import com.manage.lotto.ml.PopularityStatistics;
 import com.manage.lotto.ml.RandomMatchStatistics;
-import com.manage.lotto.ml.UnpopularGameGenerator;
 import com.manage.lotto.repository.LottoHistoryRepository;
 import jakarta.annotation.PreDestroy;
 import lombok.RequiredArgsConstructor;
@@ -42,7 +42,7 @@ import java.util.stream.IntStream;
  * 구간 안에서는 같은 모델에 최신 특징을 넣는다 (운영 모델이 재학습 전 쓰는 방식과 같음).
  * 수 분 걸릴 수 있어 백그라운드 스레드 하나에서 한 번에 한 건만 실행한다.
  * <p>
- * 두 가지를 따로 잰다. A·B·C는 <b>맞힌 개수</b>를 무작위 이론값과 비교하고, D는 노리는 것이 적중률이
+ * 두 가지를 따로 잰다. A·B·C·D는 <b>맞힌 개수</b>를 무작위 이론값과 비교하고, E는 노리는 것이 적중률이
  * 아니므로 <b>인기도 예측이 실제와 맞았는지</b>를 따로 잰다 ({@link PopularityStatistics}).
  */
 @Slf4j
@@ -59,14 +59,18 @@ public class LottoValidationService {
     private static final double SIGNIFICANCE = 0.05;
 
     /** 번호 예측 API 응답과 같은 게임 키 */
-    private static final List<String> GAME_KEYS = List.of("pattern", "probability", "unpopular");
-    private static final List<String> GAME_NAMES = List.of("A · 점수 모델", "B · 확률 모델", "C · 인기 조합 제외");
+    private static final List<String> GAME_KEYS = List.of("pattern", "probability", "coOccurrence3", "coOccurrence4");
+    private static final List<String> GAME_NAMES = List.of("A · 점수 모델", "B · 확률 모델",
+            "C · 동반출현 3개", "D · 동반출현 4개");
+    /** C·D가 동반출현으로 고정하는 번호 수 */
+    private static final int TRIPLE = 3;
+    private static final int QUAD = 4;
 
     private final LottoHistoryRepository repository;
     private final LottoPatternTrainer patternTrainer;
     private final LottoMlPredictor probabilityPredictor;
     private final LottoGameGenerator gameGenerator;
-    private final UnpopularGameGenerator unpopularGenerator;
+    private final CoOccurrenceGameGenerator coOccurrenceGenerator;
     private final PopularityPredictor popularityPredictor;
 
     private final ExecutorService worker = Executors.newSingleThreadExecutor(runnable -> {
@@ -173,13 +177,16 @@ public class LottoValidationService {
                 LottoHistory target = histories.get(t);
                 List<Integer> actual = target.getNumbers();
                 Random random = new Random(SEED + target.getDrwNo());
+                // C·D도 그 회차보다 이전 이력만으로 센다
+                List<LottoHistory> pastDraws = histories.subList(0, t);
                 List<List<Integer>> picks = List.of(
                         patternTrainer.infer(score, features[t]),
                         gameGenerator.generate(probabilityPredictor.probabilities(probability, features[t]), 1, random).get(0).numbers(),
-                        unpopularGenerator.generate(random));
+                        coOccurrenceGenerator.generate(TRIPLE, pastDraws, random),
+                        coOccurrenceGenerator.generate(QUAD, pastDraws, random));
                 draws.add(new DrawResult(target.getDrwNo(), actual,
                         picks.stream().map(numbers -> new Pick(numbers, matches(numbers, actual))).toList()));
-                popularitySamples.add(popularity, target);
+                popularitySamples.add(popularity, target, histories.get(t - 1).getNumbers());
             }
             status = status.progress(++completed);
         }
@@ -212,7 +219,8 @@ public class LottoValidationService {
     /**
      * 회차별 (직전 이력으로 학습한 모델의 예측 인기도, 실제 인기도) 모음
      * <p>
-     * 판매금액이나 5등 당첨자 수가 없는 회차는 건너뛰므로 적중률 검증보다 회차 수가 적을 수 있다.
+     * {@link LottoRules#FIRST_TRUSTED_DRAW}회 미만과 판매금액·5등 당첨자 수가 없는 회차는 건너뛰므로
+     * 적중률 검증보다 회차 수가 적을 수 있다.
      */
     private static final class PopularitySamples {
 
@@ -220,20 +228,28 @@ public class LottoValidationService {
         private final List<Double> actual = new ArrayList<>();
         private final List<Integer> drawNos = new ArrayList<>();
 
-        void add(PopularityPredictor.Model model, LottoHistory target) {
+        /**
+         * @param previousNumbers 검증 회차 바로 앞 회차의 당첨 번호 (겹침 특징용. 이력은 연속이므로 항상 있다)
+         */
+        void add(PopularityPredictor.Model model, LottoHistory target, List<Integer> previousNumbers) {
+            // 옛 회차는 실제 인기도 자체를 지금과 같은 자로 잴 수 없어 채점에서도 뺀다 (적중률 검증은 그대로 진행)
+            if (target.getDrwNo() < LottoRules.FIRST_TRUSTED_DRAW) {
+                return;
+            }
             Double index = PopularityPredictor.popularityIndex(target);
             if (model == null || index == null) {
                 return;
             }
-            predicted.add(model.popularityOf(target.getNumbers()));
+            predicted.add(model.popularityOf(target.getNumbers(), previousNumbers));
             actual.add(index);
             drawNos.add(target.getDrwNo());
         }
 
         Popularity summarize(double level) {
             if (predicted.size() < PopularityStatistics.MIN_DRAWS) {
-                return Popularity.unavailable("판매금액과 5등 당첨자 수가 모두 있는 검증 회차가 " + predicted.size()
-                        + "회뿐입니다 (최소 " + PopularityStatistics.MIN_DRAWS + "회). /system/sync로 동기화해 주세요.");
+                return Popularity.unavailable(LottoRules.FIRST_TRUSTED_DRAW + "회 이후로 판매금액과 5등 당첨자 수가 모두 있는 "
+                        + "검증 회차가 " + predicted.size() + "회뿐입니다 (최소 " + PopularityStatistics.MIN_DRAWS
+                        + "회). /system/sync로 동기화해 주세요.");
             }
             PopularityStatistics.Accuracy accuracy = PopularityStatistics.of(toArray(predicted), toArray(actual));
             return new Popularity(true, null, predicted.size(), drawNos.get(0), drawNos.get(drawNos.size() - 1),

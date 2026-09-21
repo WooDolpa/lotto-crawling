@@ -13,10 +13,12 @@ import smile.regression.LinearModel;
 import smile.regression.RidgeRegression;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 /**
- * 조합의 "인기도"를 학습해 덜 붐비는 조합을 뽑는 모델 (D)
+ * 조합의 "인기도"를 학습해 덜 붐비는 조합을 뽑는 모델 (E)
  * <p>
  * 인기도 지수 = 실제 5등 당첨자 수 ÷ 기대 5등 당첨자 수. 1.0이면 평균만큼 붐빈 조합,
  * 1.2면 같은 당첨금을 20% 더 많은 사람과 나눈 조합이다. 당첨 확률은 어느 조합이든 같으므로
@@ -48,12 +50,14 @@ public class PopularityPredictor {
     /** 학습에 필요한 최소 회차 수 (판매금액·5등 당첨자 수가 모두 있는 회차 기준) */
     public static final int MIN_DRAWS = 100;
     /**
-     * 학습에 쓰는 최근 회차 수
+     * 학습에 쓰는 최근 회차 수 (상한)
      * <p>
-     * 초기 200회차(2002~2005)는 인기도 지수의 평균이 0.78, 표준편차가 이후 구간의 6배로 사실상 다른 시장이다.
-     * 이 구간을 함께 학습하면 계수가 0 쪽으로 눌려 검증 상관계수가 0.66에서 0.62로 떨어진다.
-     * 300~800회 사이에서는 성능 차이가 없어 가운데 값을 골랐다. 사람들이 번호를 고르는 방식이 다시 바뀌어도
-     * 최근 구간만 보면 저절로 따라간다.
+     * 학습 대상이 {@link LottoRules#FIRST_TRUSTED_DRAW}회 이후로 한정되므로 이 값은 아직 한 번도 작동한 적이 없다.
+     * 2030년쯤 신뢰 구간이 600회를 넘어서야 비로소 창이 움직이기 시작한다. 그때는 사람들이 번호를 고르는 방식이
+     * 바뀌어도 최근 구간만 보면 저절로 따라간다.
+     * <p>
+     * 이 값을 고른 근거였던 "초기 200회차는 다른 시장" 측정은 동행복권 이전 데이터로 낸 것이라 폐기했다.
+     * 옛 회차를 다시 넣지 않는 한 검증되지 않은 상한으로 남는다.
      */
     private static final int TRAINING_WINDOW = 600;
 
@@ -90,7 +94,7 @@ public class PopularityPredictor {
     /**
      * 학습 결과
      *
-     * @param regression   표준화된 특징 8개로 인기도 지수를 맞히는 회귀식
+     * @param regression   표준화된 특징 9개로 인기도 지수를 맞히는 회귀식
      * @param mean         학습 데이터의 특징별 평균 (추론 때 같은 기준으로 표준화)
      * @param deviation    학습 데이터의 특징별 표준편차
      * @param samples      학습에 쓴 회차 수
@@ -101,10 +105,11 @@ public class PopularityPredictor {
         /**
          * 조합 1개의 인기도 지수 예측
          *
-         * @param numbers 번호 6개
+         * @param numbers         번호 6개
+         * @param previousNumbers 그 조합의 직전 회차 당첨 번호 6개 (겹침 특징용)
          */
-        public double popularityOf(List<Integer> numbers) {
-            double[] features = CombinationFeatures.of(numbers);
+        public double popularityOf(List<Integer> numbers, List<Integer> previousNumbers) {
+            double[] features = CombinationFeatures.of(numbers, previousNumbers);
             double[] standardized = new double[features.length];
             for (int i = 0; i < features.length; i++) {
                 standardized[i] = (features[i] - mean[i]) / deviation[i];
@@ -117,23 +122,35 @@ public class PopularityPredictor {
      * 회차별 (당첨 조합의 생김새 → 그 회차 인기도 지수)로 회귀 학습
      * <p>
      * 당첨 조합은 매 회차 무작위로 정해지므로, 학습 데이터는 조합 공간에서 고르게 뽑힌 표본이다.
-     * 판매금액이나 5등 당첨자 수가 없는 회차(동기화 전 회차)는 건너뛰고, 남은 회차 중
-     * 최근 {@value #TRAINING_WINDOW}회만 쓴다.
+     * {@link LottoRules#FIRST_TRUSTED_DRAW}회 미만과 판매금액·5등 당첨자 수가 없는 회차(동기화 전 회차)는
+     * 건너뛰고, 남은 회차 중 최근 {@value #TRAINING_WINDOW}회만 쓴다.
+     * <p>
+     * 직전 회차 겹침 특징 때문에 회차마다 바로 앞 회차의 번호가 필요하다. 앞 회차가 이력에 없는 회차
+     * (보통 가장 오래된 1건)는 학습에서 빠진다. 겹침은 번호만 쓰는 계산이라 앞 회차가
+     * {@link LottoRules#FIRST_TRUSTED_DRAW}회 미만이어도 그대로 쓴다.
      *
      * @param histories 회차 오름차순 전체 이력
      * @throws InvalidLottoDataException 인기도를 계산할 수 있는 회차가 {@link #MIN_DRAWS}건 미만일 때
      */
     public Model train(List<LottoHistory> histories) {
+        Map<Integer, List<Integer>> numbersByDrawNo = histories.stream()
+                .collect(Collectors.toMap(LottoHistory::getDrwNo, LottoHistory::getNumbers));
+        // 옛 회차는 위탁 운영 기관이 달라 인기도를 같은 자로 잴 수 없다. 창(TRAINING_WINDOW)을 자르기 전에 먼저 거른다.
         List<LottoHistory> usable = histories.stream()
+                .filter(draw -> draw.getDrwNo() >= LottoRules.FIRST_TRUSTED_DRAW)
                 .filter(draw -> popularityIndex(draw) != null)
+                .filter(draw -> numbersByDrawNo.containsKey(draw.getDrwNo() - 1))
                 .toList();
         if (usable.size() < MIN_DRAWS) {
-            throw new InvalidLottoDataException("인기도 학습에 필요한 회차가 부족합니다. 판매금액과 5등 당첨자 수가 있는 회차가 "
-                    + usable.size() + "건뿐입니다 (최소 " + MIN_DRAWS + "건). /system/sync로 동기화해 주세요.");
+            throw new InvalidLottoDataException(LottoRules.FIRST_TRUSTED_DRAW + "회 이후로 인기도 학습에 필요한 회차가 부족합니다. "
+                    + "판매금액과 5등 당첨자 수가 있는 회차가 " + usable.size() + "건뿐입니다 (최소 " + MIN_DRAWS
+                    + "건). /system/sync로 동기화해 주세요.");
         }
         List<LottoHistory> recent = usable.subList(Math.max(0, usable.size() - TRAINING_WINDOW), usable.size());
 
-        double[][] x = recent.stream().map(draw -> CombinationFeatures.of(draw.getNumbers())).toArray(double[][]::new);
+        double[][] x = recent.stream()
+                .map(draw -> CombinationFeatures.of(draw.getNumbers(), numbersByDrawNo.get(draw.getDrwNo() - 1)))
+                .toArray(double[][]::new);
         double[] y = recent.stream().mapToDouble(PopularityPredictor::popularityIndex).toArray();
         double[] mean = columnMeans(x);
         double[] deviation = columnDeviations(x, mean);
@@ -150,15 +167,16 @@ public class PopularityPredictor {
      * 후보 조합 {@value #CANDIDATE_POOL}개 중 예측 인기도가 가장 낮은 조합 선택
      * (후보 수를 그렇게 정한 근거는 {@link #CANDIDATE_POOL} 참고)
      *
-     * @param random 난수 생성기 (검증에서 결과를 재현할 때 시드 지정)
+     * @param random          난수 생성기 (검증에서 결과를 재현할 때 시드 지정)
+     * @param previousNumbers 최신 회차 당첨 번호 6개 (만들려는 게임의 직전 회차)
      * @return 오름차순 번호 6개
      */
-    public List<Integer> generate(Model model, Random random) {
+    public List<Integer> generate(Model model, Random random, List<Integer> previousNumbers) {
         List<Integer> best = null;
         double bestPopularity = Double.MAX_VALUE;
         for (int attempt = 0; attempt < CANDIDATE_POOL; attempt++) {
             List<Integer> candidate = RandomGameGenerator.draw(random);
-            double popularity = model.popularityOf(candidate);
+            double popularity = model.popularityOf(candidate, previousNumbers);
             if (popularity < bestPopularity) {
                 bestPopularity = popularity;
                 best = candidate;

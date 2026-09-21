@@ -7,29 +7,38 @@ import com.manage.lotto.dto.PredictionResponse;
 import com.manage.lotto.dto.PredictionStatusResponse;
 import com.manage.lotto.exception.InvalidLottoDataException;
 import com.manage.lotto.exception.ModelNotReadyException;
-import com.manage.lotto.ml.RandomGameGenerator;
-import com.manage.lotto.ml.UnpopularGameGenerator;
+import com.manage.lotto.ml.CoOccurrenceGameGenerator;
 import com.manage.lotto.repository.LottoHistoryRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.security.SecureRandom;
 import java.util.List;
+import java.util.Random;
 import java.util.function.Supplier;
 
 /**
- * 번호 예측: 점수 모델(A), v1 확률 모델(B), 인기 조합 제외 규칙(C), 인기도 모델(D), 무작위 기준선(E)으로 다음 회차 번호를 1게임씩 생성
+ * 번호 예측: 점수 모델(A), v1 확률 모델(B), 동반출현 3개(C)·4개(D), 인기도 모델(E)로 다음 회차 번호를 1게임씩 생성
+ * <p>
+ * C·D는 사람들이 많이 고르는 쪽, E는 덜 고르는 쪽이다. 다섯 게임의 당첨 확률은 모두 같다.
  */
 @Service
 @RequiredArgsConstructor
 public class LottoPredictionService {
 
+    /** C가 고정하는 번호 수 */
+    private static final int CO_OCCURRENCE_TRIPLE = 3;
+    /** D가 고정하는 번호 수 */
+    private static final int CO_OCCURRENCE_QUAD = 4;
+
     private final LottoHistoryRepository repository;
     private final LottoPatternModelService patternModel;
     private final LottoRecommendationService probabilityModel;
     private final LottoModelTrainingService training;
-    private final UnpopularGameGenerator unpopularGenerator;
+    private final CoOccurrenceGameGenerator coOccurrenceGenerator;
     private final LottoPopularityModelService popularityModel;
-    private final RandomGameGenerator randomGenerator;
+
+    private final Random random = new SecureRandom();
 
     public PredictionStatusResponse status() {
         return new PredictionStatusResponse(training.isTraining(), patternModel.status(), probabilityModel.status(),
@@ -45,7 +54,7 @@ public class LottoPredictionService {
     }
 
     /**
-     * A·B·D 모델과 C·E 규칙으로 1게임씩 생성 (학습하지 않음). 한 모델이 예측하지 못해도 나머지 결과는 반환한다.
+     * A·B·E 모델과 C·D 규칙으로 1게임씩 생성 (학습하지 않음). 한 모델이 예측하지 못해도 나머지 결과는 반환한다.
      *
      * @throws InvalidLottoDataException 저장된 이력이 없을 때
      */
@@ -57,11 +66,13 @@ public class LottoPredictionService {
         LottoHistory latest = histories.get(histories.size() - 1);
         PredictedGame pattern = predict(() -> patternModel.predict(histories), patternModel::status);
         PredictedGame probability = predict(() -> probabilityModel.predict(histories), probabilityModel::status);
-        PredictedGame unpopular = PredictedGame.of(unpopularGenerator.generate(), false, null);
+        PredictedGame triple = PredictedGame.of(
+                coOccurrenceGenerator.generate(CO_OCCURRENCE_TRIPLE, histories, random), false, null);
+        PredictedGame quad = PredictedGame.of(
+                coOccurrenceGenerator.generate(CO_OCCURRENCE_QUAD, histories, random), false, null);
         PredictedGame popularity = predict(() -> popularityModel.predict(histories), popularityModel::status);
-        PredictedGame random = PredictedGame.of(randomGenerator.generate(), false, null);
-        return new PredictionResponse(latest.getDrwNo(), latest.getDrwNo() + 1, pattern, probability, unpopular,
-                popularity, random);
+        return new PredictionResponse(latest.getDrwNo(), latest.getDrwNo() + 1, pattern, probability, triple, quad,
+                popularity);
     }
 
     private static PredictedGame predict(Supplier<PredictedGame> prediction, Supplier<ModelStatus> status) {

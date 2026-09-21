@@ -40,32 +40,32 @@
                             <div class="ball-row ball-row-lg" data-field="balls"></div>
                             <p class="game-meta" data-field="meta"></p>
                         </li>
-                        <li id="game-unpopular" class="game-row">
+                        <li id="game-coOccurrence3" class="game-row">
                             <div class="game-head">
                                 <span class="game-tag" aria-hidden="true">C</span>
-                                <div><h3 class="game-name">인기 조합 제외</h3><p class="game-desc">무작위로 뽑고 6개가 모두 31 이하인 생일 조합만 제외</p></div>
+                                <div><h3 class="game-name">동반출현 3개</h3><p class="game-desc">당첨 번호에 가장 자주 함께 나온 3개 + 무작위 3개</p></div>
+                            </div>
+                            <div class="ball-row ball-row-lg" data-field="balls"></div>
+                            <p class="game-meta" data-field="meta"></p>
+                        </li>
+                        <li id="game-coOccurrence4" class="game-row">
+                            <div class="game-head">
+                                <span class="game-tag" aria-hidden="true">D</span>
+                                <div><h3 class="game-name">동반출현 4개</h3><p class="game-desc">당첨 번호에 가장 자주 함께 나온 4개 + 무작위 2개</p></div>
                             </div>
                             <div class="ball-row ball-row-lg" data-field="balls"></div>
                             <p class="game-meta" data-field="meta"></p>
                         </li>
                         <li id="game-popularity" class="game-row">
                             <div class="game-head">
-                                <span class="game-tag" aria-hidden="true">D</span>
+                                <span class="game-tag" aria-hidden="true">E</span>
                                 <div><h3 class="game-name">인기도 모델</h3><p class="game-desc">회차별 5등 당첨자 수로 어떤 조합이 붐비는지 학습해 덜 붐비는 쪽 선택</p></div>
                             </div>
                             <div class="ball-row ball-row-lg" data-field="balls"></div>
                             <p class="game-meta" data-field="meta"></p>
                         </li>
-                        <li id="game-random" class="game-row">
-                            <div class="game-head">
-                                <span class="game-tag" aria-hidden="true">E</span>
-                                <div><h3 class="game-name">무작위 기준선</h3><p class="game-desc">규칙도 학습도 없이 1~45에서 6개. 나머지 네 게임의 비교 기준</p></div>
-                            </div>
-                            <div class="ball-row ball-row-lg" data-field="balls"></div>
-                            <p class="game-meta" data-field="meta"></p>
-                        </li>
                     </ol>
-                    <p class="hero-meta">A·B·D는 학습해 둔 결과로 계산하며, 시작할 때·이력이 바뀐 뒤·1시간마다 당첨 이력이 바뀌었는지 확인해 다시 학습합니다. C·E는 학습 없이 누를 때마다 새로 뽑습니다. <b>다섯 게임 모두 당첨 확률은 같습니다.</b> C·D는 당첨됐을 때 당첨금을 나눠 가질 사람 수를 줄이려는 게임이고, E는 나머지가 정말 무작위보다 나은지 견주어 보라고 둔 기준입니다.</p>
+                    <p class="hero-meta">A·B·E는 학습해 둔 결과로 계산하며, 시작할 때·이력이 바뀐 뒤·1시간마다 당첨 이력이 바뀌었는지 확인해 다시 학습합니다. C·D는 학습 없이 누를 때마다 당첨 이력에서 다시 세어 뽑습니다. <b>다섯 게임 모두 당첨 확률은 같습니다.</b> C·D는 사람들이 많이 고르는 쪽이라 당첨됐을 때 당첨금을 나눌 사람이 오히려 많아질 수 있고, E는 그 반대로 덜 붐비는 조합을 노립니다.</p>
                 </div>
                 <div class="button-row">
                     <button id="predict-button" class="btn btn-primary btn-lg" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6.3 6.3l2.8 2.8M14.9 14.9l2.8 2.8M6.3 17.7l2.8-2.8M14.9 9.1l2.8-2.8"/></svg>번호 예측</button>
@@ -107,7 +107,7 @@
                     <p class="status-text error model-error" data-field="error"></p>
                 </section>
                 <section id="status-popularity" class="model-group" aria-labelledby="status-popularity-title">
-                    <h3 id="status-popularity-title" class="model-group-title">D · 인기도 모델</h3>
+                    <h3 id="status-popularity-title" class="model-group-title">E · 인기도 모델</h3>
                     <dl class="detail-list">
                         <div><dt>상태</dt><dd data-field="state">-</dd></div>
                         <div><dt>학습 기준 회차</dt><dd data-field="trained-base">-</dd></div>

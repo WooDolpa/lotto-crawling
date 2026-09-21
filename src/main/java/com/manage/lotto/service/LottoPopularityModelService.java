@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.Random;
 
 /**
- * D 인기도 모델: 조합의 인기도를 학습해 두고, 덜 붐비는 조합으로 게임 생성
+ * E 인기도 모델: 조합의 인기도를 학습해 두고, 덜 붐비는 조합으로 게임 생성
  * (학습 시점은 {@link LottoModelTrainingService}가 정함)
  * <p>
  * 학습 결과는 메모리에만 둔다. 회귀 계수 몇 개뿐이라 다시 학습해도 1초가 걸리지 않으므로
@@ -28,7 +28,7 @@ import java.util.Random;
 public class LottoPopularityModelService {
 
     /** 이력 지문 계산용 버전 (특징이나 학습 방식이 바뀌면 함께 변경) */
-    private static final String MODEL_VERSION = "popularity-v1-ridge8-fifth";
+    private static final String MODEL_VERSION = "popularity-v2-ridge9-fifth";
 
     private final PopularityPredictor predictor;
     private final Random random = new SecureRandom();
@@ -90,9 +90,12 @@ public class LottoPopularityModelService {
             throw new ModelNotReadyException(error != null ? error
                     : "인기도 모델이 아직 학습되지 않았습니다. 학습 상태를 확인해 주세요.");
         }
-        List<Integer> numbers = predictor.generate(trained.model(), random);
+        // 만들려는 게임의 직전 회차는 지금 이력의 맨 끝이다 (겹침 특징에 쓴다)
+        List<Integer> previousNumbers = histories.get(histories.size() - 1).getNumbers();
+        List<Integer> numbers = predictor.generate(trained.model(), random, previousNumbers);
         // 평균 대비 몇 %인지로 보여 주려고 평균 지수로 나눈다 (1.0이 평균만큼 붐비는 조합)
-        double relativePopularity = trained.model().popularityOf(numbers) / trained.model().averageIndex();
+        double relativePopularity = trained.model().popularityOf(numbers, previousNumbers)
+                / trained.model().averageIndex();
         return PredictedGame.of(numbers, !trained.hash().equals(fingerprint(histories)), status(trained),
                 relativePopularity);
     }

@@ -107,7 +107,7 @@
         return row;
     }
     /**
-     * D 인기도 모델은 맞힌 개수가 아니라 "예측 인기도와 실제 인기도가 같이 움직였는지"로 잼
+     * E 인기도 모델은 맞힌 개수가 아니라 "예측 인기도와 실제 인기도가 같이 움직였는지"로 잼
      */
     function renderPopularity(report) {
         const popularity = report.popularity;

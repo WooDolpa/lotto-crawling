@@ -20,7 +20,7 @@
         <section class="panel" aria-labelledby="settings-title">
             <div class="panel-header"><h2 id="settings-title" class="panel-title">검증 설정</h2><span class="panel-subtitle">20회차마다 다시 학습</span></div>
             <div class="panel-body form-stack">
-                <p class="experiment-description">최근 회차를 하나씩, <b>그 회차보다 이전 기록만</b> 보고 맞혀 봅니다. A 점수 모델, B 확률 모델, C 인기 조합 제외는 맞힌 개수를 무작위로 골랐을 때의 이론값과 비교합니다. D 인기도 모델은 노리는 것이 적중률이 아니라 당첨금을 나눌 사람 수라, 인기도 예측이 실제와 맞았는지를 따로 잽니다.</p>
+                <p class="experiment-description">최근 회차를 하나씩, <b>그 회차보다 이전 기록만</b> 보고 맞혀 봅니다. A 점수 모델, B 확률 모델, C·D 동반출현 게임은 맞힌 개수를 무작위로 골랐을 때의 이론값과 비교합니다. E 인기도 모델은 노리는 것이 적중률이 아니라 당첨금을 나눌 사람 수라, 인기도 예측이 실제와 맞았는지를 따로 잽니다.</p>
                 <form id="validation-form" class="experiment-form" th:attr="data-url=@{/api/lotto/validation}">
                     <div class="field">
                         <label for="test-draws">검증 회차 수</label>
@@ -60,7 +60,7 @@
         <p id="popularity-verdict" class="verdict"></p>
         <div class="table-wrap">
             <table class="data-table">
-                <caption class="visually-hidden">D 인기도 모델의 예측이 실제 인기도와 얼마나 맞았는지</caption>
+                <caption class="visually-hidden">E 인기도 모델의 예측이 실제 인기도와 얼마나 맞았는지</caption>
                 <thead><tr><th scope="col">항목</th><th scope="col">값</th><th scope="col">읽는 법</th></tr></thead>
                 <tbody id="popularity-body"></tbody>
             </table>

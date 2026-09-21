@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * 시간순 검증 API (A 점수 모델, B 확률 모델, C 인기 조합 제외를 무작위와 비교)
+ * 시간순 검증 API (A 점수 모델, B 확률 모델, C·D 동반출현 게임을 무작위와 비교)
  */
 @RestController
 @RequestMapping("/api/lotto/validation")

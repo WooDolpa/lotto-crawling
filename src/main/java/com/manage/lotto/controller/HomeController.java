@@ -37,7 +37,7 @@ public class HomeController {
      * 번호 예측 화면
      * GET /lotto/prediction
      * <p>
-     * 학습된 A 점수 모델과 B v1 확률 모델, C 인기 조합 제외 규칙으로 다음 회차 번호를 1게임씩 예측하고, 모델 학습 상태를 확인·갱신한다.
+     * A 점수 모델·B v1 확률 모델·C·D 동반출현 게임·E 인기도 모델로 다음 회차 번호를 1게임씩 예측하고, 모델 학습 상태를 확인·갱신한다.
      */
     @GetMapping("/lotto/prediction")
     public String lottoPrediction() {
@@ -48,7 +48,7 @@ public class HomeController {
      * 모델 검증 화면
      * GET /validation
      * <p>
-     * 최근 회차로 시간순 검증을 백그라운드에서 실행해 A·B·C 게임의 일치 개수를 무작위 이론값과 통계로 비교한다.
+     * 최근 회차로 시간순 검증을 백그라운드에서 실행해 A·B·C·D 게임의 일치 개수를 무작위 이론값과 통계로 비교한다.
      */
     @GetMapping("/validation")
     public String validation() {

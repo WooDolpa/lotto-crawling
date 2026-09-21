@@ -14,7 +14,7 @@ import java.util.List;
  * @param random            무작위로 골랐을 때의 이론값
  * @param games             게임별 결과 (A, B, C 순서)
  * @param draws             회차별 결과 (오래된 회차부터)
- * @param popularity        D 인기도 모델 검증 결과 (적중률과 재는 것이 달라 따로 둔다)
+ * @param popularity        E 인기도 모델 검증 결과 (적중률과 재는 것이 달라 따로 둔다)
  */
 public record ValidationReport(int firstDrawNo, int lastDrawNo, int testDraws, int refitInterval, long seed,
                                double significanceLevel, Baseline random, List<GameResult> games,
@@ -28,7 +28,7 @@ public record ValidationReport(int firstDrawNo, int lastDrawNo, int testDraws, i
     public record Baseline(double averageMatches, double prizeRate, List<Double> matchProbabilities) {}
 
     /**
-     * @param key               게임 키 (pattern, probability, unpopular)
+     * @param key               게임 키 (pattern, probability, coOccurrence3, coOccurrence4)
      * @param name              화면 이름
      * @param averageMatches    회차당 평균 일치 개수
      * @param prizeRate         3개 이상 일치한 회차 비율
@@ -49,7 +49,7 @@ public record ValidationReport(int firstDrawNo, int lastDrawNo, int testDraws, i
     public record Pick(List<Integer> numbers, int matches) {}
 
     /**
-     * D 인기도 모델 검증 결과
+     * E 인기도 모델 검증 결과
      * <p>
      * A·B·C는 "맞힌 개수"로 재지만 D는 "당첨금을 몇 명과 나누는가"를 노리므로 같은 표에 넣을 수 없다.
      * 대신 회차마다 직전 이력만으로 학습한 모델이 <b>그 회차 당첨 조합의 인기도</b>를 얼마나 맞혔는지 잰다.
