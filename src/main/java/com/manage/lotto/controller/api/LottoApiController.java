@@ -1,5 +1,6 @@
 package com.manage.lotto.controller.api;
 
+import com.manage.lotto.dto.FirstPrizeWinnersResponse;
 import com.manage.lotto.dto.LottoHistoryResponse;
 import com.manage.lotto.dto.LottoRecommendResponse;
 import com.manage.lotto.service.LottoHistoryService;
@@ -13,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 /**
- * 당첨 이력 조회 및 v1 번호 추천 API
+ * 당첨 이력 조회·통계 및 v1 번호 추천 API
  */
 @RestController
 @RequestMapping("/api/lotto")
@@ -49,6 +50,19 @@ public class LottoApiController {
     public List<LottoHistoryResponse> history(@RequestParam(name = "fromDrawNo") int fromDrawNo,
                                               @RequestParam(name = "toDrawNo") int toDrawNo) {
         return lottoHistoryService.history(fromDrawNo, toDrawNo);
+    }
+
+    /**
+     * 회차별 1등 당첨자 수 통계
+     * GET /api/lotto/statistics/first-prize-winners
+     * <p>
+     * 전체 회차의 추첨일·1등 당첨자 수·1게임당 1등 당첨금·판매량으로 본 기대 1등 당첨자 수를 회차순으로 반환한다.
+     * 동기화 전 회차는 그 값들이 null이고, 기대 당첨자 수는 836회 미만도 null이다.
+     * 통계 > 1등 당첨자수 화면의 기간별 요약·차트·연도별 비교에 사용한다.
+     */
+    @GetMapping("/statistics/first-prize-winners")
+    public List<FirstPrizeWinnersResponse> firstPrizeWinners() {
+        return lottoHistoryService.firstPrizeWinners();
     }
 
     /**

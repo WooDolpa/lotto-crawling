@@ -66,6 +66,15 @@
 .match-count.is-hit { color: var(--success); font-weight: 700; }
 @media (prefers-reduced-motion: reduce) { .progress-track > span { transition: none; } }
 
+/* ===== 통계 ===== */
+.panel > .panel-toolbar:last-child { border-bottom: 0; }
+.chart-box { position: relative; height: 360px; }
+.status-text:not(:empty) + .chart-box { margin-top: 12px; }
+.chart-data { border-top: 1px solid var(--border); }
+.chart-data > summary { padding: 12px 20px; font-size: var(--text-sm); font-weight: 600; color: var(--text-secondary); cursor: pointer; }
+.chart-data > summary:hover { color: var(--text); }
+.chart-data[open] > summary { border-bottom: 1px solid var(--border); }
+
 @media (max-width: 1080px) {
     .stat-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .prediction-layout, .validation-layout { grid-template-columns: minmax(0, 1fr); }
@@ -88,6 +97,7 @@
     .data-table .ball { --ball-size: 30px; }
     .data-table .ball-row { gap: 4px; flex-wrap: nowrap; }
     .panel-footer { justify-content: center; padding: 12px 16px; }
+    .chart-box { height: 280px; }
     .sheet-grid { grid-template-columns: 1fr; padding: 16px; }
     .sheet-grid .lotto-sheet { max-width: 280px; margin: 0 auto; }
     .hero-body { padding: 20px; gap: 20px; }

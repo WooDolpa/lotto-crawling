@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/head :: head(~{::title}, ~{}, ~{::script})}">
+    <title>1등 당첨자수 · jwlee 로또 연구소</title>
+    <script defer src="https://cdn.jsdelivr.net/npm/chart.js@4.5.1/dist/chart.umd.min.js"></script>
+    <script defer th:src="@{/js/first-prize-winners.js}"></script>
+</head>
+<body>
+<th:block th:replace="~{fragments/navigation :: sidebar('statistics-first-prize-winners')}"></th:block>
+<div class="app-content">
+<main id="main-content" class="page" tabindex="-1" th:attr="data-url=@{/api/lotto/statistics/first-prize-winners}">
+    <header class="page-header">
+        <div>
+            <p class="page-eyebrow">통계</p>
+            <h1 class="page-title">1등 당첨자수</h1>
+            <p class="page-description">회차마다 1등이 몇 명 나왔는지, 1인당 얼마를 받았는지 살펴봅니다.</p>
+        </div>
+    </header>
+
+    <section class="panel" aria-labelledby="range-title">
+        <h2 id="range-title" class="visually-hidden">기간 선택</h2>
+        <div class="panel-toolbar">
+            <form id="range-form" class="search-form">
+                <div class="field"><label for="from-draw">시작 회차</label><select id="from-draw" class="control" disabled><option value="">불러오는 중</option></select></div>
+                <span class="range-sep" aria-hidden="true">~</span>
+                <div class="field"><label for="to-draw">종료 회차</label><select id="to-draw" class="control" disabled><option value="">불러오는 중</option></select></div>
+            </form>
+            <div class="segmented" role="group" aria-label="빠른 기간 선택">
+                <button class="segmented-tab" type="button" data-recent="52" aria-pressed="false" disabled>최근 1년</button>
+                <button class="segmented-tab" type="button" data-recent="156" aria-pressed="false" disabled>최근 3년</button>
+                <button class="segmented-tab" type="button" data-recent="all" aria-pressed="true" disabled>전체</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="stat-grid" aria-label="선택한 기간의 1등 당첨자수 요약" aria-live="polite">
+        <div class="stat"><span class="stat-label">회차당 평균</span><span id="stat-average" class="stat-value">-</span><span id="stat-average-meta" class="stat-meta">-</span></div>
+        <div class="stat"><span class="stat-label">가장 많았던 회차</span><span id="stat-max" class="stat-value">-</span><span id="stat-max-meta" class="stat-meta">-</span></div>
+        <div class="stat"><span class="stat-label">가장 적었던 회차</span><span id="stat-min" class="stat-value">-</span><span id="stat-min-meta" class="stat-meta">-</span></div>
+        <div class="stat"><span class="stat-label">판매량 대비</span><span id="stat-index" class="stat-value">-</span><span id="stat-index-meta" class="stat-meta">-</span></div>
+    </section>
+
+    <section class="panel" aria-labelledby="chart-title">
+        <div class="panel-header"><h2 id="chart-title" class="panel-title">회차별 1등 당첨자 수</h2><span id="chart-meta" class="panel-subtitle"></span></div>
+        <div class="panel-body">
+            <p id="status" class="status-text" aria-live="polite">불러오는 중입니다.</p>
+            <div class="chart-box">
+                <canvas id="winners-chart" role="img" aria-label="회차별 1등 당첨자 수 꺾은선 차트"></canvas>
+            </div>
+        </div>
+        <details class="chart-data">
+            <summary>표로 보기</summary>
+            <div class="table-wrap table-scroll">
+                <table class="data-table">
+                    <caption class="visually-hidden">선택한 기간의 회차별 추첨일, 1등 당첨자 수, 1인당 당첨금 (최근 회차부터)</caption>
+                    <thead><tr><th scope="col">회차</th><th scope="col">추첨일</th><th scope="col">1등 당첨자</th><th scope="col">1인당 당첨금</th></tr></thead>
+                    <tbody id="winners-table"></tbody>
+                </table>
+            </div>
+        </details>
+        <p class="panel-note">선에 마우스를 올리면 추첨일과 1인당 당첨금이 보입니다. 점선은 선택한 기간의 평균입니다. 동기화하지 않은 회차는 선을 끊어 두고 평균에서도 뺍니다.</p>
+    </section>
+
+    <section class="panel" aria-labelledby="yearly-title">
+        <div class="panel-header"><h2 id="yearly-title" class="panel-title">연도별 비교</h2><span class="panel-subtitle">전체 회차 기준</span></div>
+        <div class="table-wrap">
+            <table class="data-table">
+                <caption class="visually-hidden">연도별 회차 수, 1등 평균 당첨자, 최다·최소 당첨자, 평균 1인당 당첨금, 판매량 대비 당첨자</caption>
+                <thead><tr><th scope="col">연도</th><th scope="col">회차 수</th><th scope="col">평균 당첨자</th><th scope="col">최다 · 최소</th><th scope="col">평균 1인당 당첨금</th><th scope="col">판매량 대비</th></tr></thead>
+                <tbody id="yearly-table"></tbody>
+            </table>
+        </div>
+        <p class="panel-note"><b>판매량 대비</b>는 실제 1등 당첨자 수를 판매량으로 본 기대 당첨자 수(판매 게임 수 ÷ 8,145,060)와 견준 값입니다. 많이 팔린 해에는 1등도 많이 나오므로, 당첨자 수만 비교하면 판매량 차이를 사람들의 번호 선택 차이로 잘못 읽게 됩니다. +면 그해 당첨 번호를 판매량보다 많은 사람이 골랐다는 뜻입니다. 1년치(약 570명)라도 우연만으로 ±4% 안팎은 오르내리므로 작은 차이는 의미를 두지 마세요. 회차 수가 52회 미만인 해는 일부만 집계한 것입니다.</p>
+    </section>
+</main>
+</div>
+</body>
+</html>

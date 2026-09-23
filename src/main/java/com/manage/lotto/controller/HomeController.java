@@ -54,4 +54,22 @@ public class HomeController {
     public String validation() {
         return "validation";
     }
+
+    /**
+     * 통계 메뉴 단축 경로
+     * GET /statistics → 첫 하위 화면(/statistics/first-prize-winners)으로 리다이렉트
+     */
+    @GetMapping("/statistics")
+    public String statistics() {
+        return "redirect:/statistics/first-prize-winners";
+    }
+
+    /**
+     * 통계 > 1등 당첨자수 화면
+     * GET /statistics/first-prize-winners
+     */
+    @GetMapping("/statistics/first-prize-winners")
+    public String firstPrizeWinners() {
+        return "first-prize-winners";
+    }
 }

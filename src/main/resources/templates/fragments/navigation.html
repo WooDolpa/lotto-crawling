@@ -18,6 +18,13 @@
         <a class="sidebar-link" th:classappend="${page == 'history' ? 'active' : ''}" href="/" th:href="@{/}" aria-label="당첨 이력" th:attr="aria-current=${page == 'history' ? 'page' : null}"><svg aria-hidden="true" viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg><span class="menu-name">당첨 이력</span><span class="menu-tooltip" aria-hidden="true">당첨 이력</span></a>
         <a class="sidebar-link" th:classappend="${page == 'prediction' ? 'active' : ''}" href="/lotto/prediction" th:href="@{/lotto/prediction}" aria-label="번호 예측" th:attr="aria-current=${page == 'prediction' ? 'page' : null}"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="m12 3 9 9-9 9-9-9Z"/><path d="M8 12h8m-4-4v8"/></svg><span class="menu-name">번호 예측</span><span class="menu-tooltip" aria-hidden="true">번호 예측</span></a>
         <a class="sidebar-link" href="/validation" th:href="@{/validation}" th:classappend="${page == 'validation' ? 'active' : ''}" th:attr="aria-current=${page == 'validation' ? 'page' : null}" aria-label="모델 검증"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 4v16h16M8 14l4-4 4 2 4-6"/></svg><span class="menu-name">모델 검증</span><span class="menu-tooltip" aria-hidden="true">모델 검증</span></a>
+        <!-- 2depth 그룹: 하위 화면의 page 이름은 'statistics-'로 시작한다 (그 화면에서는 그룹을 펼치고 강조) -->
+        <th:block th:with="inStatistics=${#strings.startsWith(page, 'statistics-')}">
+        <button class="sidebar-link sidebar-group" type="button" th:classappend="${inStatistics ? 'active-parent' : ''}" aria-controls="submenu-statistics" th:attr="aria-expanded=${inStatistics}" aria-label="통계"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 20h16"/><rect x="6" y="11" width="3" height="6" rx="1"/><rect x="11" y="7" width="3" height="10" rx="1"/><rect x="16" y="4" width="3" height="13" rx="1"/></svg><span class="menu-name">통계</span><svg class="menu-caret" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg><span class="menu-tooltip" aria-hidden="true">통계</span></button>
+        <div id="submenu-statistics" class="sidebar-submenu" th:attr="hidden=${inStatistics ? null : 'hidden'}">
+            <a class="sidebar-link sidebar-sublink" href="/statistics/first-prize-winners" th:href="@{/statistics/first-prize-winners}" th:classappend="${page == 'statistics-first-prize-winners' ? 'active' : ''}" th:attr="aria-current=${page == 'statistics-first-prize-winners' ? 'page' : null}"><span class="menu-name">1등 당첨자수</span></a>
+        </div>
+        </th:block>
     </nav>
     <div class="sidebar-footer"><span class="menu-name">번호와 패턴을 살펴보세요</span></div>
 </aside>

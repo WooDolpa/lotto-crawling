@@ -47,7 +47,7 @@
     cursor: pointer; transition: background-color .15s, color .15s;
 }
 .segmented-tab:hover:enabled { color: var(--text); }
-.segmented-tab[aria-selected="true"] { background: var(--segmented-active); color: var(--text); box-shadow: var(--shadow-sm); }
+.segmented-tab[aria-selected="true"], .segmented-tab[aria-pressed="true"] { background: var(--segmented-active); color: var(--text); box-shadow: var(--shadow-sm); }
 
 /* ===== Status, badge, chip ===== */
 .status-text { font-size: var(--text-sm); color: var(--text-secondary); }

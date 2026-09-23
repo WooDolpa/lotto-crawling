@@ -170,7 +170,7 @@ public class LottoValidationService {
             // A·B는 같은 기본 6개 특징을 쓰고 학습 설정과 번호 고르는 방식만 다름
             RandomForest score = patternTrainer.fit(x, y, SEED);
             RandomForest probability = probabilityPredictor.train(new LottoFeatureExtractor.FeatureDataset(x, y));
-            // D는 공이 아니라 당첨 조합의 생김새를 보므로 위 특징과 무관하게 따로 학습한다
+            // E는 공이 아니라 당첨 조합의 생김새를 보므로 위 특징과 무관하게 따로 학습한다
             PopularityPredictor.Model popularity = trainPopularity(histories.subList(0, blockStart));
 
             for (int t = blockStart; t < Math.min(size, blockStart + REFIT_INTERVAL); t++) {

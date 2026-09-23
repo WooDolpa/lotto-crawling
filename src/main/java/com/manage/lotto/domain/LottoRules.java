@@ -19,6 +19,8 @@ public final class LottoRules {
     public static final int SHEET_COLUMNS = 7;
     /** 6/45 전체 조합 수 = C(45,6) */
     public static final int TOTAL_COMBINATIONS = 8_145_060;
+    /** 1게임 가격 (원). 총 판매금액을 판매 게임 수로 바꾸는 데 쓴다. */
+    public static final int GAME_PRICE = 1_000;
     /**
      * 인기도 계산을 신뢰할 수 있는 첫 회차 (2018-12-08, 동행복권 수탁 시작)
      * <p>

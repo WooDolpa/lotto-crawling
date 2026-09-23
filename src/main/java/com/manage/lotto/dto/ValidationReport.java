@@ -51,7 +51,7 @@ public record ValidationReport(int firstDrawNo, int lastDrawNo, int testDraws, i
     /**
      * E 인기도 모델 검증 결과
      * <p>
-     * A·B·C는 "맞힌 개수"로 재지만 D는 "당첨금을 몇 명과 나누는가"를 노리므로 같은 표에 넣을 수 없다.
+     * A·B·C·D는 "맞힌 개수"로 재지만 E는 "당첨금을 몇 명과 나누는가"를 노리므로 같은 표에 넣을 수 없다.
      * 대신 회차마다 직전 이력만으로 학습한 모델이 <b>그 회차 당첨 조합의 인기도</b>를 얼마나 맞혔는지 잰다.
      *
      * @param available         인기도를 잴 수 있는 회차가 충분했는지 (아니면 나머지 값은 의미 없음)

@@ -63,8 +63,6 @@ public class PopularityPredictor {
 
     /** 5등(3개 일치) 조합 수 = C(6,3) × C(39,3) */
     private static final double FIFTH_COMBINATIONS = 182_780;
-    /** 1게임 가격 (원). 판매금액을 게임 수로 바꾸는 데 쓴다. */
-    private static final double GAME_PRICE = 1_000;
     /** 능선 회귀 규제 강도 (특징을 표준화한 뒤 적용) */
     private static final double LAMBDA = 1.0;
     /** 표준편차가 0인 특징을 나눌 때 쓰는 대체값 */
@@ -196,7 +194,7 @@ public class PopularityPredictor {
         if (fifth.winCo() == null || sellAmt == null || sellAmt <= 0) {
             return null;
         }
-        double soldGames = sellAmt / GAME_PRICE;
+        double soldGames = sellAmt / (double) LottoRules.GAME_PRICE;
         double expected = soldGames * FIFTH_COMBINATIONS / LottoRules.TOTAL_COMBINATIONS;
         return expected <= 0 ? null : fifth.winCo() / expected;
     }

@@ -9,7 +9,7 @@ import java.util.stream.IntStream;
 /**
  * 인기도 예측이 실제와 얼마나 맞았는지 재는 통계
  * <p>
- * 적중률 검증({@link RandomMatchStatistics})과 목적이 다르다. D 모델이 노리는 것은 당첨 확률이 아니라
+ * 적중률 검증({@link RandomMatchStatistics})과 목적이 다르다. E 모델이 노리는 것은 당첨 확률이 아니라
  * "당첨됐을 때 당첨금을 몇 명과 나누는가"이므로, 맞힌 개수가 아니라 <b>예측한 인기도와 실제 인기도가
  * 같이 움직였는지</b>를 본다.
  * <p>

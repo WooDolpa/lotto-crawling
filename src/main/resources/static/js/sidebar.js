@@ -47,6 +47,18 @@
             else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
         }
     });
+    // 2depth 그룹 펼치기/접기. 접힌 사이드바에서는 하위 메뉴를 보여 줄 자리가 없으므로 사이드바부터 펼친다.
+    sidebar.querySelectorAll('.sidebar-group').forEach(group => group.addEventListener('click', () => {
+        const submenu = document.getElementById(group.getAttribute('aria-controls'));
+        const expand = (!mobile.matches && collapsed) || group.getAttribute('aria-expanded') !== 'true';
+        if (!mobile.matches && collapsed) {
+            collapsed = false;
+            try { localStorage.setItem('lotto.sidebar.collapsed', 'false'); } catch (error) { /* Keep working without persistence. */ }
+            render();
+        }
+        group.setAttribute('aria-expanded', String(expand));
+        submenu.hidden = !expand;
+    }));
     links.forEach(link => link.addEventListener('click', () => {
         if (mobile.matches) close(false);
     }));

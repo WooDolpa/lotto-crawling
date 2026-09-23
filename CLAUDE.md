@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-로또 6/45 당첨 이력을 수집·조회하고, Smile ML(RandomForest)로 다음 회차 번호를 예측·검증하는 웹 애플리케이션.
+로또 6/45 당첨 이력을 수집·조회하고, Smile ML(RandomForest)로 다음 회차 번호를 예측·검증하며, 당첨 통계(1등 당첨자수)를 차트로 보여 주는 웹 애플리케이션.
 
 - Spring Boot 4.0.1, Java 17, Gradle 9.2.1
 - Spring Data JPA + MariaDB, Thymeleaf(SSR), Lombok
@@ -53,7 +53,7 @@ Base package: `com.manage.lotto`
 | `controller/` | MVC 컨트롤러 (`@Controller`, Thymeleaf 뷰 이름 반환) |
 | `controller/api/` | REST 컨트롤러 (`@RestController`, JSON 반환) + `ApiExceptionHandler` |
 | `service/` | 비즈니스 로직 |
-| `domain/` | `LottoHistory` 엔티티, `PrizeRank`(등수별 당첨 정보 묶음), `LottoRules`(번호 범위·연속 회차 검증, 신뢰 회차 기준 `FIRST_TRUSTED_DRAW`) |
+| `domain/` | `LottoHistory` 엔티티, `PrizeRank`(등수별 당첨 정보 묶음), `LottoRules`(번호 범위·연속 회차 검증, 신뢰 회차 기준 `FIRST_TRUSTED_DRAW`, 전체 조합 수 `TOTAL_COMBINATIONS`, 1게임 가격 `GAME_PRICE`) |
 | `dto/` | 요청/응답 record |
 | `event/` | `LottoHistoryChanged` (이력 변경 이벤트) |
 | `exception/` | 도메인 예외 |
@@ -68,12 +68,12 @@ Base package: `com.manage.lotto`
 
 **836회(2018-12-08) 이후만 동기화한다.** 그 이전은 로또를 위탁 운영한 기관이 달라 판매금액·당첨자 수 집계와 구매 환경이 지금과 다르다. 인기도를 같은 자로 잴 수 없으므로 **인기도 관련 측정·학습에 옛 회차를 다시 끌어오지 않는다.** 당첨 번호 자체는 운영 기관과 무관하므로, 번호만 쓰는 계산(A·B 특징, 동반출현 통계, 적중률 검증)은 전 회차를 써도 된다.
 
-이 경계는 문서 약속이 아니라 **코드가 강제한다**: `LottoRules.FIRST_TRUSTED_DRAW = 836`을 D의 학습(`PopularityPredictor.train`)과 검증 채점(`LottoValidationService.PopularitySamples.add`) 양쪽에서 거른다. 옛 회차를 동기화해도 D는 그 구간을 보지 않고, A·B·C·E와 적중률 검증은 그대로 전 회차를 쓴다.
+이 경계는 문서 약속이 아니라 **코드가 강제한다**: `LottoRules.FIRST_TRUSTED_DRAW = 836`을 E의 학습(`PopularityPredictor.train`), 검증 채점(`LottoValidationService.PopularitySamples.add`), 1등 통계의 기대 당첨자 수(`FirstPrizeWinnersResponse.expectedWinners`, 판매량 대비 지수의 분모)에서 거른다. 옛 회차를 동기화해도 E와 판매량 대비 지수는 그 구간을 보지 않고, A·B·C·D와 적중률 검증, 1등 당첨자 수 자체는 그대로 전 회차를 쓴다.
 
 - 항상 있는 값: `drw_no`(유니크), `win_no1`~`win_no6`, `bonus_no`, `created_date`.
 - 동기화로 채우는 값: `draw_date`(yyyyMMdd 문자열), 등수별 `win_noN_co`/`_amt`/`_sum_amt`(1~5등 15개), `total_win_co`, `total_sell_amt`.
 - 아직 받지 못한 값은 **0이 아니라 null**로 둔다. "당첨자 0명"과 구분되지 않으면 조합 인기도 계산이 조용히 틀어진다.
-- `total_sell_amt ÷ 1,000`이 그 회차에 팔린 게임 수다. 등수별 당첨 인원 수와 함께 조합 인기도를 재는 재료다.
+- `total_sell_amt ÷ 1,000`(`LottoRules.GAME_PRICE`)이 그 회차에 팔린 게임 수다. 등수별 당첨 인원 수와 함께 조합 인기도를 재는 재료다.
 - 등수별 값은 파라미터 15개를 늘어놓지 않도록 `List<PrizeRank>`(1~5등 순서)로 주고받고, 저장은 개별 컬럼에 한다. 동기화는 회차가 있으면 갱신(빈 값은 기존 값 유지), 없으면 추가한다.
 
 ### 화면 (HomeController)
@@ -83,6 +83,7 @@ Base package: `com.manage.lotto`
 | `GET /` | `index` | 당첨 이력 조회 |
 | `GET /lotto/prediction` (`/prediction` 리다이렉트) | `prediction` | 점수 모델(A)·확률 모델(B)·동반출현 3개(C)·동반출현 4개(D)·인기도 모델(E)로 다음 회차 1게임씩, 모델 상태 |
 | `GET /validation` | `validation` | 시간순 검증 (A·B·C·D 적중률을 무작위와 비교, E 인기도 예측 정확도) |
+| `GET /statistics/first-prize-winners` (`/statistics` 리다이렉트) | `first-prize-winners` | 통계 > 1등 당첨자수 (기간 선택: 회차 범위·최근 1년·3년·전체 → 요약 카드·꺾은선 차트·표. 연도별 비교 표는 전체 회차 기준) |
 
 ### REST API
 
@@ -90,6 +91,7 @@ Base package: `com.manage.lotto`
 |-----|------|
 | `GET /api/lotto/draws` | 등록된 회차 번호 목록 |
 | `GET /api/lotto/history?fromDrawNo=&toDrawNo=` | 회차 범위 당첨 이력 |
+| `GET /api/lotto/statistics/first-prize-winners` | 전체 회차의 추첨일·1등 당첨자 수·1게임당 1등 당첨금·기대 1등 당첨자 수(판매 게임 수 ÷ 8,145,060, 836회 미만은 null). 동기화 전 값은 null. 기간별 집계는 화면에서 한다 |
 | `GET /api/lotto/recommend` | v1 확률 모델 5게임 추천 (UI 호출처 없음, 유지 대상) |
 | `GET /api/lotto/prediction` | A·B·C·D·E 1게임씩 (A·B·E 중 실패한 모델은 그 게임만 `available=false`) |
 | `GET /api/lotto/prediction/status` | 학습 진행 여부와 모델별 상태 |
@@ -99,6 +101,16 @@ Base package: `com.manage.lotto`
 | `GET /system/sync?startNo=&endNo=` | 동행복권 API 동기화 (범위를 한 번에 받아 신규 추가·기존 갱신, 두 회차 모두 필수) |
 
 예외 응답은 `ApiExceptionHandler`가 `ErrorResponse(message)`로 변환한다: `InvalidLottoDataException`·잘못된 요청 본문 → 400, `ValidationInProgressException`·무결성 위반 → 409, `ModelNotReadyException` → 503.
+
+### 통계 (1등 당첨자수)
+
+통계 메뉴는 사이드바 2depth 그룹이고 지금 하위 화면은 1등 당첨자수 하나다. API(`LottoHistoryService.firstPrizeWinners`)는 전체 회차를 한 번에 주고, 기간별 집계는 화면(`first-prize-winners.js`)이 한다. 1년에 52건씩 늘어나는 크기라 서버 집계나 캐시를 두지 않는다.
+
+- **기간 선택**: 시작·종료 회차 또는 최근 1년(52회)·3년(156회)·전체. 요약 카드(평균·최다·최소·판매량 대비), 꺾은선 차트(평균 점선), 표로 보기가 선택한 기간으로 다시 계산된다.
+- **연도별 비교 표**: 기간 선택과 무관하게 전체 회차 기준이다. 추첨일(`draw_date`)의 연도로 묶고, 당첨자 수가 있는 회차가 52회 미만인 해는 "일부"로 표시한다 (836회로 시작하는 2018년, 진행 중인 올해, 동기화가 빠진 해).
+- **판매량 대비** = 실제 1등 합계 ÷ 기대 1등 합계. 기대 1등 = 판매 게임 수 ÷ 8,145,060 (아래 예측 모델 절의 "인기도 재는 법"을 1등에 적용한 것). 당첨자 수만 비교하면 판매량 차이를 번호 선택 차이로 잘못 읽게 되므로 둔다. `FirstPrizeWinnersResponse.expectedWinners`가 836회 미만을 null로 주므로 옛 회차를 동기화해도 이 지수에는 들어가지 않는다.
+- 1등은 표본이 작다. 1년치(약 570명)도 우연만으로 ±4% 안팎 흔들리므로 연도별 차이를 해석하지 않는다 (화면 안내 문구에도 적었다). 모델 판단에는 5등·3등 지수를 쓴다.
+- 동기화 전 회차는 0이 아니라 빈값이다. 차트는 선을 끊고(`spanGaps` 기본값 false), 평균·지수 계산에서 뺀다.
 
 ### 예측 모델
 
@@ -111,7 +123,7 @@ Base package: `com.manage.lotto`
   - 모델 파일은 Java 직렬화이므로 `SavedPatternModel` 등의 패키지·구조를 바꾸면 기존 파일을 읽지 못하고 재학습한다.
 - **확률 모델 (B, v1)** (`LottoRecommendationService`, `LottoMlPredictor`, `LottoGameGenerator`):
   - 기본 6개 특징으로 번호별 출현 확률을 학습해 메모리에만 보관한다 (25회 미만이면 균등 확률). Smile 기본 설정에 트리 시드 42만 고정해 같은 이력이면 같은 확률이 나온다.
-  - 확률 가중 샘플링 + 밸런스 필터로 뽑으므로 호출마다 번호가 달라질 수 있다.
+  - 확률 가중 샘플링 + 밸런스 필터로 뽑으므로 호출마다 번호가 달라질 수 있다. 밸런스 필터(합계 100~175, 홀수 2~4개, 22 이하 2~4개, 3연번 제외)는 "평범해 보이는" 조합만 남길 뿐 적중률과 무관하다. 인기도로 보면 붐비는 낮은 합계와 덜 붐비는 높은 합계를 함께 잘라 거의 중립이다.
   - `/api/lotto/recommend`(5게임)는 UI에서 쓰지 않지만 **삭제하지 않는다** (향후 활용 예정).
 - **기본 특징 6개** (`LottoFeatureExtractor`, A·B 공통): 최근 5·10·20회 출현 수, 연속 미출현 회차 수, `co_occurrence_rate`(이 공이 나온 회차마다 직전 회차 번호가 평균 몇 개 함께 나왔는지), 누적 출현율. 모델 특징·설정을 바꾸면 `LottoPatternTrainer.MODEL_VERSION`과 `LottoRecommendationService.MODEL_VERSION`도 바꾼다.
 - **동반출현 게임 (C·D)** (`CoOccurrenceGameGenerator`): 학습 없이, 당첨 번호에 가장 자주 함께 나온 조합을 고르고 남은 자리를 무작위로 채운다. C는 3개 + 무작위 3개, D는 4개 + 무작위 2개.
@@ -135,6 +147,8 @@ Base package: `com.manage.lotto`
   - 생일 규칙 말고 **넷은 방향이 거꾸로였다.** 유의하지 않은 것까지 모두 "덜 붐빔" 쪽 부호다. 사람들이 이상하게 생긴 조합을 피하니 당연한데, 옛 C는 그런 조합을 골라 제외하고 있었다. 다시 넣지 않는다.
 - **인기도 모델 (E)** (`LottoPopularityModelService`, `PopularityPredictor`, `CombinationFeatures`): C·D와 반대로 **덜 붐비는 쪽**을 노린다. 어떤 조합이 붐비는지 사람이 규칙으로 정하지 않고 데이터에서 배운다.
   - 학습 데이터는 회차별 (당첨 조합의 생김새 → 그 회차 5등 인기도 지수). 당첨 조합은 매 회차 무작위로 정해지므로 조합 공간에서 고르게 뽑힌 표본이다.
+  - 5등은 당첨 조합과 3개가 겹치는 조합을 산 사람 수라서, 이 지수는 조합 하나가 아니라 **그 주변**이 얼마나 붐볐는지를 잰다. 붐비는 번호대를 피한다는 목적에는 맞는다.
+  - **이득은 1~3등에 당첨됐을 때만 생긴다.** 4등(5만 원)·5등(5천 원)은 고정 금액이라 붐벼도 받는 돈이 같다. 5등 인원은 신호를 재는 표본이고 돈이 걸린 곳은 1~3등이다.
   - 특징 9개(`CombinationFeatures`): 합계, 홀수 개수, 31 이하 개수, 최장 연번, 간격 표준편차, 십의 자리 묶음 수, 같은 끝자리 최대 개수, 용지 한 줄·칸 최대 개수, 직전 회차 겹침 개수. 표본이 회차 수뿐이라 더 늘리면 과적합한다.
   - 마지막 `last_draw_overlap`만 조합 바깥을 본다. 직전 회차와 2개 이상 겹치는 조합이 덜 붐빈다는 실측(위 "안 쓰기로 한 제외 규칙" 표)을 사람이 규칙으로 박지 않고 가중치를 데이터가 정하게 둔 것이다. 이 때문에 학습·예측 양쪽에 바로 앞 회차 번호가 필요하다. 앞 회차가 이력에 없는 회차(보통 가장 오래된 1건)는 학습에서 빠지고, 겹침은 번호만 쓰는 계산이라 앞 회차가 836회 미만이어도 그대로 쓴다.
   - 특징을 표준화한 뒤 능선 회귀(λ=1)로 학습한다. 트리 모델을 쓰지 않는 이유는 표본이 적고 특징 간 상관이 크기 때문이다. **계수를 하나씩 해석하면 안 된다** (합계와 31 이하 개수처럼 상관이 큰 특징끼리 부호가 뒤집힌다). 후보 순위를 매기는 데만 쓴다.
@@ -152,7 +166,7 @@ Base package: `com.manage.lotto`
   - 모델마다 회차·당첨 번호 지문(`HistoryFingerprint`)이 마지막 학습 때와 다를 때만 전체 이력으로 다시 학습한다.
   - 예측·추천 요청은 학습하지 않는다. 학습 실패 시 오류만 기록하고 기존 학습 결과를 유지한다.
   - 이력을 저장하는 코드는 `LottoHistoryChanged` 이벤트를 발행해야 한다.
-- **시간순 검증** (`LottoValidationService`, `RandomMatchStatistics`): 최근 20~500회차를 각각 그 이전 이력만으로 맞혀 A·B·C·D를 비교한다. 357회차(886~1242회) 검증에서 **A·B 모두 무작위와 차이가 없었다** (평균 일치 A 0.782 / B 0.824, 무작위 0.800 — 1 표준오차 안. 옛 C(생일 제외)는 0.759였다). 새 C·D는 아직 검증하지 않았고, 역시 차이가 없을 것으로 본다.
+- **시간순 검증** (`LottoValidationService`, `RandomMatchStatistics`): 최근 20~500회차를 각각 그 이전 이력만으로 맞혀 A·B·C·D를 비교한다. 357회차(886~1242회) 검증에서 **A·B·C·D 모두 무작위와 차이가 없었다** (평균 일치 A 0.782 / B 0.824 / C 0.807 / D 0.801, 무작위 0.800 — 모두 1 표준오차(±0.042) 안. 옛 C(생일 제외)는 0.759였다). 동반출현 조합을 고정해도 적중률이 오르지 않는다는 C·D의 전제가 확인된 것이다.
   - B의 "3개 이상 일치 4.21%"(무작위 2.38%)는 눈에 띄지만 **신호가 아니다.** 표에 p값이 6개 있어 전부 무작위여도 하나가 그만큼 낮게 나올 확률이 15%고, 주 지표인 평균 일치 개수는 p=0.30이며, 15회가 전부 정확히 3개이고 4개 이상은 0회다. 이 칸은 참고용이라는 것을 잊지 말 것.
   - 특징은 한 번만 계산해 공유하고, 20회차(`REFIT_INTERVAL`)마다 다시 학습한다. 백그라운드 스레드 하나에서 한 번에 한 건만 실행하며 상태는 메모리에 마지막 1건만 둔다.
   - 무작위 기준은 시뮬레이션이 아닌 초기하분포 이론값(평균 0.8개, 3개 이상 약 2.38%)이다. 평균 일치 개수 합계의 정확한 분포로 단측 p값을 구하고, 0.05 ÷ 게임 수(지금 4게임이므로 1.25%)보다 작을 때만 "무작위보다 나음"으로 판정한다.
@@ -166,6 +180,7 @@ Base package: `com.manage.lotto`
 ## Frontend
 
 - 템플릿: `src/main/resources/templates/` (한국어). 공통 조각은 `fragments/head.html`, `fragments/navigation.html`.
+- 사이드바 2depth 메뉴(`fragments/navigation.html`): 그룹은 `button.sidebar-group`(`aria-controls`로 `.sidebar-submenu`를 펼침), 하위 링크는 `.sidebar-sublink`. 하위 화면은 `sidebar('statistics-...')`처럼 그룹 접두사로 page 이름을 넘겨 그룹이 펼쳐진 채로 강조된다. 접힌 사이드바에서 그룹을 누르면 사이드바부터 펼친다.
 - 페이지 템플릿은 다음 형태로 head를 불러오고 페이지 전용 스크립트만 추가한다.
   ```html
   <head th:replace="~{fragments/head :: head(~{::title}, ~{}, ~{::script})}">
@@ -185,6 +200,8 @@ Base package: `com.manage.lotto`
 - 포인트 색은 인디고, 폰트는 Pretendard(CDN).
 - 로또 공 색상은 동행복권 체계: 1~10 노랑, 11~20 파랑, 21~30 빨강, 31~40 회색, 41~45 초록 (`.ball-group-1`~`5`).
 - 반응형 기준: 1080px 이하 1열, 768px 이하 모바일 드로어, 600px 이하 모바일 폼·표.
+- `.segmented`는 탭(`role="tab"` + `aria-selected`)과 토글 버튼 묶음(`role="group"` + `aria-pressed`, 예: 통계 화면의 빠른 기간 선택) 양쪽에 쓴다. 선택 모양은 두 속성 모두 같다.
+- 접힌 사이드바(`data-sidebar-collapsed="true"`, 72px)는 아이콘만 보이고 메뉴 이름·하위 메뉴는 숨긴다. 이름은 마우스를 올리면 툴팁으로 보인다.
 
 ### JS (`static/js/`)
 
@@ -194,7 +211,8 @@ Base package: `com.manage.lotto`
 - 요청 실패·완료 알림은 `notify(message, { type: 'error' | 'success' | 'info', title })` 토스트로 표시한다. 화면 안 상태 문구(`status-text`)는 진행 중 안내에만 쓴다.
 - `lotto-sheet.js`: `window.LottoSheet` (`validHistory`, `ball`, `sheet`)
 - `sidebar.js`: 사이드바 접기, 모바일 드로어
-- `history.js`, `prediction.js`, `validation.js`: 화면별 스크립트
+- `history.js`, `prediction.js`, `validation.js`, `first-prize-winners.js`: 화면별 스크립트
+- 차트는 Chart.js(jsDelivr, `chart.js@4.5.1` UMD)를 쓰는 화면에서만 불러온다. 캔버스는 CSS 변수를 읽지 못하므로 `getComputedStyle`로 토큰 값을 꺼내 넘기고, `prefers-color-scheme` 변경 때 다시 읽어 `chart.update()`한다. 라이브러리를 못 불러오면 요약·표는 그대로 보여 준다.
 
 ## Working Notes
 
